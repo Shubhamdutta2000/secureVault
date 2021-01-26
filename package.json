@@ -1,0 +1,11 @@
+{
+  "name": "layervault",
+  "version": "1.0.0",
+  "description": "a web app to prevent data breach",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shubham",
+  "license": "ISC"
+}
