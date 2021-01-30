@@ -1,15 +1,17 @@
-const express = require("express");
-const morgan = require("morgan");
+import express from "express";
+import morgan from "morgan";
+import homeRouter from "./routes/homeRouter.js";
+import mongooseConnection from "./config/db.js";
 const app = express();
 
 //Mongodb connection
-require("./config/db");
+mongooseConnection();
 
 //Middleware
 app.use(morgan("dev"));
 
 //Routes
-app.use("/", require("./routes/index"));
+app.use("/", homeRouter);
 
 //Server Listen
 const PORT = 5000 || process.env.PORT;
