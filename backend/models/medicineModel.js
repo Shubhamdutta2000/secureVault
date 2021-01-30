@@ -18,4 +18,4 @@ const medicalSchema = Schema({
 });
 
 const userMedicalModel = mongoose.model("Medical", medicalSchema);
-module.exports = userMedicalModel;
+export default userMedicalModel;

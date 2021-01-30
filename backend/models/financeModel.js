@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const Schema = new mongoose.Schema();
 
 //@ pan card details
@@ -24,4 +24,4 @@ const financeSchema = Schema({
 });
 
 const userFinanceModel = mongoose.model("Finance", financeSchema);
-module.exports = userFinanceModel;
+export default userFinanceModel;

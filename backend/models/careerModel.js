@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const Schema = new mongoose.Schema();
 
 const financeSchema = Schema({
@@ -26,4 +26,4 @@ const careerSchema = Schema({
 });
 
 const userCareerModel = mongoose.model("Career", careerSchema);
-module.exports = userCareerModel;
+export default userCareerModel;

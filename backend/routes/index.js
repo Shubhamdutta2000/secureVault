@@ -1,5 +1,6 @@
-const router = require("express").Router();
+import express from "express";
+const router = express.Router();
 
 router.get("/", require("../controller/indexController.js"));
 
-module.exports = router;
+export default router;

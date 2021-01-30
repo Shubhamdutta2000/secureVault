@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "a web app to prevent data breach",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node backend/index.js",
     "dev": "nodemon backend/index.js",

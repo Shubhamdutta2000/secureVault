@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const Schema = new mongoose.Schema();
 
 // individual details
@@ -12,4 +12,4 @@ const detailsSchema = Schema({
 });
 
 const userDetailsModel = mongoose.model("Detail", detailsSchema);
-module.exports = userDetailsModel;
+export default userDetailsModel;

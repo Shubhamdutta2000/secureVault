@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const Schema = new mongoose.Schema();
 
 //@ pan card details
@@ -15,4 +15,4 @@ const documentsSchema = Schema({
 });
 
 const userDocumentsModel = mongoose.model("Document", documentsSchema);
-module.exports = userDocumentsModel;
+export default userDocumentsModel;

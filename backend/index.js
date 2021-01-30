@@ -1,5 +1,5 @@
-const express = require("express");
-const morgan = require("morgan");
+import express from "express";
+import morgan from "morgan";
 const app = express();
 
 //Mongodb connection

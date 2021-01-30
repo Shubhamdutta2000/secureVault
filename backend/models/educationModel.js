@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const Schema = new mongoose.Schema();
 
 // college details
@@ -28,4 +28,4 @@ const educationSchema = Schema({
 });
 
 const userEducationModel = mongoose.model("Education", educationSchema);
-module.exports = userEducationModel;
+export default userEducationModel;
