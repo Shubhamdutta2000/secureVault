@@ -8,12 +8,12 @@ const recordsSchema = Schema({
   administered_at: Date,
 });
 
-const vaccination_records = Schema({
+const vaccinationRecords = Schema({
   records: [recordsSchema],
 });
 
 const medicalSchema = Schema({
-  vaccination_records: [vaccination_records],
+  vaccination_records: [vaccinationRecords],
   medical_illness_long_term: String,
 });
 

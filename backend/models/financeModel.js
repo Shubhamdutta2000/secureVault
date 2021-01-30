@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 const Schema = new mongoose.Schema();
 
 //@ pan card details
-const pan_card = Schema({
-  pan_card: String,
+const panCard = Schema({
+  panCard: String,
 });
 
 // assets details
@@ -17,7 +17,7 @@ const assetsSchema = Schema({
 
 // user finance details
 const financeSchema = Schema({
-  pan_card: [pan_card],
+  panCard: [panCard],
   itr_forms: String,
   bank_transaction: String,
   assets: [assetsSchema],

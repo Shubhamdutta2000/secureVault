@@ -1,6 +1,12 @@
 import mongoose from "mongoose";
 const Schema = new mongoose.Schema();
 
+const otherCertificate = Schema({
+  academy: String,
+  sports: String,
+  events: String,
+});
+
 // college details
 const collegeSchema = Schema({
   degree: String,
@@ -9,7 +15,7 @@ const collegeSchema = Schema({
   semester_sheets: String,
   final_year_projects: Array,
   degree_certificates: Array,
-  other_certificate: Array,
+  other_certificate: [otherCertificate],
 });
 
 // class 10 and 12 board details
