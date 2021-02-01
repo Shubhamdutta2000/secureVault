@@ -23,5 +23,5 @@ const financeSchema = Schema({
   assets: [assetsSchema],
 });
 
-const userFinanceModel = mongoose.model("Finance", financeSchema);
-export default userFinanceModel;
+const UserFinance = mongoose.model("Finance", financeSchema);
+export default UserFinance;

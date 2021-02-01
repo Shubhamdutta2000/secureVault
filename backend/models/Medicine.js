@@ -17,5 +17,5 @@ const medicalSchema = Schema({
   medical_illness_long_term: String,
 });
 
-const userMedicalModel = mongoose.model("Medical", medicalSchema);
-export default userMedicalModel;
+const UserMedical = mongoose.model("Medical", medicalSchema);
+export default UserMedical;

@@ -14,5 +14,5 @@ const documentsSchema = Schema({
   passport: String,
 });
 
-const userDocumentsModel = mongoose.model("Document", documentsSchema);
-export default userDocumentsModel;
+const UserDocument = mongoose.model("Document", documentsSchema);
+export default UserDocument;

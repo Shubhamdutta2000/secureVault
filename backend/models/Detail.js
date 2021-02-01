@@ -11,5 +11,5 @@ const detailsSchema = Schema({
   dob: Date,
 });
 
-const userDetailsModel = mongoose.model("Detail", detailsSchema);
-export default userDetailsModel;
+const UserDetail = mongoose.model("Detail", detailsSchema);
+export default UserDetail;

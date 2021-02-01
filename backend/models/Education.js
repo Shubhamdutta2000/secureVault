@@ -33,5 +33,5 @@ const educationSchema = Schema({
   college: [collegeSchema],
 });
 
-const userEducationModel = mongoose.model("Education", educationSchema);
-export default userEducationModel;
+const UserEducation = mongoose.model("Education", educationSchema);
+export default UserEducation;

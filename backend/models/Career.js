@@ -25,5 +25,5 @@ const careerSchema = Schema({
   non_service_persuits: [nonServicesPersuitsSchema],
 });
 
-const userCareerModel = mongoose.model("Career", careerSchema);
-export default userCareerModel;
+const UserCareer = mongoose.model("Career", careerSchema);
+export default UserCareer;
