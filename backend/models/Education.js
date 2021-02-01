@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-const Schema = new mongoose.Schema();
+const Schema = mongoose.Schema;
 
-const otherCertificate = Schema({
+const otherCertificate = new Schema({
   academy: String,
   sports: String,
   events: String,
@@ -34,4 +34,4 @@ const educationSchema = Schema({
 });
 
 const UserEducation = mongoose.model("Education", educationSchema);
-export default UserEducation;
+export { educationSchema, UserEducation };

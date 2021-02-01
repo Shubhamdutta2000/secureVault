@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
-const Schema = new mongoose.Schema();
+const Schema = mongoose.Schema;
 
 // individual details
-const detailsSchema = Schema({
+const detailsSchema = new Schema({
   name: String,
   address: String,
   phn_no: Number,
@@ -12,4 +12,4 @@ const detailsSchema = Schema({
 });
 
 const UserDetail = mongoose.model("Detail", detailsSchema);
-export default UserDetail;
+export { UserDetail, detailsSchema };

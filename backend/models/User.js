@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-const Schema = new mongoose.Schema();
+const Schema = mongoose.Schema;
 
-const userSchema = Schema({
+const userSchema = new Schema({
   userDetails: {
     type: mongoose.Types.ObjectId,
     required: true,
@@ -35,4 +35,4 @@ const userSchema = Schema({
 });
 
 const UserModel = mongoose.model("User", userSchema);
-export default UserModel;
+export { UserModel, userSchema };

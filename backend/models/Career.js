@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-const Schema = new mongoose.Schema();
+const Schema = mongoose.Schema;
 
-const financeSchema = Schema({
+const financeSchema = new Schema({
   in_hand: String,
   ctc: String,
   salary_slips: String,
@@ -26,4 +26,4 @@ const careerSchema = Schema({
 });
 
 const UserCareer = mongoose.model("Career", careerSchema);
-export default UserCareer;
+export { UserCareer, careerSchema };

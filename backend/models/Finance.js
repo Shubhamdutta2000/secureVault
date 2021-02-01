@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
-const Schema = new mongoose.Schema();
+const Schema = mongoose.Schema;
 
 //@ pan card details
-const panCard = Schema({
+const panCard = new Schema({
   panCard: String,
 });
 
@@ -24,4 +24,4 @@ const financeSchema = Schema({
 });
 
 const UserFinance = mongoose.model("Finance", financeSchema);
-export default UserFinance;
+export { financeSchema, UserFinance };

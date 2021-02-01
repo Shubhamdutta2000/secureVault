@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
-const Schema = new mongoose.Schema();
+const Schema = mongoose.Schema;
 
 //@ pan card details
-const panCard = Schema({
+const panCard = new Schema({
   pan_card: String,
 });
 
@@ -15,4 +15,4 @@ const documentsSchema = Schema({
 });
 
 const UserDocument = mongoose.model("Document", documentsSchema);
-export default UserDocument;
+export { documentsSchema, UserDocument };

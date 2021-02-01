@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
-const Schema = new mongoose.Schema();
+import mongoose from "mongoose";
+const Schema = mongoose.Schema;
 
-const recordsSchema = Schema({
+const recordsSchema = new Schema({
   vaccine_name: String,
   vaccine_date: Date,
   administered_by: String,
@@ -18,4 +18,4 @@ const medicalSchema = Schema({
 });
 
 const UserMedical = mongoose.model("Medical", medicalSchema);
-export default UserMedical;
+export { medicalSchema, UserMedical };

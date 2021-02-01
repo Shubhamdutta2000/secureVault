@@ -5,16 +5,17 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "test": "node tests/schemaTest.js",
     "start": "node backend/index.js",
-    "dev": "nodemon backend/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon backend/index.js"
   },
   "author": "Shubham",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.11.13"
+    "mongoose": "^5.11.13",
+    "mongoose-schema-jsonschema": "^1.4.4"
   },
   "devDependencies": {
     "morgan": "^1.10.0",
