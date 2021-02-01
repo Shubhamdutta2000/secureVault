@@ -5,7 +5,6 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "node tests/schemaTest.js",
     "start": "node backend/index.js",
     "dev": "nodemon backend/index.js"
   },

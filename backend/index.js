@@ -2,6 +2,16 @@ import express from "express";
 import morgan from "morgan";
 import homeRouter from "./routes/homeRouter.js";
 import mongooseConnection from "./config/db.js";
+
+// For Testing mongoose Schema
+import mongoose from "mongoose";
+import jsonSchemas from "mongoose-schema-jsonschema";
+import { userSchema } from "./models/User.js";
+jsonSchemas(mongoose);
+
+const jsonSchema = userSchema.jsonSchema();
+console.dir(jsonSchema, { depth: null });
+
 const app = express();
 
 //Mongodb connection
