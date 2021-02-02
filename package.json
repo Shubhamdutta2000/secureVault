@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "node backend/index.js",
-    "dev": "nodemon backend/index.js"
+    "dev": "nodemon backend/index.js",
+    "data:import": "node seeders.js",
+    "data:delete": "node seeders.js -d"
   },
   "author": "Shubham",
   "license": "ISC",
