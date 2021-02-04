@@ -116,3 +116,54 @@ Content-Type: application/json
 }
 
 
+#############    DELETE user career    ###################
+DELETE  http://localhost:5000/user/career
+
+
+
+
+
+#############   User Education   ##############
+
+###############   POST user Education  ##################
+POST http://localhost:5000/user/education
+Content-Type: application/json
+
+{
+    "class_representative_boards": [
+      {
+        "marks": 90,
+        "grade": "A",
+        "admit_card": "abc.com",
+        "registration_card": "xyz.com",
+        "pass_certificate": "pqr.com",
+        "grade_certificate": "hello.com"
+      }
+    ],
+    "college": [
+      {
+        "degree": "BTECH",
+        "course": "CSE",
+        "discipline": "null",
+        "semester_sheets": "null",
+        "final_year_projects": ["memory-app", "eCommerce"],
+        "degree_certificates": ["btech", "mca", "mtech"],
+        "other_certificate": [
+          {
+            "academy": "web app ml",
+            "sports": "cricket",
+            "events": "quiz"
+          }
+        ]
+      }
+    ]
+}
+
+#############    GET user education    ###################
+GET http://localhost:5000/user/education
+
+
+
+
+
+
