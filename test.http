@@ -1,5 +1,16 @@
 #############   User Details   ##############
 
+POST http://localhost:5000/user/details
+Content-Type: application/json
+
+{
+    "name": "shubham",
+    "address": "chittaranjan",
+    "phn_no": 9002344,
+    "email": "sd@gm.com",
+    "key": "32",
+    "dob": "2000, 11, 15"
+}
 
 ################################
 
