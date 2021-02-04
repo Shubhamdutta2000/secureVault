@@ -23,3 +23,34 @@ export const postUserCareer = async (req, res) => {
     res.status(404).json({ errMessage: error });
   }
 };
+
+// @route: PUT /user/career
+// @purpose: PUT user career
+export const putUserCareer = async (req, res) => {
+  try {
+    const body = req.body;
+    console.log(body);
+    console.log(req.params.id);
+    const updatedUserCareer = await UserCareer.findOneAndUpdate(
+      { _id: req.params.id },
+      body,
+      {
+        new: true,
+      }
+    );
+    res.status(200).json(updatedUserCareer);
+  } catch (error) {
+    res.status(404).json({ errMessage: error });
+  }
+};
+
+// @route: DELETE /user/career
+// @purpose: delete all user career
+export const deleteUserCareer = async (req, res) => {
+  try {
+    const deletedUserCareer = await UserCareer.deleteMany();
+    res.status(200).json(deletedUserCareer);
+  } catch (error) {
+    res.status(404).json({ errMessage: error });
+  }
+};

@@ -105,3 +105,14 @@ Content-Type: application/json
 
 #############    GET user career    ###################
 GET http://localhost:5000/user/career
+
+
+#############    PUT user career    ###################
+PUT http://localhost:5000/user/career/601c49a3cf1150467098397c
+Content-Type: application/json
+
+{
+  "resume": "shubham-portfolio.netlify.com"
+}
+
+
