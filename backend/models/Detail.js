@@ -8,7 +8,14 @@ const detailsSchema = new Schema({
   phn_no: Number,
   email: String,
   key: String,
-  dob: Date,
+  dob: String,
+
+  password: {
+    
+  },
+  layer: {
+    
+  }
 });
 
 const UserDetail = mongoose.model("Detail", detailsSchema);

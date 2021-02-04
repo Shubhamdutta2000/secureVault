@@ -1,1 +1,6 @@
-GET http://localhost:5000/user
+#############   User Details   ##############
+
+
+################################
+
+GET http://localhost:5000/user/details

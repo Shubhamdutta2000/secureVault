@@ -4,16 +4,9 @@ import homeRouter from "./routes/homeRouter.js";
 import userRouter from "./routes/user.js";
 import mongooseConnection from "./config/db.js";
 
-// For Testing mongoose Schema
-import mongoose from "mongoose";
-import jsonSchemas from "mongoose-schema-jsonschema";
-import { userSchema } from "./models/User.js";
-jsonSchemas(mongoose);
-
-const jsonSchema = userSchema.jsonSchema();
-console.dir(jsonSchema, { depth: null });
-
 const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 //Mongodb connection
 mongooseConnection();
@@ -23,7 +16,7 @@ app.use(morgan("dev"));
 
 //Routes
 app.use("/", homeRouter);
-app.use("/", userRouter);
+app.use("/user", userRouter);
 
 //Server Listen
 const PORT = 5000 || process.env.PORT;
