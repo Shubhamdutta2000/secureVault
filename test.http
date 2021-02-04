@@ -51,3 +51,15 @@ Content-Type: application/json
 
 #############    GET user documents    ###################
 GET http://localhost:5000/user/documents
+
+#############    PUT user documents    ###################
+PUT http://localhost:5000/user/documents/601c46d940ddcb0c9c7287a5
+Content-Type: application/json
+
+{
+    "passport": "bolbo na",
+    "adhaar_card_no": 1234
+}
+
+#############   DELETE user documents   ###################
+DELETE http://localhost:5000/user/documents
