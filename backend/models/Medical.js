@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 
 const recordsSchema = new Schema({
   vaccine_name: String,
-  vaccine_date: Date,
+  vaccine_date: String,
   administered_by: String,
-  administered_at: Date,
+  administered_at: String,
 });
 
 const vaccinationRecords = Schema({

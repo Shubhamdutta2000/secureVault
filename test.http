@@ -225,3 +225,36 @@ Content-Type: application/json
 #############   DELETE user finance   ###################
 DELETE http://localhost:5000/user/finance
 
+
+
+
+
+
+
+
+
+
+
+#############   User Medical   ##############
+
+###############   POST user Medical  ##################
+POST http://localhost:5000/user/medical
+Content-Type: application/json
+
+{
+  "vaccination_records": {
+        "records": [
+          {
+            "vaccine_name": "covid vaccine",
+            "vaccine_date": "2000, 9, 15",
+            "administered_by": "2000, 9, 15",
+            "administered_at": "2000, 9, 15"
+          }
+        ],
+        "medical_illness_long_term": "not issued"
+      }
+}
+
+#############    GET user education    ###################
+GET http://localhost:5000/user/medical
+
