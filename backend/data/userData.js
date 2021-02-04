@@ -1,27 +1,23 @@
 export const userData = {
-  userDetails: [
-    {
-      name: "shubham",
-      address: "chittaranjan",
-      phn_no: 9002344,
-      email: "sd@gm.com",
-      key: "32",
-      dob: new Date(2000, 11, 15),
-    },
-  ],
-  userDocuments: [
-    {
-      adhaar_card_no: 44434276,
-      driver_license: "33sfdf4fdf",
-      panCard: [
-        {
-          pan_card: "helloWorld",
-        },
-      ],
-      voter_auth: "helloMoto",
-      passport: "yoyoHoney",
-    },
-  ],
+  userDetails: {
+    name: "shubham",
+    address: "chittaranjan",
+    phn_no: 9002344,
+    email: "sd@gm.com",
+    key: "32",
+    dob: new Date(2000, 11, 15),
+  },
+  userDocuments: {
+    adhaar_card_no: 44434276,
+    driver_license: "33sfdf4fdf",
+    panCard: [
+      {
+        pan_card: "helloWorld",
+      },
+    ],
+    voter_auth: "helloMoto",
+    passport: "yoyoHoney",
+  },
 
   userEducation: {
     class_representative_boards: [

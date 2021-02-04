@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import homeRouter from "./routes/homeRouter.js";
+import userRouter from "./routes/user.js";
 import mongooseConnection from "./config/db.js";
 
 // For Testing mongoose Schema
@@ -22,6 +23,7 @@ app.use(morgan("dev"));
 
 //Routes
 app.use("/", homeRouter);
+app.use("/", userRouter);
 
 //Server Listen
 const PORT = 5000 || process.env.PORT;

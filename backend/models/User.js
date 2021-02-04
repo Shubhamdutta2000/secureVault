@@ -41,12 +41,20 @@ const Schema = mongoose.Schema;
 // });
 
 const userSchema = new Schema({
-  userDetails: [detailsSchema],
-  userDocuments: [documentsSchema],
-  userEducation: [educationSchema],
-  userCareer: [careerSchema],
-  userFinance: [financeSchema],
-  userMedical: [medicalSchema],
+  userDetails: detailsSchema,
+  userDocuments: documentsSchema,
+  userEducation: educationSchema,
+  userCareer: careerSchema,
+  userFinance: financeSchema,
+  userMedical: medicalSchema,
+  layer: {
+    type: Boolean,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
 });
 
 const UserModel = mongoose.model("User", userSchema);
