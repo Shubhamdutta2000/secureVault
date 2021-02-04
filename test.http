@@ -17,7 +17,7 @@ Content-Type: application/json
 GET http://localhost:5000/user/details
 
 #############    PUT user details    ###################
-PUT http://localhost:5000/user/details/601c33d59307a40bb4bf0487
+PUT http://localhost:5000/user/details/601c4610d2f6943b80f40e7a
 Content-Type: application/json
 
 {
@@ -27,3 +27,9 @@ Content-Type: application/json
 #############   DELETE user details   ###################
 DELETE http://localhost:5000/user/details
 
+
+
+####################################     User Documents    #############################
+
+#############    GET user documents    ###################
+GET http://localhost:5000/user/documents
