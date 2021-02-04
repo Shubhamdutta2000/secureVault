@@ -258,3 +258,20 @@ Content-Type: application/json
 #############    GET user education    ###################
 GET http://localhost:5000/user/medical
 
+
+#############    PUT user medical    ###################
+PUT http://localhost:5000/user/medical/601c57ed7fe50646502be26d
+Content-Type: application/json
+
+{
+  "vaccination_records": [{
+    "records": [
+      {
+        "vaccine_name": "covid-19 virus recovery"
+      }
+    ]
+  }]
+}
+
+#############   DELETE user medical   ###################
+DELETE http://localhost:5000/user/medical
