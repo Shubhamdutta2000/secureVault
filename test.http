@@ -1,5 +1,6 @@
 #############   User Details   ##############
 
+###############   POST user details  ##################
 POST http://localhost:5000/user/details
 Content-Type: application/json
 
@@ -12,6 +13,10 @@ Content-Type: application/json
     "dob": "2000, 11, 15"
 }
 
-################################
+#############    GET user details    ###################
 
 GET http://localhost:5000/user/details
+
+#############   DELETE user details   ###################
+
+DELETE http://localhost:5000/user/details
