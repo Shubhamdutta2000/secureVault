@@ -5,6 +5,7 @@ import {
   getUserDetails,
   postUserDetails,
   deleteUserDetails,
+  putUserDetails,
 } from "../controller/userDetailsController.js";
 
 // As a whole route
@@ -15,6 +16,5 @@ router.get("/", getUser);
 // Details routes
 router.get("/details", getUserDetails);
 router.post("/details", postUserDetails);
+router.put("/details/:id", putUserDetails);
 router.delete("/details", deleteUserDetails);
-
-export default router;

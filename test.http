@@ -14,9 +14,16 @@ Content-Type: application/json
 }
 
 #############    GET user details    ###################
-
 GET http://localhost:5000/user/details
 
-#############   DELETE user details   ###################
+#############    PUT user details    ###################
+PUT http://localhost:5000/user/details/601c33d59307a40bb4bf0487
+Content-Type: application/json
 
+{
+    "name": "Wolverine"
+}
+
+#############   DELETE user details   ###################
 DELETE http://localhost:5000/user/details
+
