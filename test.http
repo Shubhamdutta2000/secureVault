@@ -182,3 +182,33 @@ DELETE http://localhost:5000/user/education
 
 
 
+
+
+#############   User Finance   ##############
+
+###############   POST user Finance  ##################
+POST http://localhost:5000/user/finance
+Content-Type: application/json
+
+{
+ "panCard": [
+      {
+        "panCard": "23325457"
+      }
+    ],
+    "itr_forms": "abcd",
+    "bank_transaction": "null",
+    "assets": [
+      {
+        "commodities": "abcdef",
+        "cryptocurrencies": "pqrs",
+        "stocks": "hello",
+        "mutual_funds": "null",
+        "ipos": "null"
+      }
+    ]
+}
+
+#############    GET user education    ###################
+GET http://localhost:5000/user/finance
+
