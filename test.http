@@ -17,7 +17,7 @@ Content-Type: application/json
 GET http://localhost:5000/user/details
 
 #############    PUT user details    ###################
-PUT http://localhost:5000/user/details/601c4610d2f6943b80f40e7a
+PUT http://localhost:5000/user/details/601c33d59307a40bb4bf0487
 Content-Type: application/json
 
 {
@@ -30,6 +30,24 @@ DELETE http://localhost:5000/user/details
 
 
 ####################################     User Documents    #############################
+
+##################   POST User Documents  ####################
+
+POST http://localhost:5000/user/documents
+Content-Type: application/json
+
+{
+    "adhaar_card_no": 44434276,
+    "driver_license": "33sfdf4fdf",
+    "panCard": [
+      {
+        "pan_card": "helloWorld"
+      }
+    ],
+    "voter_auth": "helloMoto",
+    "passport": "yoyoHoney"
+}
+
 
 #############    GET user documents    ###################
 GET http://localhost:5000/user/documents
