@@ -29,6 +29,7 @@ DELETE http://localhost:5000/user/details
 
 
 
+
 ####################################     User Documents    #############################
 
 ##################   POST User Documents  ####################
@@ -63,6 +64,7 @@ Content-Type: application/json
 
 #############   DELETE user documents   ###################
 DELETE http://localhost:5000/user/documents
+
 
 
 
@@ -106,7 +108,6 @@ Content-Type: application/json
 #############    GET user career    ###################
 GET http://localhost:5000/user/career
 
-
 #############    PUT user career    ###################
 PUT http://localhost:5000/user/career/601c49a3cf1150467098397c
 Content-Type: application/json
@@ -115,9 +116,10 @@ Content-Type: application/json
   "resume": "shubham-portfolio.netlify.com"
 }
 
-
 #############    DELETE user career    ###################
 DELETE  http://localhost:5000/user/career
+
+
 
 
 
@@ -162,6 +164,19 @@ Content-Type: application/json
 #############    GET user education    ###################
 GET http://localhost:5000/user/education
 
+
+#############    PUT user education    ###################
+PATCH http://localhost:5000/user/education/601c501eda720d3568781517
+Content-Type: application/json
+
+{
+    "college": {
+      "course": "CST"
+    }
+}
+
+#############   DELETE user education   ###################
+DELETE http://localhost:5000/user/education
 
 
 
