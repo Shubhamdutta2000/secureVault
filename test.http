@@ -212,3 +212,16 @@ Content-Type: application/json
 #############    GET user education    ###################
 GET http://localhost:5000/user/finance
 
+
+#############    PUT user finance    ###################
+PUT http://localhost:5000/user/finance/601c526d9a860747c8693571
+Content-Type: application/json
+
+{
+    "itr_forms": "defgh",
+    "bank_transaction": "defgh"
+}
+
+#############   DELETE user finance   ###################
+DELETE http://localhost:5000/user/finance
+

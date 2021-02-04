@@ -23,3 +23,34 @@ export const postUserFinance = async (req, res) => {
     res.status(404).json({ errMessage: error });
   }
 };
+
+// @route: PUT /user/finance
+// @purpose: PUT user finance
+export const putUserFinance = async (req, res) => {
+  try {
+    const body = req.body;
+    console.log(body);
+    console.log(req.params.id);
+    const updateduserFinance = await UserFinance.findOneAndUpdate(
+      { _id: req.params.id },
+      body,
+      {
+        new: true,
+      }
+    );
+    res.status(200).json(updateduserFinance);
+  } catch (error) {
+    res.status(404).json({ errMessage: error });
+  }
+};
+
+// @route: DELETE /user/finance
+// @purpose: delete all user finance
+export const deleteUserFinance = async (req, res) => {
+  try {
+    const deletedUserFinance = await UserFinance.deleteMany();
+    res.status(200).json(deletedUserFinance);
+  } catch (error) {
+    res.status(404).json({ errMessage: error });
+  }
+};
