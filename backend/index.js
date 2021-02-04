@@ -1,7 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import homeRouter from "./routes/homeRouter.js";
-import userRouter from "./routes/user.js";
+import userDetailsRouter from "./routes/userDetailsRoutes.js";
 import mongooseConnection from "./config/db.js";
 
 const app = express();
@@ -16,7 +16,7 @@ app.use(morgan("dev"));
 
 //Routes
 app.use("/", homeRouter);
-app.use("/user", userRouter);
+app.use("/user/details", userDetailsRouter);
 
 //Server Listen
 const PORT = 5000 || process.env.PORT;

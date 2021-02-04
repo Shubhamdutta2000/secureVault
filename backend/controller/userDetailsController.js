@@ -7,7 +7,7 @@ export const getUser = async (req, res) => {
     const users = await UserModel.find({});
     res.status(200).json(users);
   } catch (error) {
-    res.status(404).json({ errMessage: err });
+    res.status(404).json({ errMessage: error });
   }
 };
 
@@ -18,7 +18,7 @@ export const getUserDetails = async (req, res) => {
     const userDetails = await UserDetail.find();
     res.status(200).json(userDetails);
   } catch (error) {
-    res.status(404).json({ errMessage: error });
+    res.status(404).json(error);
   }
 };
 

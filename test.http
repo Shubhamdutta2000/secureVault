@@ -21,7 +21,7 @@ PUT http://localhost:5000/user/details/601c33d59307a40bb4bf0487
 Content-Type: application/json
 
 {
-    "name": "Wolverine"
+    "name": "Iron Man"
 }
 
 #############   DELETE user details   ###################
