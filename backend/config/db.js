@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 mongoose.set("useCreateIndex", true);
+mongoose.set("useFindAndModify", false);
 
 const dbConnect = async () => {
   try {

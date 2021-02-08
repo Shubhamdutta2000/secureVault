@@ -17,7 +17,7 @@ Content-Type: application/json
 GET http://localhost:5000/user/details
 
 #############    PUT user details    ###################
-PUT http://localhost:5000/user/details/601c33d59307a40bb4bf0487
+PUT http://localhost:5000/user/details/601c5c8eba18d630e0e353da
 Content-Type: application/json
 
 {
@@ -26,6 +26,8 @@ Content-Type: application/json
 
 #############   DELETE user details   ###################
 DELETE http://localhost:5000/user/details
+
+
 
 
 
@@ -64,6 +66,8 @@ Content-Type: application/json
 
 #############   DELETE user documents   ###################
 DELETE http://localhost:5000/user/documents
+
+
 
 
 
@@ -109,11 +113,19 @@ Content-Type: application/json
 GET http://localhost:5000/user/career
 
 #############    PUT user career    ###################
-PUT http://localhost:5000/user/career/601c49a3cf1150467098397c
+PUT http://localhost:5000/user/career/601c4a1bec15841c88446f35
 Content-Type: application/json
 
 {
-  "resume": "shubham-portfolio.netlify.com"
+  "career_instances": [
+    {
+    "finance": [
+        {
+          "in_hand": "4000rs"
+        }
+      ]
+    }
+  ]
 }
 
 #############    DELETE user career    ###################
