@@ -1,35 +1,39 @@
 import { UserDetail } from "../models/Detail.js";
+import bcrypt from "bcrypt";
 
-// @route: GET /user/details
-// @purpose: get all user information data
-export const getUser = async (req, res) => {
-  try {
-    const users = await UserModel.find({});
-    res.status(200).json(users);
-  } catch (error) {
-    res.status(404).json({ errMessage: error });
+// @route: GET /user/detail
+// @purpose: get user detail
+export const getUserDetail = async (req, res) => {
+  const { password } = req.body;
+
+  const userDetails = await UserDetail.findOne();
+  if (userDetails) {
+    const hashedPassword = userDetails.password;
+    const detailsExist = await bcrypt.compare(password, hashedPassword);
+    if (detailsExist) {
+      res.status(200).json(userDetails);
+    } else {
+      res.status(401).json({ message: "password does not match" });
+    }
+  } else {
+    res.status(404).json({ message: "user does not exist" });
   }
 };
 
-// @route: GET /user/details
-// @purpose: get all user details
-export const getUserDetails = async (req, res) => {
+// @route: POST /user/post/detail
+// @purpose: post user detail
+export const postUserDetail = async (req, res) => {
+  const body = req.body;
+  const userDetails = new UserDetail(body);
   try {
-    const userDetails = await UserDetail.find();
-    res.status(200).json(userDetails);
-  } catch (error) {
-    res.status(404).json(error);
-  }
-};
-
-// @route: POST /user/details
-// @purpose: post user details
-export const postUserDetails = async (req, res) => {
-  try {
-    const body = req.body;
-    const userDetails = new UserDetail(body);
-    const newUserDetails = await userDetails.save();
-    res.status(200).json(newUserDetails);
+    const userDetailsExist = await UserDetail.findOne();
+    // only 1 user details should be there
+    if (!userDetailsExist) {
+      await userDetails.save();
+      res.status(200).json(userDetails);
+    } else {
+      res.status(404).json({ message: "details already exists" });
+    }
   } catch (error) {
     res.status(404).json({ errMessage: error });
   }

@@ -1,20 +1,27 @@
 #############   User Details   ##############
 
 ###############   POST user details  ##################
-POST http://localhost:5000/user/details
+POST http://localhost:5000/user/post/details
 Content-Type: application/json
 
 {
-    "name": "shubham",
+    "name": "test",
     "address": "chittaranjan",
     "phn_no": 9002344,
     "email": "sd@gm.com",
     "key": "32",
-    "dob": "2000, 11, 15"
+    "dob": "2000, 11, 15",
+    "password": "ThisIsSecrets2",
+    "layer": 5
 }
 
 #############    GET user details    ###################
-GET http://localhost:5000/user/details
+POST http://localhost:5000/user/details
+Content-Type: application/json
+
+{
+  "password": "ThisIsSecrets2"
+}
 
 #############    PUT user details    ###################
 PUT http://localhost:5000/user/details/601c5c8eba18d630e0e353da
