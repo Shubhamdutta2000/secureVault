@@ -5,23 +5,29 @@ POST http://localhost:5000/user/post/details
 Content-Type: application/json
 
 {
-    "name": "test",
+    "name": "test2",
     "address": "chittaranjan",
     "phn_no": 9002344,
     "email": "sd@gm.com",
     "key": "32",
     "dob": "2000, 11, 15",
-    "password": "ThisIsSecrets2",
+    "password": "ThisIsSecrets",
     "layer": 5
 }
 
-#############    GET user details    ###################
-POST http://localhost:5000/user/details
+#############    GET user details by id    ###################
+POST http://localhost:5000/user/detail/6026bd49a2ce450a38b14470
 Content-Type: application/json
 
 {
   "password": "ThisIsSecrets2"
 }
+
+
+#############    GET user details    ###################
+GET http://localhost:5000/user/details
+
+
 
 #############    PUT user details    ###################
 PUT http://localhost:5000/user/details/601c5c8eba18d630e0e353da

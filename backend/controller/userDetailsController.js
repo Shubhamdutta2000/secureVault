@@ -1,12 +1,23 @@
 import { UserDetail } from "../models/Detail.js";
 import bcrypt from "bcrypt";
 
-// @route: GET /user/detail
-// @purpose: get user detail
-export const getUserDetail = async (req, res) => {
+// @route: GET /user/details
+// @purpose: get user details
+export const getUserDetails = async (req, res) => {
+  const userDetails = await UserDetail.find({});
+  if (userDetails) {
+    res.status(200).json(userDetails);
+  } else {
+    res.status(404).json({ message: "no user details present" });
+  }
+};
+
+// @route: GET /user/detail/:id
+// @purpose: get user detail by id
+export const getUserDetailById = async (req, res) => {
   const { password } = req.body;
 
-  const userDetails = await UserDetail.findOne();
+  const userDetails = await UserDetail.findOne({ _id: req.params.id });
   if (userDetails) {
     const hashedPassword = userDetails.password;
     const detailsExist = await bcrypt.compare(password, hashedPassword);
@@ -22,18 +33,12 @@ export const getUserDetail = async (req, res) => {
 
 // @route: POST /user/post/detail
 // @purpose: post user detail
-export const postUserDetail = async (req, res) => {
+export const postUserDetails = async (req, res) => {
   const body = req.body;
   const userDetails = new UserDetail(body);
   try {
-    const userDetailsExist = await UserDetail.findOne();
-    // only 1 user details should be there
-    if (!userDetailsExist) {
-      await userDetails.save();
-      res.status(200).json(userDetails);
-    } else {
-      res.status(404).json({ message: "details already exists" });
-    }
+    await userDetails.save();
+    res.status(200).json(userDetails);
   } catch (error) {
     res.status(404).json({ errMessage: error });
   }

@@ -1,8 +1,9 @@
 import express from "express";
 const router = express.Router();
 import {
-  getUserDetail,
-  postUserDetail,
+  getUserDetails,
+  getUserDetailById,
+  postUserDetails,
   deleteUserDetails,
   putUserDetails,
 } from "../controller/userDetailsController.js";
@@ -10,8 +11,9 @@ import {
 // Individual routes
 
 // Details routes
-router.post("/detail", getUserDetail);
-router.post("/post/detail", postUserDetail);
+router.get("/details", getUserDetails);
+router.post("/detail/:id", getUserDetailById);
+router.post("/post/details", postUserDetails);
 router.put("/details/:id", putUserDetails);
 router.delete("/details", deleteUserDetails);
 
