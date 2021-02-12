@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 const Schema = mongoose.Schema;
 
 const financeSchema = new Schema({
@@ -23,6 +24,20 @@ const careerSchema = Schema({
   resume: String,
   career_instances: [careerInstancesSchema],
   non_service_persuits: [nonServicesPersuitsSchema],
+  password: {
+    type: String,
+    required: true,
+  },
+  layer: {
+    type: Number,
+    required: true,
+  },
+});
+
+//  Encrypt a password before saving document
+careerSchema.pre("save", async function (next) {
+  // hashing of password based on layer no.
+  this.password = await bcrypt.hash(this.password, this.layer);
 });
 
 const UserCareer = mongoose.model("Career", careerSchema);

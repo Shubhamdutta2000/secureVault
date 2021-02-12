@@ -13,7 +13,7 @@ import {
 // Details routes
 router.get("/details", getUserDetails);
 router.post("/detail/:id", getUserDetailById);
-router.post("/post/details", postUserDetails);
+router.post("/details", postUserDetails);
 router.put("/details/:id", putUserDetails);
 router.delete("/details", deleteUserDetails);
 

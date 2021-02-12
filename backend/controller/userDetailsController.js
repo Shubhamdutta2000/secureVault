@@ -31,8 +31,8 @@ export const getUserDetailById = async (req, res) => {
   }
 };
 
-// @route: POST /user/post/detail
-// @purpose: post user detail
+// @route: POST /user/details
+// @purpose: post user details
 export const postUserDetails = async (req, res) => {
   const body = req.body;
   const userDetails = new UserDetail(body);

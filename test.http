@@ -1,7 +1,7 @@
 #############   User Details   ##############
 
 ###############   POST user details  ##################
-POST http://localhost:5000/user/post/details
+POST http://localhost:5000/user/details
 Content-Type: application/json
 
 {
@@ -16,11 +16,11 @@ Content-Type: application/json
 }
 
 #############    GET user details by id    ###################
-POST http://localhost:5000/user/detail/6026bd49a2ce450a38b14470
+POST http://localhost:5000/user/detail/6026db690549d614a475119f
 Content-Type: application/json
 
 {
-  "password": "ThisIsSecrets2"
+  "password": "ThisIsSecrets"
 }
 
 
@@ -94,7 +94,7 @@ POST http://localhost:5000/user/career
 Content-Type: application/json
 
 {
-   "resume": "shubham.netlify.com",
+   "resume": "swapan.netlify.com",
     "career_instances": [
       {
         "company_name": "quordnet",
@@ -119,11 +119,22 @@ Content-Type: application/json
         "bussiness": "group",
         "non_profits": "profitable"
       }
-    ]
+    ],
+    "password": "secret",
+    "layer": 4
 }
 
-#############    GET user career    ###################
+
+#############   GET user career       ######################
 GET http://localhost:5000/user/career
+
+#############    GET user career by id   ###################
+POST  http://localhost:5000/user/career/6026d9de60e2640ba0ebd486
+Content-Type: application/json
+
+{
+  "password": "secret"
+}
 
 #############    PUT user career    ###################
 PUT http://localhost:5000/user/career/601c4a1bec15841c88446f35
