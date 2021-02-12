@@ -57,11 +57,23 @@ Content-Type: application/json
     "driver_license": "33sfdf4fdf",
     "panCard": [
       {
-        "pan_card": "helloWorld"
+        "pan_card": "helloFolks"
       }
     ],
     "voter_auth": "helloMoto",
-    "passport": "yoyoHoney"
+    "passport": "yoyoHoney",
+    "password": "ThisIsSecrets2",
+    "layer": 16
+}
+
+
+
+#############    GET user documents  by id   ###################
+POST http://localhost:5000/user/documents/6026e24f06d78b1dfc7e0a11
+Content-Type: application/json
+
+{
+  "password": "ThisIsSecrets2"
 }
 
 

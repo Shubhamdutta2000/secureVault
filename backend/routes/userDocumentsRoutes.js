@@ -2,6 +2,7 @@ import express from "express";
 const router = express.Router();
 import {
   getUserDocuments,
+  getUserDocumentsById,
   postUserDocuments,
   putUserDocuments,
   deleteUserDocuments,
@@ -10,9 +11,12 @@ import {
 // Individual routes
 
 // Documents routes
-router.get("/", getUserDocuments);
-router.post("/", postUserDocuments);
-router.put("/:id", putUserDocuments);
-router.delete("/", deleteUserDocuments);
+
+router
+  .route("/")
+  .get(getUserDocuments)
+  .post(postUserDocuments)
+  .delete(deleteUserDocuments);
+router.route("/:id").post(getUserDocumentsById).put(putUserDocuments);
 
 export default router;
