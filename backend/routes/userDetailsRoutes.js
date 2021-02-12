@@ -11,10 +11,11 @@ import {
 // Individual routes
 
 // Details routes
-router.get("/details", getUserDetails);
-router.post("/detail/:id", getUserDetailById);
-router.post("/details", postUserDetails);
-router.put("/details/:id", putUserDetails);
-router.delete("/details", deleteUserDetails);
+router
+  .route("/")
+  .get(getUserDetails)
+  .post(postUserDetails)
+  .delete(deleteUserDetails);
+router.route("/:id").post(getUserDetailById).put(putUserDetails);
 
 export default router;

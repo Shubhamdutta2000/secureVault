@@ -5,7 +5,7 @@ POST http://localhost:5000/user/details
 Content-Type: application/json
 
 {
-    "name": "test2",
+    "name": "test",
     "address": "chittaranjan",
     "phn_no": 9002344,
     "email": "sd@gm.com",
@@ -16,7 +16,7 @@ Content-Type: application/json
 }
 
 #############    GET user details by id    ###################
-POST http://localhost:5000/user/detail/6026db690549d614a475119f
+POST http://localhost:5000/user/details/6026dd9e3ac3fb06ac02ddeb
 Content-Type: application/json
 
 {

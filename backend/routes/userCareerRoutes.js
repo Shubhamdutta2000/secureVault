@@ -11,10 +11,11 @@ import {
 // Individual routes
 
 // Career routes
-router.get("/", getUserCareer);
-router.post("/:id", getUserCareerById);
-router.post("/", postUserCareer);
-router.put("/:id", putUserCareer);
-router.delete("/", deleteUserCareer);
+router
+  .route("/")
+  .get(getUserCareer)
+  .post(postUserCareer)
+  .delete(deleteUserCareer);
+router.route("/:id").post(getUserCareerById).put(putUserCareer);
 
 export default router;

@@ -21,7 +21,7 @@ app.use(morgan("dev"));
 
 //Routes
 app.use("/", homeRouter);
-app.use("/user", userDetailsRouter);
+app.use("/user/details", userDetailsRouter);
 app.use("/user/documents", userDocumentsRouter);
 app.use("/user/career", userCareerRouter);
 app.use("/user/education", userEducationRouter);
