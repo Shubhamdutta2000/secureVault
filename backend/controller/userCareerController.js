@@ -36,9 +36,12 @@ export const getUserCareerById = async (req, res) => {
 export const postUserCareer = async (req, res) => {
   const body = req.body;
   const userCareer = new UserCareer(body);
-
-  await userCareer.save();
-  res.status(200).json(userCareer);
+  try {
+    await userCareer.save();
+    res.status(200).json(userCareer);
+  } catch (error) {
+    res.status(404).json({ message: error });
+  }
 };
 
 // @route: PUT /user/career

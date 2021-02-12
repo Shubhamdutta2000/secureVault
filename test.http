@@ -129,7 +129,7 @@ Content-Type: application/json
 GET http://localhost:5000/user/career
 
 #############    GET user career by id   ###################
-POST  http://localhost:5000/user/career/6026d9de60e2640ba0ebd486
+POST  http://localhost:5000/user/career/6026d9bb60e2640ba0ebd481
 Content-Type: application/json
 
 {

@@ -12,8 +12,8 @@ export const getUserDetails = async (req, res) => {
   }
 };
 
-// @route: GET /user/detail/:id
-// @purpose: get user detail by id
+// @route: GET /user/details/:id
+// @purpose: get user details by id
 export const getUserDetailById = async (req, res) => {
   const { password } = req.body;
 
