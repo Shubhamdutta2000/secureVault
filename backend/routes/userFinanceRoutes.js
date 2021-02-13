@@ -2,6 +2,7 @@ import express from "express";
 const router = express.Router();
 import {
   getUserFinance,
+  getUserFinanceById,
   postUserFinance,
   putUserFinance,
   deleteUserFinance,
@@ -10,9 +11,11 @@ import {
 // Individual routes
 
 // Finance routes
-router.get("/", getUserFinance);
-router.post("/", postUserFinance);
-router.put("/:id", putUserFinance);
-router.delete("/", deleteUserFinance);
+router
+  .route("/")
+  .get(getUserFinance)
+  .post(postUserFinance)
+  .delete(deleteUserFinance);
+router.route("/:id").post(getUserFinanceById).put(putUserFinance);
 
 export default router;

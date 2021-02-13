@@ -225,7 +225,7 @@ Content-Type: application/json
 
 
 #############    PUT user education    ###################
-PATCH http://localhost:5000/user/education/601c501eda720d3568781517
+PUT http://localhost:5000/user/education/602755509c5d4d2a042a2387
 Content-Type: application/json
 
 {
@@ -255,7 +255,7 @@ Content-Type: application/json
         "panCard": "23325457"
       }
     ],
-    "itr_forms": "abcd",
+    "itr_forms": "yo yo",
     "bank_transaction": "null",
     "assets": [
       {
@@ -265,15 +265,27 @@ Content-Type: application/json
         "mutual_funds": "null",
         "ipos": "null"
       }
-    ]
+    ],
+    "password": "SECRET",
+    "layer": 16
 }
 
-#############    GET user education    ###################
+#############    GET user finance    ###################
 GET http://localhost:5000/user/finance
 
 
+
+#############    GET user finance by id   ###################
+POST http://localhost:5000/user/finance/60275839264406277c2549c9
+Content-Type: application/json
+
+{
+  "password": "SECRET"
+}
+
+
 #############    PUT user finance    ###################
-PUT http://localhost:5000/user/finance/601c526d9a860747c8693571
+PUT http://localhost:5000/user/finance/60275839264406277c2549c9
 Content-Type: application/json
 
 {
@@ -283,9 +295,6 @@ Content-Type: application/json
 
 #############   DELETE user finance   ###################
 DELETE http://localhost:5000/user/finance
-
-
-
 
 
 

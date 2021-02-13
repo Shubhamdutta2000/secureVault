@@ -1,24 +1,44 @@
 import { UserFinance } from "../models/Finance.js";
+import bcrypt from "bcrypt";
 
 // @route: GET /user/finance
 // @purpose: get all user finance
 export const getUserFinance = async (req, res) => {
-  try {
-    const userFinance = await UserFinance.find();
+  const userFinance = await UserFinance.find();
+  if (userFinance) {
     res.status(200).json(userFinance);
-  } catch (error) {
-    res.status(404).json({ errMessage: error });
+  } else {
+    res.status(404).json({ errMessage: "no user finance present" });
+  }
+};
+
+// @route: GET /user/finance/:id
+// @purpose: get user finance by id
+export const getUserFinanceById = async (req, res) => {
+  const { password } = req.body;
+
+  const userFinance = await UserFinance.findOne({ _id: req.params.id });
+  if (userFinance) {
+    const hashedPassword = userFinance.password;
+    const FinanceExist = await bcrypt.compare(password, hashedPassword);
+    if (FinanceExist) {
+      res.status(200).json(userFinance);
+    } else {
+      res.status(401).json({ message: "password does not match" });
+    }
+  } else {
+    res.status(404).json({ message: "user does not exist" });
   }
 };
 
 // @route: POST /user/finance
 // @purpose: POST user finance
 export const postUserFinance = async (req, res) => {
+  const body = req.body;
+  const userFinance = new UserFinance(body);
   try {
-    const body = req.body;
-    const userFinance = new UserFinance(body);
-    const newUserFinance = await userFinance.save();
-    res.status(200).json(newUserFinance);
+    await userFinance.save();
+    res.status(200).json(userFinance);
   } catch (error) {
     res.status(404).json({ errMessage: error });
   }
