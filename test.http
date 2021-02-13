@@ -1,22 +1,22 @@
 #############   User Details   ##############
 
 ###############   POST user details  ##################
-POST http://localhost:5000/user/details/post
+POST http://localhost:5000/user/details
 Content-Type: application/json
 
 {
-    "name": "test",
+    "name": "shubham",
     "address": "chittaranjan",
     "phn_no": 9002344,
     "email": "sd@gm.com",
     "key": "32",
     "dob": "2000, 11, 15",
     "password": "ThisIsSecrets",
-    "layer": 5
+    "layer": 10
 }
 
 #############    GET user details by id    ###################
-POST http://localhost:5000/user/details/6026dd9e3ac3fb06ac02ddeb
+POST http://localhost:5000/user/details/602779eedc4e143174869ed3
 Content-Type: application/json
 
 {
@@ -25,12 +25,7 @@ Content-Type: application/json
 
 
 #############    GET user details    ###################
-POST http://localhost:5000/user/details
-Content-Type: application/json
-
-{
-  "password": "ThisIsSecrets"
-}
+GET http://localhost:5000/user/details
 
 
 #############    PUT user details    ###################
@@ -44,6 +39,9 @@ Content-Type: application/json
 #############   DELETE user details   ###################
 DELETE http://localhost:5000/user/details
 
+
+#############   DELETE user details by id   ###################
+DELETE http://localhost:5000/user/details/602779eedc4e143174869ed3
 
 
 
@@ -108,7 +106,7 @@ Content-Type: application/json
    "resume": "swapan.netlify.com",
     "career_instances": 
       {
-        "company_name": "quordnet",
+        "company_name": "tcw",
         "company_post": "null",
         "finance": 
           {
@@ -124,15 +122,15 @@ Content-Type: application/json
         "non_profits": "profitable"
       },
     "password": "secret",
-    "layer": 4
+    "layer": 6
 }
 
 
-#############   GET user career       ######################
+#############   GET all user career       ######################
 GET http://localhost:5000/user/career
  
 #############    GET user career by id   ###################
-POST  http://localhost:5000/user/career/60275ef5449d6e1c4448a187
+POST  http://localhost:5000/user/career/60277a7ddc4e143174869edd
 Content-Type: application/json
 
 {
@@ -171,7 +169,7 @@ Content-Type: application/json
 {
     "class_representative_boards":
       {
-        "marks": 100,
+        "marks": 200,
         "grade": "A",
         "admit_card": "abc.com",
         "registration_card": "xyz.com",
@@ -181,7 +179,7 @@ Content-Type: application/json
     "college":
       {
         "degree": "BTECH",
-        "course": "CSE",
+        "course": "CST",
         "discipline": "null",
         "semester_sheets": "null",
         "final_year_projects": ["memory-app", "eCommerce"],
@@ -203,7 +201,7 @@ GET http://localhost:5000/user/education
 
 
 #############    GET user education by id     ###################
-POST http://localhost:5000/user/education/602755509c5d4d2a042a2387
+POST http://localhost:5000/user/education/60277acadc4e143174869eee
 Content-Type: application/json
 
 {
@@ -241,7 +239,7 @@ Content-Type: application/json
       {
         "panCard": "23325457"
       },
-    "itr_forms": "yo yo",
+    "itr_forms": "lol",
     "bank_transaction": "null",
     "assets":
       {
@@ -252,7 +250,7 @@ Content-Type: application/json
         "ipos": "null"
       },
     "password": "SECRET",
-    "layer": 16
+    "layer": 6
 }
 
 #############    GET user finance    ###################
@@ -261,7 +259,7 @@ GET http://localhost:5000/user/finance
 
 
 #############    GET user finance by id   ###################
-POST http://localhost:5000/user/finance/60275839264406277c2549c9
+POST http://localhost:5000/user/finance/60277afedc4e143174869efb
 Content-Type: application/json
 
 {
@@ -298,7 +296,7 @@ Content-Type: application/json
   "vaccination_records": {
         "records": 
           {
-            "vaccine_name": "pox vaccine",
+            "vaccine_name": "covid vaccine",
             "vaccine_date": "2000, 9, 15",
             "administered_by": "2000, 9, 15",
             "administered_at": "2000, 9, 15"
@@ -313,7 +311,7 @@ Content-Type: application/json
 GET http://localhost:5000/user/medical
 
 #############    GET user medical by id   ###################
-POST http://localhost:5000/user/medical/60275f7f449d6e1c4448a18e
+POST http://localhost:5000/user/medical/60277b3ddc4e143174869f09
 Content-Type: application/json
 
 {

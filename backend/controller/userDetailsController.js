@@ -74,3 +74,14 @@ export const deleteUserDetails = async (req, res) => {
     res.status(404).json({ errMessage: error });
   }
 };
+
+// @route: DELETE /user/details/:id
+// @purpose: delete user details by id
+export const deleteUserDetailById = async (req, res) => {
+  try {
+    const deletedUserDetail = await UserDetail.findByIdAndRemove(req.params.id);
+    res.status(200).json(deletedUserDetail);
+  } catch (error) {
+    res.status(404).json({ errMessage: error });
+  }
+};
