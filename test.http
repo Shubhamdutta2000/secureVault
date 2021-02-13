@@ -313,22 +313,31 @@ Content-Type: application/json
   "vaccination_records": {
         "records": [
           {
-            "vaccine_name": "covid vaccine",
+            "vaccine_name": "pox vaccine",
             "vaccine_date": "2000, 9, 15",
             "administered_by": "2000, 9, 15",
             "administered_at": "2000, 9, 15"
           }
         ],
         "medical_illness_long_term": "not issued"
-      }
+      },
+      "password": "ISSECRET2",
+      "layer": 10
 }
 
-#############    GET user education    ###################
+#############    GET user medical    ###################
 GET http://localhost:5000/user/medical
 
+#############    GET user medical by id   ###################
+POST http://localhost:5000/user/medical/60275bc9f5946207885e6981
+Content-Type: application/json
+
+{
+  "password": "ISSECRET2"
+}
 
 #############    PUT user medical    ###################
-PUT http://localhost:5000/user/medical/601c57ed7fe50646502be26d
+PUT http://localhost:5000/user/medical/60275bc9f5946207885e6981
 Content-Type: application/json
 
 {

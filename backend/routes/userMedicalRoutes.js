@@ -2,6 +2,7 @@ import express from "express";
 const router = express.Router();
 import {
   getUserMedical,
+  getUserMedicalById,
   postUserMedical,
   putUserMedical,
   deleteUserMedical,
@@ -10,9 +11,11 @@ import {
 // Individual routes
 
 // Medical routes
-router.get("/", getUserMedical);
-router.post("/", postUserMedical);
-router.put("/:id", putUserMedical);
-router.delete("/", deleteUserMedical);
+router
+  .route("/")
+  .get(getUserMedical)
+  .post(postUserMedical)
+  .delete(deleteUserMedical);
+router.route("/:id").post(getUserMedicalById).put(putUserMedical);
 
 export default router;
