@@ -1,24 +1,44 @@
 import { UserEducation } from "../models/Education.js";
+import bcrypt from "bcrypt";
 
 // @route: GET /user/education
 // @purpose: get all user education
 export const getUserEducation = async (req, res) => {
-  try {
-    const userEducation = await UserEducation.find();
+  const userEducation = await UserEducation.find();
+  if (userEducation) {
     res.status(200).json(userEducation);
-  } catch (error) {
-    res.status(404).json({ errMessage: error });
+  } else {
+    res.status(404).json({ errMessage: "no user education present" });
+  }
+};
+
+// @route: GET /user/education/:id
+// @purpose: get user education by id
+export const getUserEducationById = async (req, res) => {
+  const { password } = req.body;
+
+  const userEducation = await UserEducation.findOne({ _id: req.params.id });
+  if (userEducation) {
+    const hashedPassword = userEducation.password;
+    const EducationExist = await bcrypt.compare(password, hashedPassword);
+    if (EducationExist) {
+      res.status(200).json(userEducation);
+    } else {
+      res.status(401).json({ message: "password does not match" });
+    }
+  } else {
+    res.status(404).json({ message: "user does not exist" });
   }
 };
 
 // @route: POST /user/education
 // @purpose: POST user education
 export const postUserEducation = async (req, res) => {
+  const body = req.body;
+  const userEducation = new UserEducation(body);
   try {
-    const body = req.body;
-    const userEducation = new UserEducation(body);
-    const newUserEducation = await userEducation.save();
-    res.status(200).json(newUserEducation);
+    await userEducation.save();
+    res.status(200).json(userEducation);
   } catch (error) {
     res.status(404).json({ errMessage: error });
   }

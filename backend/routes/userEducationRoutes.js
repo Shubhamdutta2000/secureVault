@@ -2,6 +2,7 @@ import express from "express";
 const router = express.Router();
 import {
   getUserEducation,
+  getUserEducationById,
   postUserEducation,
   putUserEducation,
   deleteUserEducation,
@@ -10,9 +11,11 @@ import {
 // Individual routes
 
 // Education routes
-router.get("/", getUserEducation);
-router.post("/", postUserEducation);
-router.patch("/:id", putUserEducation);
-router.delete("/", deleteUserEducation);
+router
+  .route("/")
+  .get(getUserEducation)
+  .post(postUserEducation)
+  .delete(deleteUserEducation);
+router.route("/:id").post(getUserEducationById).put(putUserEducation);
 
 export default router;

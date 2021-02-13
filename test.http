@@ -182,7 +182,7 @@ Content-Type: application/json
 {
     "class_representative_boards": [
       {
-        "marks": 90,
+        "marks": 100,
         "grade": "A",
         "admit_card": "abc.com",
         "registration_card": "xyz.com",
@@ -206,11 +206,22 @@ Content-Type: application/json
           }
         ]
       }
-    ]
+    ],
+    "password": "SECRETMESSAGE2",
+    "layer": 4
 }
 
-#############    GET user education    ###################
+#############    GET all user education    ###################
 GET http://localhost:5000/user/education
+
+
+#############    GET user education by id     ###################
+POST http://localhost:5000/user/education/602755509c5d4d2a042a2387
+Content-Type: application/json
+
+{
+  "password": "SECRETMESSAGE2"
+}
 
 
 #############    PUT user education    ###################

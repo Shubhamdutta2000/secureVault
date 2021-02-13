@@ -11,7 +11,6 @@ import {
 // Individual routes
 
 // Documents routes
-
 router
   .route("/")
   .get(getUserDocuments)
