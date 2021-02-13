@@ -74,3 +74,16 @@ export const deleteUserFinance = async (req, res) => {
     res.status(404).json({ errMessage: error });
   }
 };
+
+// @route: DELETE /user/finance/:id
+// @purpose: delete all user finance by id
+export const deleteUserFinanceById = async (req, res) => {
+  try {
+    const deletedUserFinance = await UserFinance.findByIdAndRemove(
+      req.params.id
+    );
+    res.status(200).json(deletedUserFinance);
+  } catch (error) {
+    res.status(404).json({ errMessage: error });
+  }
+};

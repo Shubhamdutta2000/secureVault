@@ -6,6 +6,7 @@ import {
   postUserEducation,
   putUserEducation,
   deleteUserEducation,
+  deleteUserEducationById,
 } from "../controller/userEducationController.js";
 
 // Individual routes
@@ -16,6 +17,11 @@ router
   .get(getUserEducation)
   .post(postUserEducation)
   .delete(deleteUserEducation);
-router.route("/:id").post(getUserEducationById).put(putUserEducation);
+
+router
+  .route("/:id")
+  .post(getUserEducationById)
+  .put(putUserEducation)
+  .delete(deleteUserEducationById);
 
 export default router;

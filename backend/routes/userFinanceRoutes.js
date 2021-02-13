@@ -6,6 +6,7 @@ import {
   postUserFinance,
   putUserFinance,
   deleteUserFinance,
+  deleteUserFinanceById,
 } from "../controller/userFinanceController.js";
 
 // Individual routes
@@ -16,6 +17,11 @@ router
   .get(getUserFinance)
   .post(postUserFinance)
   .delete(deleteUserFinance);
-router.route("/:id").post(getUserFinanceById).put(putUserFinance);
+
+router
+  .route("/:id")
+  .post(getUserFinanceById)
+  .put(putUserFinance)
+  .delete(deleteUserFinanceById);
 
 export default router;

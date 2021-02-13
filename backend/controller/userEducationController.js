@@ -77,3 +77,16 @@ export const deleteUserEducation = async (req, res) => {
     res.status(404).json({ errMessage: error });
   }
 };
+
+// @route: DELETE /user/education/:id
+// @purpose: delete all user education by id
+export const deleteUserEducationById = async (req, res) => {
+  try {
+    const deletedUserEducation = await UserEducation.findByIdAndRemove(
+      req.params.id
+    );
+    res.status(200).json(deletedUserEducation);
+  } catch (error) {
+    res.status(404).json({ errMessage: error });
+  }
+};

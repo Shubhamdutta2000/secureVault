@@ -230,6 +230,10 @@ Content-Type: application/json
 DELETE http://localhost:5000/user/education
 
 
+#############   DELETE user education  by Id  ###################
+DELETE http://localhost:5000/user/education/6027b2cc840000224c593ba7
+
+
 
 
 
@@ -286,6 +290,9 @@ Content-Type: application/json
 #############   DELETE user finance   ###################
 DELETE http://localhost:5000/user/finance
 
+
+#############   DELETE user finance by Id   ###################
+DELETE http://localhost:5000/user/finance/60277afedc4e143174869efb
 
 
 
