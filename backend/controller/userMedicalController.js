@@ -74,3 +74,16 @@ export const deleteUserMedical = async (req, res) => {
     res.status(404).json({ errMessage: error });
   }
 };
+
+// @route: DELETE /user/medical/:id
+// @purpose: delete all user medical by id
+export const deleteUserMedicalById = async (req, res) => {
+  try {
+    const deletedUserMedical = await UserMedical.findByIdAndRemove(
+      req.params.id
+    );
+    res.status(200).json(deletedUserMedical);
+  } catch (error) {
+    res.status(404).json({ errMessage: error });
+  }
+};

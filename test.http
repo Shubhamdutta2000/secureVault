@@ -300,6 +300,7 @@ DELETE http://localhost:5000/user/finance/60277afedc4e143174869efb
 
 
 
+
 #############   User Medical   ##############
 
 ###############   POST user Medical  ##################
@@ -325,7 +326,7 @@ Content-Type: application/json
 GET http://localhost:5000/user/medical
 
 #############    GET user medical by id   ###################
-POST http://localhost:5000/user/medical/60277b3ddc4e143174869f09
+POST http://localhost:5000/user/medical/60277b16dc4e143174869f06
 Content-Type: application/json
 
 {
@@ -348,3 +349,8 @@ Content-Type: application/json
 
 #############   DELETE user medical   ###################
 DELETE http://localhost:5000/user/medical
+
+
+
+#############   DELETE user medical by Id   ###################
+DELETE http://localhost:5000/user/medical/60277b16dc4e143174869f06

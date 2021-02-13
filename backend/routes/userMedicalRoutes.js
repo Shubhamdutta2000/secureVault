@@ -6,6 +6,7 @@ import {
   postUserMedical,
   putUserMedical,
   deleteUserMedical,
+  deleteUserMedicalById,
 } from "../controller/userMedicalController.js";
 
 // Individual routes
@@ -16,6 +17,11 @@ router
   .get(getUserMedical)
   .post(postUserMedical)
   .delete(deleteUserMedical);
-router.route("/:id").post(getUserMedicalById).put(putUserMedical);
+
+router
+  .route("/:id")
+  .post(getUserMedicalById)
+  .put(putUserMedical)
+  .delete(deleteUserMedicalById);
 
 export default router;
