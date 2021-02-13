@@ -6,6 +6,7 @@ import {
   postUserCareer,
   putUserCareer,
   deleteUserCareer,
+  deleteUserCareerById,
 } from "../controller/userCareerController.js";
 
 // Individual routes
@@ -16,6 +17,11 @@ router
   .get(getUserCareer)
   .post(postUserCareer)
   .delete(deleteUserCareer);
-router.route("/:id").post(getUserCareerById).put(putUserCareer);
+
+router
+  .route("/:id")
+  .post(getUserCareerById)
+  .put(putUserCareer)
+  .delete(deleteUserCareerById);
 
 export default router;

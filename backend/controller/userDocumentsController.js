@@ -71,3 +71,16 @@ export const deleteUserDocuments = async (req, res) => {
     res.status(404).json({ errMessage: error });
   }
 };
+
+// @route: DELETE /user/documents/:id
+// @purpose: delete all user documents by id
+export const deleteUserDocumentsById = async (req, res) => {
+  try {
+    const deletedUserDocument = await UserDocument.findOneAndRemove(
+      req.params.id
+    );
+    res.status(200).json(deletedUserDocument);
+  } catch (error) {
+    res.status(404).json({ errMessage: error });
+  }
+};

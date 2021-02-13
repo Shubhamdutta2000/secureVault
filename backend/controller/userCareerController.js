@@ -74,3 +74,14 @@ export const deleteUserCareer = async (req, res) => {
     res.status(404).json({ errMessage: error });
   }
 };
+
+// @route: DELETE /user/career/:id
+// @purpose: delete user career by id
+export const deleteUserCareerById = async (req, res) => {
+  try {
+    const deletedUserCareer = await UserCareer.findOneAndRemove(req.params.id);
+    res.status(200).json(deletedUserCareer);
+  } catch (error) {
+    res.status(404).json({ errMessage: error });
+  }
+};

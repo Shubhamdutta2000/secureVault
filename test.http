@@ -47,6 +47,8 @@ DELETE http://localhost:5000/user/details/602779eedc4e143174869ed3
 
 
 
+
+
 ####################################     User Documents    #############################
 
 ##################   POST only 1 User Document  ####################
@@ -64,7 +66,7 @@ Content-Type: application/json
     "voter_auth": "helloMoto",
     "passport": "yoyoHoney",
     "password": "ThisIsSecrets2",
-    "layer": 16
+    "layer": 6
 }
 
 
@@ -89,6 +91,8 @@ Content-Type: application/json
 #############   DELETE user documents   ###################
 DELETE http://localhost:5000/user/documents
 
+#############   DELETE user documents by id   ###################
+DELETE http://localhost:5000/user/documents/60277a38dc4e143174869ed5
 
 
 
@@ -103,7 +107,7 @@ POST http://localhost:5000/user/career
 Content-Type: application/json
 
 {
-   "resume": "swapan.netlify.com",
+   "resume": "shubham.netlify.com",
     "career_instances": 
       {
         "company_name": "tcw",
@@ -122,7 +126,7 @@ Content-Type: application/json
         "non_profits": "profitable"
       },
     "password": "secret",
-    "layer": 6
+    "layer": 8
 }
 
 
@@ -130,7 +134,7 @@ Content-Type: application/json
 GET http://localhost:5000/user/career
  
 #############    GET user career by id   ###################
-POST  http://localhost:5000/user/career/60277a7ddc4e143174869edd
+POST  http://localhost:5000/user/career/6027afe689bc343060b29775
 Content-Type: application/json
 
 {
@@ -154,6 +158,9 @@ Content-Type: application/json
 #############    DELETE user career    ###################
 DELETE  http://localhost:5000/user/career
 
+
+#############    DELETE user career by id    ###################
+DELETE  http://localhost:5000/user/career/60277a7ddc4e143174869edd
 
 
 
