@@ -18,10 +18,10 @@ const assetsSchema = Schema({
 
 // user finance details
 const financeSchema = Schema({
-  panCard: [panCard],
+  panCard: panCard,
   itr_forms: String,
   bank_transaction: String,
-  assets: [assetsSchema],
+  assets: assetsSchema,
   password: {
     type: String,
     required: true,

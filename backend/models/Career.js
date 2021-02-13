@@ -11,7 +11,7 @@ const financeSchema = new Schema({
 const careerInstancesSchema = Schema({
   company_name: String,
   company_post: String,
-  finance: [financeSchema],
+  finance: financeSchema,
 });
 
 const nonServicesPersuitsSchema = Schema({
@@ -22,8 +22,8 @@ const nonServicesPersuitsSchema = Schema({
 
 const careerSchema = Schema({
   resume: String,
-  career_instances: [careerInstancesSchema],
-  non_service_persuits: [nonServicesPersuitsSchema],
+  career_instances: careerInstancesSchema,
+  non_service_persuits: nonServicesPersuitsSchema,
   password: {
     type: String,
     required: true,

@@ -30,8 +30,8 @@ const classRepresentativeBoardsSchema = Schema({
 });
 
 const educationSchema = Schema({
-  class_representative_boards: [classRepresentativeBoardsSchema],
-  college: [collegeSchema],
+  class_representative_boards: classRepresentativeBoardsSchema,
+  college: collegeSchema,
   password: {
     type: String,
     required: true,

@@ -1,7 +1,7 @@
 #############   User Details   ##############
 
 ###############   POST user details  ##################
-POST http://localhost:5000/user/details
+POST http://localhost:5000/user/details/post
 Content-Type: application/json
 
 {
@@ -25,8 +25,12 @@ Content-Type: application/json
 
 
 #############    GET user details    ###################
-GET http://localhost:5000/user/details
+POST http://localhost:5000/user/details
+Content-Type: application/json
 
+{
+  "password": "ThisIsSecrets"
+}
 
 
 #############    PUT user details    ###################
@@ -47,19 +51,18 @@ DELETE http://localhost:5000/user/details
 
 ####################################     User Documents    #############################
 
-##################   POST User Documents  ####################
+##################   POST only 1 User Document  ####################
 
-POST http://localhost:5000/user/documents
+POST http://localhost:5000/user/documents/post
 Content-Type: application/json
 
 {
     "adhaar_card_no": 44434276,
     "driver_license": "33sfdf4fdf",
-    "panCard": [
+    "panCard": 
       {
         "pan_card": "helloFolks"
-      }
-    ],
+      },
     "voter_auth": "helloMoto",
     "passport": "yoyoHoney",
     "password": "ThisIsSecrets2",
@@ -67,18 +70,14 @@ Content-Type: application/json
 }
 
 
-
-#############    GET user documents  by id   ###################
-POST http://localhost:5000/user/documents/60275e96449d6e1c4448a185
+#############    GET user document   ###################
+POST http://localhost:5000/user/documents
 Content-Type: application/json
 
 {
   "password": "ThisIsSecrets2"
 }
 
-
-#############    GET user documents    ###################
-GET http://localhost:5000/user/documents
 
 #############    PUT user documents    ###################
 PUT http://localhost:5000/user/documents/601c46d940ddcb0c9c7287a5
@@ -107,31 +106,23 @@ Content-Type: application/json
 
 {
    "resume": "swapan.netlify.com",
-    "career_instances": [
+    "career_instances": 
       {
         "company_name": "quordnet",
         "company_post": "null",
-        "finance": [
+        "finance": 
           {
             "in_hand": "5000rs",
             "ctc": "45",
             "salary_slips": "3343"
           }
-        ]
-      }
-    ],
-    "non_service_persuits": [
+      },
+    "non_service_persuits":
       {
         "freelancing": "TCW",
         "bussiness": "group",
         "non_profits": "profitable"
       },
-      {
-        "freelancing": "QA",
-        "bussiness": "group",
-        "non_profits": "profitable"
-      }
-    ],
     "password": "secret",
     "layer": 4
 }
@@ -153,15 +144,13 @@ PUT http://localhost:5000/user/career/60275ef5449d6e1c4448a187
 Content-Type: application/json
 
 {
-  "career_instances": [
+  "career_instances":
     {
-    "finance": [
+    "finance":
         {
           "in_hand": "4000rs"
         }
-      ]
     }
-  ]
 }
 
 #############    DELETE user career    ###################
@@ -180,7 +169,7 @@ POST http://localhost:5000/user/education
 Content-Type: application/json
 
 {
-    "class_representative_boards": [
+    "class_representative_boards":
       {
         "marks": 100,
         "grade": "A",
@@ -188,9 +177,8 @@ Content-Type: application/json
         "registration_card": "xyz.com",
         "pass_certificate": "pqr.com",
         "grade_certificate": "hello.com"
-      }
-    ],
-    "college": [
+      },
+    "college":
       {
         "degree": "BTECH",
         "course": "CSE",
@@ -205,8 +193,7 @@ Content-Type: application/json
             "events": "quiz"
           }
         ]
-      }
-    ],
+      },
     "password": "SECRETMESSAGE2",
     "layer": 4
 }
@@ -250,22 +237,20 @@ POST http://localhost:5000/user/finance
 Content-Type: application/json
 
 {
- "panCard": [
+ "panCard":
       {
         "panCard": "23325457"
-      }
-    ],
+      },
     "itr_forms": "yo yo",
     "bank_transaction": "null",
-    "assets": [
+    "assets":
       {
         "commodities": "abcdef",
         "cryptocurrencies": "pqrs",
         "stocks": "hello",
         "mutual_funds": "null",
         "ipos": "null"
-      }
-    ],
+      },
     "password": "SECRET",
     "layer": 16
 }
@@ -311,14 +296,13 @@ Content-Type: application/json
 
 {
   "vaccination_records": {
-        "records": [
+        "records": 
           {
             "vaccine_name": "pox vaccine",
             "vaccine_date": "2000, 9, 15",
             "administered_by": "2000, 9, 15",
             "administered_at": "2000, 9, 15"
-          }
-        ],
+          },
         "medical_illness_long_term": "not issued"
       },
       "password": "ISSECRET2",

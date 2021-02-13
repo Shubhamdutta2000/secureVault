@@ -10,11 +10,11 @@ const recordsSchema = new Schema({
 });
 
 const vaccinationRecords = Schema({
-  records: [recordsSchema],
+  records: recordsSchema,
 });
 
 const medicalSchema = Schema({
-  vaccination_records: [vaccinationRecords],
+  vaccination_records: vaccinationRecords,
   medical_illness_long_term: String,
   password: {
     type: String,

@@ -10,7 +10,7 @@ const panCard = new Schema({
 const documentsSchema = Schema({
   adhaar_card_no: Number,
   driver_license: String,
-  panCard: [panCard],
+  panCard: panCard,
   voter_auth: String,
   passport: String,
   password: {
