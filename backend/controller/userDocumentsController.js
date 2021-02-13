@@ -2,22 +2,11 @@ import { UserDocument } from "../models/Document.js";
 import bcrypt from "bcrypt";
 
 // @route: GET /user/documents
-// @purpose: get all user documents
+// @purpose: get 1 user documents
 export const getUserDocuments = async (req, res) => {
-  const userDocuments = await UserDocument.find();
-  if (userDocuments) {
-    res.status(200).json(userDocuments);
-  } else {
-    res.status(404).json({ message: "no user documents present" });
-  }
-};
-
-// @route: GET /user/documents/:id
-// @purpose: get user documents by id
-export const getUserDocumentsById = async (req, res) => {
   const { password } = req.body;
 
-  const userDocuments = await UserDocument.findOne({ _id: req.params.id });
+  const userDocuments = await UserDocument.findOne({});
   if (userDocuments) {
     const hashedPassword = userDocuments.password;
     const checkDocumentPassword = await bcrypt.compare(
@@ -34,16 +23,21 @@ export const getUserDocumentsById = async (req, res) => {
   }
 };
 
-// @route: POST /user/documents
-// @purpose: POST user documents
+// @route: POST /user/documents/post
+// @purpose: POST user document (only 1)
 export const postUserDocuments = async (req, res) => {
-  const body = req.body;
-  const userDocuments = new UserDocument(body);
-  try {
-    await userDocuments.save();
-    res.status(200).json(userDocuments);
-  } catch (error) {
-    res.status(404).json({ errMessage: error });
+  const documentsExist = await UserDocument.findOne({});
+  if (!documentsExist) {
+    const body = req.body;
+    const userDocuments = new UserDocument(body);
+    try {
+      await userDocuments.save();
+      res.status(200).json(userDocuments);
+    } catch (error) {
+      res.status(404).json({ errMessage: error });
+    }
+  } else {
+    res.status(404).json({ message: "one document already be given" });
   }
 };
 
