@@ -20,14 +20,14 @@ export const getUserDetailById = async (req, res) => {
   const userDetails = await UserDetail.findOne({ _id: req.params.id });
   if (userDetails) {
     const hashedPassword = userDetails.password;
-    const detailsExist = await bcrypt.compare(password, hashedPassword);
-    if (detailsExist) {
+    const checkDetailsPassword = await bcrypt.compare(password, hashedPassword);
+    if (checkDetailsPassword) {
       res.status(200).json(userDetails);
     } else {
       res.status(401).json({ message: "password does not match" });
     }
   } else {
-    res.status(404).json({ message: "user does not exist" });
+    res.status(404).json({ message: "user details does not exist" });
   }
 };
 

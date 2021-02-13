@@ -20,14 +20,14 @@ export const getUserMedicalById = async (req, res) => {
   const userMedical = await UserMedical.findOne({ _id: req.params.id });
   if (userMedical) {
     const hashedPassword = userMedical.password;
-    const MedicalExist = await bcrypt.compare(password, hashedPassword);
-    if (MedicalExist) {
+    const checkMedicalPassword = await bcrypt.compare(password, hashedPassword);
+    if (checkMedicalPassword) {
       res.status(200).json(userMedical);
     } else {
       res.status(401).json({ message: "password does not match" });
     }
   } else {
-    res.status(404).json({ message: "user does not exist" });
+    res.status(404).json({ message: "user medical details does not exist" });
   }
 };
 

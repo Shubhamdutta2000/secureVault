@@ -8,7 +8,7 @@ export const getUserDocuments = async (req, res) => {
   if (userDocuments) {
     res.status(200).json(userDocuments);
   } else {
-    res.status(404).json({ message: "no user details present" });
+    res.status(404).json({ message: "no user documents present" });
   }
 };
 
@@ -20,14 +20,17 @@ export const getUserDocumentsById = async (req, res) => {
   const userDocuments = await UserDocument.findOne({ _id: req.params.id });
   if (userDocuments) {
     const hashedPassword = userDocuments.password;
-    const DocumentsExist = await bcrypt.compare(password, hashedPassword);
-    if (DocumentsExist) {
+    const checkDocumentPassword = await bcrypt.compare(
+      password,
+      hashedPassword
+    );
+    if (checkDocumentPassword) {
       res.status(200).json(userDocuments);
     } else {
       res.status(401).json({ message: "password does not match" });
     }
   } else {
-    res.status(404).json({ message: "user does not exist" });
+    res.status(404).json({ message: "user documents does not exist" });
   }
 };
 

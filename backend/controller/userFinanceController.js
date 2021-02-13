@@ -8,7 +8,7 @@ export const getUserFinance = async (req, res) => {
   if (userFinance) {
     res.status(200).json(userFinance);
   } else {
-    res.status(404).json({ errMessage: "no user finance present" });
+    res.status(404).json({ errMessage: "no user finance details present" });
   }
 };
 
@@ -20,14 +20,14 @@ export const getUserFinanceById = async (req, res) => {
   const userFinance = await UserFinance.findOne({ _id: req.params.id });
   if (userFinance) {
     const hashedPassword = userFinance.password;
-    const FinanceExist = await bcrypt.compare(password, hashedPassword);
-    if (FinanceExist) {
+    const checkFinancePassword = await bcrypt.compare(password, hashedPassword);
+    if (checkFinancePassword) {
       res.status(200).json(userFinance);
     } else {
       res.status(401).json({ message: "password does not match" });
     }
   } else {
-    res.status(404).json({ message: "user does not exist" });
+    res.status(404).json({ message: "user finance details does not exist" });
   }
 };
 

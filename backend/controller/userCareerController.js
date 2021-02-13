@@ -8,7 +8,7 @@ export const getUserCareer = async (req, res) => {
   if (userCareer) {
     res.status(200).json(userCareer);
   } else {
-    res.status(404).json({ message: "no user details present" });
+    res.status(404).json({ message: "no user career details present" });
   }
 };
 
@@ -20,14 +20,14 @@ export const getUserCareerById = async (req, res) => {
   const userCareer = await UserCareer.findOne({ _id: req.params.id });
   if (userCareer) {
     const hashedPassword = userCareer.password;
-    const careerExist = await bcrypt.compare(password, hashedPassword);
-    if (careerExist) {
+    const checkCareerPassword = await bcrypt.compare(password, hashedPassword);
+    if (checkCareerPassword) {
       res.status(200).json(userCareer);
     } else {
       res.status(401).json({ message: "password does not match" });
     }
   } else {
-    res.status(404).json({ message: "user does not exist" });
+    res.status(404).json({ message: "user career details does not exist" });
   }
 };
 

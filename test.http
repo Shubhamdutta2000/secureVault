@@ -69,7 +69,7 @@ Content-Type: application/json
 
 
 #############    GET user documents  by id   ###################
-POST http://localhost:5000/user/documents/6026e24f06d78b1dfc7e0a11
+POST http://localhost:5000/user/documents/60275e96449d6e1c4448a185
 Content-Type: application/json
 
 {
@@ -141,7 +141,7 @@ Content-Type: application/json
 GET http://localhost:5000/user/career
 
 #############    GET user career by id   ###################
-POST  http://localhost:5000/user/career/6026d9bb60e2640ba0ebd481
+POST  http://localhost:5000/user/career/60275ef5449d6e1c4448a187
 Content-Type: application/json
 
 {
@@ -149,7 +149,7 @@ Content-Type: application/json
 }
 
 #############    PUT user career    ###################
-PUT http://localhost:5000/user/career/601c4a1bec15841c88446f35
+PUT http://localhost:5000/user/career/60275ef5449d6e1c4448a187
 Content-Type: application/json
 
 {
@@ -329,7 +329,7 @@ Content-Type: application/json
 GET http://localhost:5000/user/medical
 
 #############    GET user medical by id   ###################
-POST http://localhost:5000/user/medical/60275bc9f5946207885e6981
+POST http://localhost:5000/user/medical/60275f7f449d6e1c4448a18e
 Content-Type: application/json
 
 {
