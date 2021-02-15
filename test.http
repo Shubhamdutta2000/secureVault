@@ -16,7 +16,7 @@ Content-Type: application/json
 }
 
 #############    GET user details by id    ###################
-POST http://localhost:5000/user/details/602779eedc4e143174869ed3
+POST http://localhost:5000/user/details/602a84771e68ca3f300267ec
 Content-Type: application/json
 
 {

@@ -8,7 +8,8 @@
     "start": "node backend/index.js",
     "dev": "nodemon backend/index.js",
     "data:import": "node seeders.js",
-    "data:delete": "node seeders.js -d"
+    "data:delete": "node seeders.js -d",
+    "test": "jest ./test.env --watch"
   },
   "author": "Shubham",
   "license": "ISC",
@@ -20,6 +21,8 @@
     "mongoose-schema-jsonschema": "^1.4.4"
   },
   "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "jest": "^26.6.3",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.7"
   }
