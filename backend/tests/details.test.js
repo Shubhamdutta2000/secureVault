@@ -38,3 +38,37 @@ test("GET details by ID", async (done) => {
       return done();
     });
 }, 30000);
+
+// POST all details
+test("POST all details", async (done) => {
+  await request(app)
+    .post("/user/details")
+    .send({
+      name: "shubham",
+      address: "chittaranjan",
+      phn_no: 9002344,
+      email: "sd@gm.com",
+      key: "32",
+      dob: "2000, 11, 15",
+      password: "ThisIsSecrets",
+      layer: 10,
+    })
+    .set("Accept", "application/json")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      expect(Object.keys(res.body)).toEqual(
+        expect.arrayContaining([
+          "name",
+          "address",
+          "phn_no",
+          "email",
+          "dob",
+          "layer",
+          "password",
+        ])
+      );
+      done();
+    });
+}, 30000);
