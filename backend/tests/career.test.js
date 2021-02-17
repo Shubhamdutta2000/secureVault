@@ -41,3 +41,26 @@ test("GET all career", (done) => {
       done();
     });
 });
+
+// GET career by id
+test("GET career by ID", (done) => {
+  return request(app)
+    .post("/user/career/602cab72ee2f463f6c289172")
+    .send({ password: "secret" })
+    .set("Accept", "application/json")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      expect(Object.keys(res.body)).toEqual(
+        expect.arrayContaining([
+          "resume",
+          "career_instances",
+          "non_service_persuits",
+          "password",
+          "layer",
+        ])
+      );
+      done();
+    });
+});
