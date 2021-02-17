@@ -124,3 +124,30 @@ test("POST all eduation details", (done) => {
       done();
     });
 });
+
+// UPDATE ducation Detail by ID
+test("UPDATE education details by ID", (done) => {
+  return request(app)
+    .put("/user/education/602cab72ee2f463f6c289172")
+    .send({
+      college: {
+        course: "CSIT",
+      },
+    })
+    .set("Accept", "application/json")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      expect(Object.keys(res.body)).toEqual(
+        expect.arrayContaining([
+          "class_representative_boards",
+          "college",
+          "layer",
+          "password",
+        ])
+      );
+      expect(res.body.college).toHaveProperty("course", "CSIT");
+      done();
+    });
+});
