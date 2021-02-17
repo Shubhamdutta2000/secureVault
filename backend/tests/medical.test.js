@@ -59,3 +59,37 @@ test("GET medical details by ID", (done) => {
       done();
     });
 });
+
+// POST all medical details
+test("POST all medical details", (done) => {
+  return request(app)
+    .post("/user/medical")
+    .send({
+      vaccination_records: {
+        records: {
+          vaccine_name: "pox vaccine",
+          vaccine_date: "2002, 14, 15",
+          administered_by: "2002, 14, 15",
+          administered_at: "2002, 14, 15",
+        },
+        medical_illness_long_term: "issued",
+      },
+      password: "ISSECRET2",
+      layer: 12,
+    })
+    .set("Accept", "application/json")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      expect(Object.keys(res.body)).toEqual(
+        expect.arrayContaining([
+          "vaccination_records",
+          "medical_illness_long_term",
+          "password",
+          "layer",
+        ])
+      );
+      done();
+    });
+});
