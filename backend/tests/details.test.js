@@ -117,6 +117,18 @@ test("UPDATE details by ID", async (done) => {
     });
 }, 30000);
 
+// DELETE details by ID
+test("DELETE details by ID", async (done) => {
+  await request(app)
+    .delete("/user/details/602cab72ee2f463f6c289172")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      done();
+    });
+}, 30000);
+
 // DELETE all details
 test("DELETE all details", async (done) => {
   await request(app)
