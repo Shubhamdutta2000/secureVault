@@ -5,14 +5,14 @@ POST http://localhost:5000/user/details
 Content-Type: application/json
 
 {
-    "name": "shubham",
+    "name": "mita",
     "address": "chittaranjan",
     "phn_no": 9002344,
-    "email": "sd@gm.com",
-    "key": "32",
-    "dob": "2000, 11, 15",
+    "email": "md@gm.com",
+    "key": "44",
+    "dob": "1990, 11, 15",
     "password": "ThisIsSecrets",
-    "layer": 10
+    "layer": 12
 }
 
 #############    GET user details by id    ###################
@@ -29,7 +29,7 @@ GET http://localhost:5000/user/details
 
 
 #############    PUT user details    ###################
-PUT http://localhost:5000/user/details/601c5c8eba18d630e0e353da
+PUT http://localhost:5000/user/details/602ca379110d1e0e48dfdf1f
 Content-Type: application/json
 
 {

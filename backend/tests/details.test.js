@@ -1,6 +1,5 @@
-import request from "supertest";
 import app from "../app.js";
-import chai from "chai";
+import request from "supertest";
 
 // GET all details
 test("GET all details", async (done) => {
@@ -17,7 +16,7 @@ test("GET all details", async (done) => {
 // GET details by id
 test("GET details by ID", async (done) => {
   await request(app)
-    .post("/user/details/602a84771e68ca3f300267ec")
+    .post("/user/details/602ca3b7110d1e0e48dfdf20")
     .send({ password: "ThisIsSecrets" })
     .set("Accept", "application/json")
     .expect("Content-Type", /json/)
@@ -70,5 +69,30 @@ test("POST all details", async (done) => {
         ])
       );
       done();
+    });
+}, 30000);
+
+// UPDATE Detail by ID
+test("UPDATE details by ID", async (done) => {
+  await request(app)
+    .put("/user/details/602ca3b7110d1e0e48dfdf20")
+    .send({ name: "Iron Man" })
+    .set("Accept", "application/json")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      expect(Object.keys(res.body)).toEqual(
+        expect.arrayContaining([
+          "name",
+          "address",
+          "phn_no",
+          "email",
+          "dob",
+          "layer",
+          "password",
+        ])
+      );
+      return done();
     });
 }, 30000);
