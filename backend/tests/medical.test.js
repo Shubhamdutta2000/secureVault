@@ -49,12 +49,7 @@ test("GET medical details by ID", (done) => {
     .then((res) => {
       expect(res.body).toBeInstanceOf(Object);
       expect(Object.keys(res.body)).toEqual(
-        expect.arrayContaining([
-          "vaccination_records",
-          "medical_illness_long_term",
-          "password",
-          "layer",
-        ])
+        expect.arrayContaining(["vaccination_records", "password", "layer"])
       );
       done();
     });
@@ -83,12 +78,34 @@ test("POST all medical details", (done) => {
     .then((res) => {
       expect(res.body).toBeInstanceOf(Object);
       expect(Object.keys(res.body)).toEqual(
-        expect.arrayContaining([
-          "vaccination_records",
-          "medical_illness_long_term",
-          "password",
-          "layer",
-        ])
+        expect.arrayContaining(["vaccination_records", "password", "layer"])
+      );
+      done();
+    });
+});
+
+// UPDATE medical Detail by ID
+test("UPDATE medical details by ID", (done) => {
+  return request(app)
+    .put("/user/medical/602cab72ee2f463f6c289172")
+    .send({
+      vaccination_records: {
+        records: {
+          vaccine_name: "covid-19 virus recovery",
+        },
+      },
+    })
+    .set("Accept", "application/json")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      expect(Object.keys(res.body)).toEqual(
+        expect.arrayContaining(["vaccination_records", "password", "layer"])
+      );
+      expect(res.body.vaccination_records.records).toHaveProperty(
+        "vaccine_name",
+        "covid-19 virus recovery"
       );
       done();
     });
