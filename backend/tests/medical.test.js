@@ -110,3 +110,27 @@ test("UPDATE medical details by ID", (done) => {
       done();
     });
 });
+
+// DELETE medical details by ID
+test("DELETE medical details by ID", (done) => {
+  return request(app)
+    .delete("/user/medical/602cab72ee2f463f6c289172")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      done();
+    });
+});
+
+// DELETE all medical details
+test("DELETE all medical details", (done) => {
+  return request(app)
+    .delete("/user/medical")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body.deletedCount).toBeGreaterThanOrEqual(1);
+      done();
+    });
+});
