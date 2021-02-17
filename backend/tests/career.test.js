@@ -129,3 +129,27 @@ test("UPDATE career by ID", (done) => {
       done();
     });
 });
+
+// DELETE career by ID
+test("DELETE career by ID", (done) => {
+  return request(app)
+    .delete("/user/career/602cab72ee2f463f6c289172")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      done();
+    });
+});
+
+// DELETE all career
+test("DELETE all career", (done) => {
+  return request(app)
+    .delete("/user/career")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body.deletedCount).toBeGreaterThanOrEqual(1);
+      done();
+    });
+});
