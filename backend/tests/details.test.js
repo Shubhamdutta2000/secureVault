@@ -113,6 +113,7 @@ test("UPDATE details by ID", async (done) => {
           "password",
         ])
       );
+      expect(res.body.name).toEqual("Iron Man");
       return done();
     });
 }, 30000);

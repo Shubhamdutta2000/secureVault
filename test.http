@@ -80,7 +80,7 @@ Content-Type: application/json
 
 
 #############    PUT user documents    ###################
-PUT http://localhost:5000/user/documents/601c46d940ddcb0c9c7287a5
+PUT http://localhost:5000/user/documents
 Content-Type: application/json
 
 {
@@ -90,10 +90,6 @@ Content-Type: application/json
 
 #############   DELETE user documents   ###################
 DELETE http://localhost:5000/user/documents
-
-#############   DELETE user documents by id   ###################
-DELETE http://localhost:5000/user/documents/60277a38dc4e143174869ed5
-
 
 
 

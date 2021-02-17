@@ -48,13 +48,9 @@ export const putUserDocuments = async (req, res) => {
     const body = req.body;
     console.log(body);
     console.log(req.params.id);
-    const updateduserDocuments = await UserDocument.findOneAndUpdate(
-      { _id: req.params.id },
-      body,
-      {
-        new: true,
-      }
-    );
+    const updateduserDocuments = await UserDocument.findOneAndUpdate({}, body, {
+      new: true,
+    });
     res.status(200).json(updateduserDocuments);
   } catch (error) {
     res.status(404).json({ errMessage: error });
@@ -67,19 +63,6 @@ export const deleteUserDocuments = async (req, res) => {
   try {
     const deletedUserDocuments = await UserDocument.deleteMany();
     res.status(200).json(deletedUserDocuments);
-  } catch (error) {
-    res.status(404).json({ errMessage: error });
-  }
-};
-
-// @route: DELETE /user/documents/:id
-// @purpose: delete all user documents by id
-export const deleteUserDocumentsById = async (req, res) => {
-  try {
-    const deletedUserDocument = await UserDocument.findOneAndRemove(
-      req.params.id
-    );
-    res.status(200).json(deletedUserDocument);
   } catch (error) {
     res.status(404).json({ errMessage: error });
   }
