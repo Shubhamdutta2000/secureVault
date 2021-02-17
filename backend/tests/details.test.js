@@ -1,6 +1,7 @@
 import app from "../app.js";
 import request from "supertest";
 
+
 // GET all details
 test("GET all details", async (done) => {
   await request(app)
@@ -16,7 +17,7 @@ test("GET all details", async (done) => {
 // GET details by id
 test("GET details by ID", async (done) => {
   await request(app)
-    .post("/user/details/602ca3b7110d1e0e48dfdf20")
+    .post("/user/details/602caa25130e7729043afe06")
     .send({ password: "ThisIsSecrets" })
     .set("Accept", "application/json")
     .expect("Content-Type", /json/)
@@ -75,7 +76,7 @@ test("POST all details", async (done) => {
 // UPDATE Detail by ID
 test("UPDATE details by ID", async (done) => {
   await request(app)
-    .put("/user/details/602ca3b7110d1e0e48dfdf20")
+    .put("/user/details/602caa25130e7729043afe06")
     .send({ name: "Iron Man" })
     .set("Accept", "application/json")
     .expect("Content-Type", /json/)
@@ -94,5 +95,17 @@ test("UPDATE details by ID", async (done) => {
         ])
       );
       return done();
+    });
+}, 30000);
+
+// DELETE all details
+test("DELETE all details", async (done) => {
+  await request(app)
+    .delete("/user/details")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body.deletedCount).toBeGreaterThanOrEqual(1);
+      done();
     });
 }, 30000);
