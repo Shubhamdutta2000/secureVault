@@ -47,7 +47,6 @@ export const putUserDocuments = async (req, res) => {
   try {
     const body = req.body;
     console.log(body);
-    console.log(req.params.id);
     const updateduserDocuments = await UserDocument.findOneAndUpdate({}, body, {
       new: true,
     });

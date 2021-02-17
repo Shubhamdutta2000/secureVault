@@ -115,3 +115,15 @@ test("UPDATE document", (done) => {
       done();
     });
 });
+
+// DELETE all documents
+test("DELETE all documents", (done) => {
+  return request(app)
+    .delete("/user/documents")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body.deletedCount).toEqual(1);
+      done();
+    });
+});
