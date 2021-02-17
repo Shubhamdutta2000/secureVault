@@ -151,3 +151,27 @@ test("UPDATE education details by ID", (done) => {
       done();
     });
 });
+
+// DELETE Education details by ID
+test("DELETE Education details by ID", (done) => {
+  return request(app)
+    .delete("/user/education/602cab72ee2f463f6c289172")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      done();
+    });
+});
+
+// DELETE all Education details
+test("DELETE all Education details", (done) => {
+  return request(app)
+    .delete("/user/education")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body.deletedCount).toBeGreaterThanOrEqual(1);
+      done();
+    });
+});
