@@ -64,3 +64,44 @@ test("GET career by ID", (done) => {
       done();
     });
 });
+
+// POST all career
+test("POST all career", (done) => {
+  return request(app)
+    .post("/user/career")
+    .send({
+      resume: "mainak.netlify.com",
+      career_instances: {
+        company_name: "qa",
+        company_post: "developer",
+        finance: {
+          in_hand: "9000rs",
+          ctc: "1000",
+          salary_slips: "222222",
+        },
+      },
+      non_service_persuits: {
+        freelancing: "TCW",
+        bussiness: "group",
+        non_profits: "profitable",
+      },
+      password: "secret2",
+      layer: 10,
+    })
+    .set("Accept", "application/json")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      expect(Object.keys(res.body)).toEqual(
+        expect.arrayContaining([
+          "resume",
+          "career_instances",
+          "non_service_persuits",
+          "password",
+          "layer",
+        ])
+      );
+      done();
+    });
+});
