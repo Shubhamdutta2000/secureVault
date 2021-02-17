@@ -129,3 +129,27 @@ test("UPDATE finance details by ID", (done) => {
       done();
     });
 });
+
+// DELETE finance details by ID
+test("DELETE finance details by ID", (done) => {
+  return request(app)
+    .delete("/user/finance/602cab72ee2f463f6c289172")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      done();
+    });
+});
+
+// DELETE all finance details
+test("DELETE all finance details", (done) => {
+  return request(app)
+    .delete("/user/finance")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body.deletedCount).toBeGreaterThanOrEqual(1);
+      done();
+    });
+});
