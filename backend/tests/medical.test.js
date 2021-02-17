@@ -15,7 +15,7 @@ beforeAll(async () => {
       },
       medical_illness_long_term: "not issued",
     },
-    password: "ISSECRET2",
+    password: "ISSECRET",
     layer: 10,
   });
   await userMedical.save();
@@ -34,6 +34,28 @@ test("GET all medical details", (done) => {
     .expect(200)
     .then((res) => {
       expect(res.body).toBeInstanceOf(Array);
+      done();
+    });
+});
+
+// GET medical details by ID
+test("GET medical details by ID", (done) => {
+  return request(app)
+    .post("/user/medical/602cab72ee2f463f6c289172")
+    .send({ password: "ISSECRET" })
+    .set("Accept", "application/json")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      expect(Object.keys(res.body)).toEqual(
+        expect.arrayContaining([
+          "vaccination_records",
+          "medical_illness_long_term",
+          "password",
+          "layer",
+        ])
+      );
       done();
     });
 });
