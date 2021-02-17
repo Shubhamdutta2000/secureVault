@@ -266,7 +266,7 @@ GET http://localhost:5000/user/finance
 
 
 #############    GET user finance by id   ###################
-POST http://localhost:5000/user/finance/60277afedc4e143174869efb
+POST http://localhost:5000/user/finance/602d68fc7798603a10b4512a
 Content-Type: application/json
 
 {
@@ -275,7 +275,7 @@ Content-Type: application/json
 
 
 #############    PUT user finance    ###################
-PUT http://localhost:5000/user/finance/60275839264406277c2549c9
+PUT http://localhost:5000/user/finance/602d68fc7798603a10b4512a
 Content-Type: application/json
 
 {
@@ -288,7 +288,7 @@ DELETE http://localhost:5000/user/finance
 
 
 #############   DELETE user finance by Id   ###################
-DELETE http://localhost:5000/user/finance/60277afedc4e143174869efb
+DELETE http://localhost:5000/user/finance/602d68fc7798603a10b4512a
 
 
 
