@@ -40,3 +40,30 @@ test("GET all Finance details", (done) => {
       done();
     });
 });
+
+
+
+
+// GET finance details by id
+test("GET finance details by ID", (done) => {
+    return request(app)
+      .post("/user/finance/602cab72ee2f463f6c289172")
+      .send({ password: "SECRET" })
+      .set("Accept", "application/json")
+      .expect("Content-Type", /json/)
+      .expect(200)
+      .then((res) => {
+        expect(res.body).toBeInstanceOf(Object);
+        expect(Object.keys(res.body)).toEqual(
+          expect.arrayContaining([
+            "panCard",
+            "itr_forms",
+            "bank_transaction",
+            "assets",
+            "password",
+            "layer"
+          ])
+        );
+        done();
+      });
+  });
