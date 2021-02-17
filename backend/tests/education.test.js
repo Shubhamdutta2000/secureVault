@@ -51,3 +51,25 @@ test("GET all education details", (done) => {
       done();
     });
 });
+
+// GET education details by id
+test("GET education details by ID", (done) => {
+  return request(app)
+    .post("/user/education/602cab72ee2f463f6c289172")
+    .send({ password: "SECRETMESSAGE" })
+    .set("Accept", "application/json")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      expect(Object.keys(res.body)).toEqual(
+        expect.arrayContaining([
+          "class_representative_boards",
+          "college",
+          "layer",
+          "password",
+        ])
+      );
+      done();
+    });
+});
