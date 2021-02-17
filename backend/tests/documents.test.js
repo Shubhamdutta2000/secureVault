@@ -35,3 +35,28 @@ test("POST document", (done) => {
       done();
     });
 });
+
+// GET 1 document
+test("GET 1 document", (done) => {
+  return request(app)
+    .post("/user/documents")
+    .send({ password: "ThisIsSecrets2" })
+    .set("Accept", "application/json")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      expect(Object.keys(res.body)).toEqual(
+        expect.arrayContaining([
+          "adhaar_card_no",
+          "driver_license",
+          "panCard",
+          "voter_auth",
+          "passport",
+          "layer",
+          "password",
+        ])
+      );
+      done();
+    });
+});
