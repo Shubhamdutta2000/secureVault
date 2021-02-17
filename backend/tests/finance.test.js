@@ -103,3 +103,29 @@ test("POST all finance details", (done) => {
       done();
     });
 });
+
+// UPDATE finance Detail by ID
+test("UPDATE finance details by ID", (done) => {
+  return request(app)
+    .put("/user/finance/602cab72ee2f463f6c289172")
+    .send({ itr_forms: "noOneCares", bank_transaction: "400000" })
+    .set("Accept", "application/json")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      expect(Object.keys(res.body)).toEqual(
+        expect.arrayContaining([
+          "panCard",
+          "itr_forms",
+          "bank_transaction",
+          "assets",
+          "password",
+          "layer",
+        ])
+      );
+      expect(res.body).toHaveProperty("itr_forms", "noOneCares");
+      expect(res.body).toHaveProperty("bank_transaction", "400000");
+      done();
+    });
+});
