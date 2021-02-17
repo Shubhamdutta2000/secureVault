@@ -73,3 +73,54 @@ test("GET education details by ID", (done) => {
       done();
     });
 });
+
+// POST all education details
+test("POST all eduation details", (done) => {
+  return request(app)
+    .post("/user/education")
+    .send({
+      class_representative_boards: {
+        marks: 300,
+        grade: "B",
+        admit_card: "cde.com",
+        registration_card: "abc.com",
+        pass_certificate: "lmn.com",
+        grade_certificate: "yoyo.com",
+      },
+      college: {
+        degree: "BCA",
+        course: "Computer Application",
+        discipline: "medium",
+        semester_sheets: "bolbona",
+        final_year_projects: [
+          "covid-19 tracker-app",
+          "social-media management tool",
+        ],
+        degree_certificates: ["bca", "mca"],
+        other_certificate: [
+          {
+            academy: "web app ml",
+            sports: "football",
+            events: "stand up comedy",
+          },
+        ],
+      },
+      password: "SECRETMESSAGE2",
+      layer: 8,
+    })
+    .set("Accept", "application/json")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      expect(Object.keys(res.body)).toEqual(
+        expect.arrayContaining([
+          "class_representative_boards",
+          "college",
+          "layer",
+          "password",
+        ])
+      );
+      done();
+    });
+});
