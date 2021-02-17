@@ -10,7 +10,7 @@
     "dev": "nodemon backend/index.js",
     "data:import": "node seeders.js",
     "data:delete": "node seeders.js -d",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles --watch"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --testTimeout=10000  --detectOpenHandles --watch"
   },
   "jest": {
     "testEnvironment": "jest-environment-node",

@@ -22,8 +22,8 @@ beforeAll(async () => {
 });
 
 // GET all details
-test("GET all details", async (done) => {
-  await request(app)
+test("GET all details", (done) => {
+  return request(app)
     .get("/user/details")
     .expect("Content-Type", /json/)
     .expect(200)
@@ -31,11 +31,11 @@ test("GET all details", async (done) => {
       expect(res.body).toBeInstanceOf(Array);
       done();
     });
-}, 30000);
+});
 
 // GET details by id
-test("GET details by ID", async (done) => {
-  await request(app)
+test("GET details by ID", (done) => {
+  return request(app)
     .post("/user/details/602cab72ee2f463f6c289172")
     .send({ password: "ThisIsSecrets" })
     .set("Accept", "application/json")
@@ -54,13 +54,13 @@ test("GET details by ID", async (done) => {
           "password",
         ])
       );
-      return done();
+      done();
     });
-}, 30000);
+});
 
 // POST all details
-test("POST all details", async (done) => {
-  await request(app)
+test("POST all details", (done) => {
+  return request(app)
     .post("/user/details")
     .send({
       name: "shubham",
@@ -90,11 +90,11 @@ test("POST all details", async (done) => {
       );
       done();
     });
-}, 30000);
+});
 
 // UPDATE Detail by ID
-test("UPDATE details by ID", async (done) => {
-  await request(app)
+test("UPDATE details by ID", (done) => {
+  return request(app)
     .put("/user/details/602cab72ee2f463f6c289172")
     .send({ name: "Iron Man" })
     .set("Accept", "application/json")
@@ -114,13 +114,13 @@ test("UPDATE details by ID", async (done) => {
         ])
       );
       expect(res.body.name).toEqual("Iron Man");
-      return done();
+      done();
     });
-}, 30000);
+});
 
 // DELETE details by ID
-test("DELETE details by ID", async (done) => {
-  await request(app)
+test("DELETE details by ID", (done) => {
+  return request(app)
     .delete("/user/details/602cab72ee2f463f6c289172")
     .expect("Content-Type", /json/)
     .expect(200)
@@ -128,11 +128,11 @@ test("DELETE details by ID", async (done) => {
       expect(res.body).toBeInstanceOf(Object);
       done();
     });
-}, 30000);
+});
 
 // DELETE all details
-test("DELETE all details", async (done) => {
-  await request(app)
+test("DELETE all details", (done) => {
+  return request(app)
     .delete("/user/details")
     .expect("Content-Type", /json/)
     .expect(200)
@@ -140,4 +140,4 @@ test("DELETE all details", async (done) => {
       expect(res.body.deletedCount).toBeGreaterThanOrEqual(1);
       done();
     });
-}, 30000);
+});
