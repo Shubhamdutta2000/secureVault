@@ -1,6 +1,25 @@
 import app from "../app.js";
 import request from "supertest";
+import { UserDetail } from "../models/Detail.js";
 
+// add userDetails before all test cases
+beforeAll(async () => {
+  const userDetails = new UserDetail({
+    _id: "602cab72ee2f463f6c289172",
+    name: "mita",
+    address: "chittaranjan",
+    phn_no: 9002344,
+    email: "md@gm.com",
+    key: "44",
+    dob: "1990, 11, 15",
+    password: "ThisIsSecrets",
+    layer: 12,
+  });
+  await userDetails.save();
+  console.log("before All test cases");
+  const details = await UserDetail.findOne({ _id: "602cab72ee2f463f6c289172" });
+  console.log(details);
+});
 
 // GET all details
 test("GET all details", async (done) => {
@@ -17,7 +36,7 @@ test("GET all details", async (done) => {
 // GET details by id
 test("GET details by ID", async (done) => {
   await request(app)
-    .post("/user/details/602caa25130e7729043afe06")
+    .post("/user/details/602cab72ee2f463f6c289172")
     .send({ password: "ThisIsSecrets" })
     .set("Accept", "application/json")
     .expect("Content-Type", /json/)
@@ -76,7 +95,7 @@ test("POST all details", async (done) => {
 // UPDATE Detail by ID
 test("UPDATE details by ID", async (done) => {
   await request(app)
-    .put("/user/details/602caa25130e7729043afe06")
+    .put("/user/details/602cab72ee2f463f6c289172")
     .send({ name: "Iron Man" })
     .set("Accept", "application/json")
     .expect("Content-Type", /json/)
