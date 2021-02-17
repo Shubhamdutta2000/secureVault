@@ -105,3 +105,27 @@ test("POST all career", (done) => {
       done();
     });
 });
+
+// UPDATE Detail by ID
+test("UPDATE career by ID", (done) => {
+  return request(app)
+    .put("/user/career/602cab72ee2f463f6c289172")
+    .send({ resume: "wolverine.heroku.com" })
+    .set("Accept", "application/json")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      expect(Object.keys(res.body)).toEqual(
+        expect.arrayContaining([
+          "resume",
+          "career_instances",
+          "non_service_persuits",
+          "layer",
+          "password",
+        ])
+      );
+      expect(res.body.resume).toEqual("wolverine.heroku.com");
+      done();
+    });
+});
