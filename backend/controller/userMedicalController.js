@@ -45,7 +45,6 @@ export const putUserMedical = async (req, res) => {
   try {
     const body = req.body;
     console.log(body);
-    console.log(req.params.id);
     const updatedUserMedical = await UserMedical.findOneAndUpdate({}, body, {
       new: true,
     });

@@ -1,47 +1,88 @@
 import app from "../app.js";
 import request from "supertest";
 import { UserMedical } from "../models/Medical.js";
+let token;
 
-// add userMedical before all test cases
 beforeAll(async () => {
-  const userMedical = new UserMedical({
-    _id: "602cab72ee2f463f6c289172",
-    vaccination_records: {
-      records: {
-        vaccine_name: "covid vaccine",
-        vaccine_date: "2000, 9, 15",
-        administered_by: "2000, 9, 15",
-        administered_at: "2000, 9, 15",
-      },
-      medical_illness_long_term: "not issued",
-    },
-    password: "ISSECRET",
-    layer: 10,
-  });
-  await userMedical.save();
-  console.log("before All test cases");
-  const details = await UserMedical.findOne({
-    _id: "602cab72ee2f463f6c289172",
-  });
-  console.log(details);
+  // user log in and get token
+  await request(app)
+    .post("/user/login")
+    .send({
+      email: "sd@gmail.com",
+      password: "test1234",
+    })
+    .then((response) => {
+      token = response.body.token; // save the token!
+    });
+
+  // delete Medical details
+  await UserMedical.deleteMany({});
 });
 
-// GET all medical details
-test("GET all medical details", (done) => {
+// POST 1 medical detail
+test("POST 1 medical detail", (done) => {
   return request(app)
-    .get("/user/medical")
+    .post("/user/medical/post")
+    .set("Authorization", `Bearer ${token}`)
+    .send({
+      vaccination_records: [
+        {
+          vaccine_name: "pox vaccine",
+          vaccine_date: "2002, 14, 15",
+          administered_by: "2002, 14, 15",
+          administered_at: "2002, 14, 15",
+        },
+      ],
+      medical_illness_long_term: "issued",
+      password: "ISSECRET",
+    })
+    .set("Accept", "application/json")
     .expect("Content-Type", /json/)
     .expect(200)
     .then((res) => {
-      expect(res.body).toBeInstanceOf(Array);
+      expect(res.body).toBeInstanceOf(Object);
+      expect(Object.keys(res.body)).toEqual(
+        expect.arrayContaining(["vaccination_records", "password"])
+      );
       done();
     });
 });
 
-// GET medical details by ID
-test("GET medical details by ID", (done) => {
+// Cannot POST medical detail
+test("Cannot POST medical detail more than 1", (done) => {
   return request(app)
-    .post("/user/medical/602cab72ee2f463f6c289172")
+    .post("/user/medical/post")
+    .set("Authorization", `Bearer ${token}`)
+    .send({
+      vaccination_records: [
+        {
+          vaccine_name: "corona vaccine",
+          vaccine_date: "2002, 14, 15",
+          administered_by: "2002, 14, 15",
+          administered_at: "2002, 14, 15",
+        },
+      ],
+      medical_illness_long_term: "not-issued",
+      password: "ISSECRET2",
+    })
+    .set("Accept", "application/json")
+    .expect("Content-Type", /json/)
+    .expect(404)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      expect(res.body).toHaveProperty(
+        "message",
+        "one medical already be given"
+      );
+      done();
+    });
+});
+
+// GET medical detail
+test("GET medical detail", (done) => {
+  return request(app)
+    .post("/user/medical")
+    .set("Authorization", `Bearer ${token}`)
     .send({ password: "ISSECRET" })
     .set("Accept", "application/json")
     .expect("Content-Type", /json/)
@@ -49,51 +90,23 @@ test("GET medical details by ID", (done) => {
     .then((res) => {
       expect(res.body).toBeInstanceOf(Object);
       expect(Object.keys(res.body)).toEqual(
-        expect.arrayContaining(["vaccination_records", "password", "layer"])
+        expect.arrayContaining(["vaccination_records", "password"])
       );
       done();
     });
 });
 
-// POST all medical details
-test("POST all medical details", (done) => {
+// UPDATE medical Detail
+test("UPDATE medical detail", (done) => {
   return request(app)
-    .post("/user/medical")
+    .put("/user/medical")
+    .set("Authorization", `Bearer ${token}`)
     .send({
-      vaccination_records: {
-        records: {
-          vaccine_name: "pox vaccine",
-          vaccine_date: "2002, 14, 15",
-          administered_by: "2002, 14, 15",
-          administered_at: "2002, 14, 15",
-        },
-        medical_illness_long_term: "issued",
-      },
-      password: "ISSECRET2",
-      layer: 12,
-    })
-    .set("Accept", "application/json")
-    .expect("Content-Type", /json/)
-    .expect(200)
-    .then((res) => {
-      expect(res.body).toBeInstanceOf(Object);
-      expect(Object.keys(res.body)).toEqual(
-        expect.arrayContaining(["vaccination_records", "password", "layer"])
-      );
-      done();
-    });
-});
-
-// UPDATE medical Detail by ID
-test("UPDATE medical details by ID", (done) => {
-  return request(app)
-    .put("/user/medical/602cab72ee2f463f6c289172")
-    .send({
-      vaccination_records: {
-        records: {
+      vaccination_records: [
+        {
           vaccine_name: "covid-19 virus recovery",
         },
-      },
+      ],
     })
     .set("Accept", "application/json")
     .expect("Content-Type", /json/)
@@ -101,9 +114,9 @@ test("UPDATE medical details by ID", (done) => {
     .then((res) => {
       expect(res.body).toBeInstanceOf(Object);
       expect(Object.keys(res.body)).toEqual(
-        expect.arrayContaining(["vaccination_records", "password", "layer"])
+        expect.arrayContaining(["vaccination_records", "password"])
       );
-      expect(res.body.vaccination_records.records).toHaveProperty(
+      expect(res.body.vaccination_records[0]).toHaveProperty(
         "vaccine_name",
         "covid-19 virus recovery"
       );
@@ -111,22 +124,11 @@ test("UPDATE medical details by ID", (done) => {
     });
 });
 
-// DELETE medical details by ID
-test("DELETE medical details by ID", (done) => {
-  return request(app)
-    .delete("/user/medical/602cab72ee2f463f6c289172")
-    .expect("Content-Type", /json/)
-    .expect(200)
-    .then((res) => {
-      expect(res.body).toBeInstanceOf(Object);
-      done();
-    });
-});
-
-// DELETE all medical details
-test("DELETE all medical details", (done) => {
+// DELETE medical detail
+test("DELETE medical detail", (done) => {
   return request(app)
     .delete("/user/medical")
+    .set("Authorization", `Bearer ${token}`)
     .expect("Content-Type", /json/)
     .expect(200)
     .then((res) => {
