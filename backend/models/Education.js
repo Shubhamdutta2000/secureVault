@@ -10,6 +10,7 @@ const otherCertificate = new Schema({
 
 // college details
 const collegeSchema = Schema({
+  name: String,
   degree: String,
   course: String,
   discipline: String,
@@ -21,6 +22,7 @@ const collegeSchema = Schema({
 
 // class 10 and 12 board details
 const classRepresentativeBoardsSchema = Schema({
+  name: String,
   marks: Number,
   grade: String,
   admit_card: String,
@@ -30,14 +32,15 @@ const classRepresentativeBoardsSchema = Schema({
 });
 
 const educationSchema = Schema({
+  user: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+    ref: "User",
+  },
   class_representative_boards: classRepresentativeBoardsSchema,
   college: collegeSchema,
   password: {
     type: String,
-    required: true,
-  },
-  layer: {
-    type: Number,
     required: true,
   },
 });
@@ -45,7 +48,7 @@ const educationSchema = Schema({
 //  Encrypt a password before saving document
 educationSchema.pre("save", async function (next) {
   // hashing of password based on layer no.
-  this.password = await bcrypt.hash(this.password, this.layer);
+  this.password = await bcrypt.hash(this.password, 10);
 });
 
 const UserEducation = mongoose.model("Education", educationSchema);

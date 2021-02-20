@@ -174,10 +174,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3Z
 
 
 
+
+
 #############   User Education   ##############
 
 ###############   POST user Education  ##################
-POST http://localhost:5000/user/education
+POST http://localhost:5000/user/education/post
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzgzODI5OCwiZXhwIjoxNjEzODc0Mjk4fQ.sWf1KAFchczf7hZS17zg4GFHl6pAxLqCr1pQtN5HsOQ
 Content-Type: application/json
 
 {
@@ -206,16 +209,13 @@ Content-Type: application/json
           }
         ]
       },
-    "password": "SECRETMESSAGE2",
-    "layer": 4
+    "password": "SECRETMESSAGE2"
 }
 
-#############    GET all user education    ###################
-GET http://localhost:5000/user/education
 
-
-#############    GET user education by id     ###################
-POST http://localhost:5000/user/education/60277acadc4e143174869eee
+#############    GET user education      ###################
+POST http://localhost:5000/user/education
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzgzODI5OCwiZXhwIjoxNjEzODc0Mjk4fQ.sWf1KAFchczf7hZS17zg4GFHl6pAxLqCr1pQtN5HsOQ
 Content-Type: application/json
 
 {
@@ -224,7 +224,8 @@ Content-Type: application/json
 
 
 #############    PUT user education    ###################
-PUT http://localhost:5000/user/education/602755509c5d4d2a042a2387
+PUT http://localhost:5000/user/education
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzgzODI5OCwiZXhwIjoxNjEzODc0Mjk4fQ.sWf1KAFchczf7hZS17zg4GFHl6pAxLqCr1pQtN5HsOQ
 Content-Type: application/json
 
 {
@@ -235,10 +236,9 @@ Content-Type: application/json
 
 #############   DELETE user education   ###################
 DELETE http://localhost:5000/user/education
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzgzODI5OCwiZXhwIjoxNjEzODc0Mjk4fQ.sWf1KAFchczf7hZS17zg4GFHl6pAxLqCr1pQtN5HsOQ
 
 
-#############   DELETE user education  by Id  ###################
-DELETE http://localhost:5000/user/education/6027b2cc840000224c593ba7
 
 
 
