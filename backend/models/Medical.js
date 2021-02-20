@@ -9,19 +9,16 @@ const recordsSchema = new Schema({
   administered_at: String,
 });
 
-const vaccinationRecords = Schema({
-  records: recordsSchema,
-});
-
 const medicalSchema = Schema({
-  vaccination_records: vaccinationRecords,
+  user: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+    ref: "User",
+  },
+  vaccination_records: [recordsSchema],
   medical_illness_long_term: String,
   password: {
     type: String,
-    required: true,
-  },
-  layer: {
-    type: Number,
     required: true,
   },
 });
@@ -29,7 +26,7 @@ const medicalSchema = Schema({
 //  Encrypt a password before saving document
 medicalSchema.pre("save", async function (next) {
   // hashing of password based on layer no.
-  this.password = await bcrypt.hash(this.password, this.layer);
+  this.password = await bcrypt.hash(this.password, 10);
 });
 
 const UserMedical = mongoose.model("Medical", medicalSchema);

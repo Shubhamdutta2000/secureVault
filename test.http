@@ -301,29 +301,24 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3Z
 #############   User Medical   ##############
 
 ###############   POST user Medical  ##################
-POST http://localhost:5000/user/medical
+POST http://localhost:5000/user/medical/post
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzgzODI5OCwiZXhwIjoxNjEzODc0Mjk4fQ.sWf1KAFchczf7hZS17zg4GFHl6pAxLqCr1pQtN5HsOQ
 Content-Type: application/json
 
 {
-  "vaccination_records": {
-        "records": 
-          {
-            "vaccine_name": "covid vaccine",
-            "vaccine_date": "2000, 9, 15",
-            "administered_by": "2000, 9, 15",
-            "administered_at": "2000, 9, 15"
-          },
-        "medical_illness_long_term": "not issued"
-      },
-      "password": "ISSECRET2",
-      "layer": 10
+  "vaccination_records": [{
+      "vaccine_name": "covid vaccine",
+      "vaccine_date": "2000, 9, 15",
+      "administered_by": "2000, 9, 15",
+      "administered_at": "2000, 9, 15"
+  }],
+  "medical_illness_long_term": "not issued",
+  "password": "ISSECRET2"
 }
 
-#############    GET user medical    ###################
-GET http://localhost:5000/user/medical
-
-#############    GET user medical by id   ###################
-POST http://localhost:5000/user/medical/60277b16dc4e143174869f06
+#############    GET user medical   ###################
+POST http://localhost:5000/user/medical
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzgzODI5OCwiZXhwIjoxNjEzODc0Mjk4fQ.sWf1KAFchczf7hZS17zg4GFHl6pAxLqCr1pQtN5HsOQ
 Content-Type: application/json
 
 {
@@ -331,23 +326,16 @@ Content-Type: application/json
 }
 
 #############    PUT user medical    ###################
-PUT http://localhost:5000/user/medical/60275bc9f5946207885e6981
+PUT http://localhost:5000/user/medical
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzgzODI5OCwiZXhwIjoxNjEzODc0Mjk4fQ.sWf1KAFchczf7hZS17zg4GFHl6pAxLqCr1pQtN5HsOQ
 Content-Type: application/json
 
 {
   "vaccination_records": [{
-    "records": [
-      {
-        "vaccine_name": "covid-19 virus recovery"
-      }
-    ]
+      "vaccine_name": "covid-19 virus recovery"
   }]
 }
 
 #############   DELETE user medical   ###################
 DELETE http://localhost:5000/user/medical
-
-
-
-#############   DELETE user medical by Id   ###################
-DELETE http://localhost:5000/user/medical/60277b16dc4e143174869f06
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzgzODI5OCwiZXhwIjoxNjEzODc0Mjk4fQ.sWf1KAFchczf7hZS17zg4GFHl6pAxLqCr1pQtN5HsOQ
