@@ -6,7 +6,7 @@ import bcrypt from "bcrypt";
 export const getUserDetail = async (req, res) => {
   const { password } = req.body;
 
-  const userDetails = await UserDetail.findOne({}).populate("User");
+  const userDetails = await UserDetail.findOne({}).populate("user");
   if (userDetails) {
     const hashedPassword = userDetails.password;
     const checkDetailsPassword = await bcrypt.compare(password, hashedPassword);
