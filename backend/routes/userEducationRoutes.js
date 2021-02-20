@@ -2,26 +2,19 @@ import express from "express";
 const router = express.Router();
 import {
   getUserEducation,
-  getUserEducationById,
   postUserEducation,
   putUserEducation,
   deleteUserEducation,
-  deleteUserEducationById,
 } from "../controller/userEducationController.js";
-
+import authProtect from "../middleware/authenticate.js";
 // Individual routes
 
 // Education routes
 router
   .route("/")
-  .get(getUserEducation)
-  .post(postUserEducation)
-  .delete(deleteUserEducation);
-
-router
-  .route("/:id")
-  .post(getUserEducationById)
-  .put(putUserEducation)
-  .delete(deleteUserEducationById);
+  .post(authProtect, getUserEducation)
+  .put(authProtect, putUserEducation)
+  .delete(authProtect, deleteUserEducation);
+router.route("/post").post(authProtect, postUserEducation);
 
 export default router;

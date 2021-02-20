@@ -49,6 +49,27 @@ test("POST 1 detail", (done) => {
     });
 });
 
+// Cannot POST detail
+test("Cannot POST detail more than 1", (done) => {
+  return request(app)
+    .post("/user/details/post")
+    .set("Authorization", `Bearer ${token}`)
+    .send({
+      address: "chittaranjan",
+      phn_no: 9002344,
+      dob: "2000, 11, 15",
+      password: "ThisIsSecrets",
+    })
+    .set("Accept", "application/json")
+    .expect("Content-Type", /json/)
+    .expect(404)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      expect(res.body).toHaveProperty("message", "one detail already be given");
+      done();
+    });
+});
+
 // GET 1 detail
 test("GET 1 detail", (done) => {
   return request(app)

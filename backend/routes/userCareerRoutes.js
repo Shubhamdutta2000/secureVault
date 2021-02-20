@@ -2,26 +2,20 @@ import express from "express";
 const router = express.Router();
 import {
   getUserCareer,
-  getUserCareerById,
   postUserCareer,
   putUserCareer,
   deleteUserCareer,
-  deleteUserCareerById,
 } from "../controller/userCareerController.js";
+import authProtect from "../middleware/authenticate.js";
 
 // Individual routes
 
 // Career routes
 router
   .route("/")
-  .get(getUserCareer)
-  .post(postUserCareer)
-  .delete(deleteUserCareer);
-
-router
-  .route("/:id")
-  .post(getUserCareerById)
-  .put(putUserCareer)
-  .delete(deleteUserCareerById);
+  .post(authProtect, getUserCareer)
+  .put(authProtect, putUserCareer)
+  .delete(authProtect, deleteUserCareer);
+router.route("/post").post(authProtect, postUserCareer);
 
 export default router;

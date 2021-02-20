@@ -6,7 +6,7 @@ import bcrypt from "bcrypt";
 export const getUserDocument = async (req, res) => {
   const { password } = req.body;
 
-  const userDocuments = await UserDocument.findOne({});
+  const userDocuments = await UserDocument.findOne({}).populate("user");
   if (userDocuments) {
     const hashedPassword = userDocuments.password;
     const checkDocumentPassword = await bcrypt.compare(
@@ -29,6 +29,7 @@ export const postUserDocuments = async (req, res) => {
   const documentsExist = await UserDocument.findOne({});
   if (!documentsExist) {
     const body = req.body;
+    body.user = req.user._id; // add authenticated user id
     const userDocuments = new UserDocument(body);
     try {
       await userDocuments.save();

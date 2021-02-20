@@ -21,15 +21,16 @@ const nonServicesPersuitsSchema = Schema({
 });
 
 const careerSchema = Schema({
+  user: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+    ref: "User",
+  },
   resume: String,
-  career_instances: careerInstancesSchema,
-  non_service_persuits: nonServicesPersuitsSchema,
+  career_instances: [careerInstancesSchema],
+  non_service_persuits: [nonServicesPersuitsSchema],
   password: {
     type: String,
-    required: true,
-  },
-  layer: {
-    type: Number,
     required: true,
   },
 });
@@ -37,7 +38,7 @@ const careerSchema = Schema({
 //  Encrypt a password before saving document
 careerSchema.pre("save", async function (next) {
   // hashing of password based on layer no.
-  this.password = await bcrypt.hash(this.password, this.layer);
+  this.password = await bcrypt.hash(this.password, 10);
 });
 
 const UserCareer = mongoose.model("Career", careerSchema);

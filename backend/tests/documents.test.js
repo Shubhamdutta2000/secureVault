@@ -1,20 +1,36 @@
 import app from "../app.js";
 import request from "supertest";
+import { UserDocument } from "../models/Document.js";
+let token;
+
+beforeAll(async () => {
+  // user log in and get token
+  await request(app)
+    .post("/user/login")
+    .send({
+      email: "sd@gmail.com",
+      password: "test1234",
+    })
+    .then((response) => {
+      token = response.body.token; // save the token!
+    });
+
+  // delete document
+  await UserDocument.deleteMany({});
+});
 
 // POST all documents
 test("POST document", (done) => {
   return request(app)
     .post("/user/documents/post")
+    .set("Authorization", `Bearer ${token}`)
     .send({
-      adhaar_card_no: 44434276,
+      adhaar_card: "44434276",
       driver_license: "33sfdf4fdf",
-      panCard: {
-        pan_card: "helloFolks",
-      },
-      voter_auth: "helloMoto",
+      panCard: "helloFolks",
+      voter_card: "helloMoto",
       passport: "yoyoHoney",
       password: "ThisIsSecrets2",
-      layer: 6,
     })
     .set("Accept", "application/json")
     .expect("Content-Type", /json/)
@@ -23,12 +39,11 @@ test("POST document", (done) => {
       expect(res.body).toBeInstanceOf(Object);
       expect(Object.keys(res.body)).toEqual(
         expect.arrayContaining([
-          "adhaar_card_no",
+          "adhaar_card",
           "driver_license",
           "panCard",
-          "voter_auth",
+          "voter_card",
           "passport",
-          "layer",
           "password",
         ])
       );
@@ -40,6 +55,7 @@ test("POST document", (done) => {
 test("GET 1 document", (done) => {
   return request(app)
     .post("/user/documents")
+    .set("Authorization", `Bearer ${token}`)
     .send({ password: "ThisIsSecrets2" })
     .set("Accept", "application/json")
     .expect("Content-Type", /json/)
@@ -48,12 +64,11 @@ test("GET 1 document", (done) => {
       expect(res.body).toBeInstanceOf(Object);
       expect(Object.keys(res.body)).toEqual(
         expect.arrayContaining([
-          "adhaar_card_no",
+          "adhaar_card",
           "driver_license",
           "panCard",
-          "voter_auth",
+          "voter_card",
           "passport",
-          "layer",
           "password",
         ])
       );
@@ -65,16 +80,14 @@ test("GET 1 document", (done) => {
 test("Cannot POST document more than 1", (done) => {
   return request(app)
     .post("/user/documents/post")
+    .set("Authorization", `Bearer ${token}`)
     .send({
-      adhaar_card_no: 1234,
+      adhaar_card: "1234",
       driver_license: "142464556",
-      panCard: {
-        pan_card: "helloBro",
-      },
-      voter_auth: "lol",
-      passport: "nanuSingh",
+      panCard: "1224353",
+      voter_card: "lol",
+      passport: "987654",
       password: "ThisIsSecrets2",
-      layer: 10,
     })
     .set("Accept", "application/json")
     .expect("Content-Type", /json/)
@@ -93,7 +106,8 @@ test("Cannot POST document more than 1", (done) => {
 test("UPDATE document", (done) => {
   return request(app)
     .put("/user/documents")
-    .send({ passport: "bolbo na", adhaar_card_no: 1234 })
+    .set("Authorization", `Bearer ${token}`)
+    .send({ passport: "bolbo na", adhaar_card: "1234" })
     .set("Accept", "application/json")
     .expect("Content-Type", /json/)
     .expect(200)
@@ -101,17 +115,16 @@ test("UPDATE document", (done) => {
       expect(res.body).toBeInstanceOf(Object);
       expect(Object.keys(res.body)).toEqual(
         expect.arrayContaining([
-          "adhaar_card_no",
+          "adhaar_card",
           "driver_license",
           "panCard",
-          "voter_auth",
+          "voter_card",
           "passport",
-          "layer",
           "password",
         ])
       );
       expect(res.body.passport).toEqual("bolbo na");
-      expect(res.body.adhaar_card_no).toEqual(1234);
+      expect(res.body.adhaar_card).toEqual("1234");
       done();
     });
 });
@@ -120,6 +133,7 @@ test("UPDATE document", (done) => {
 test("DELETE all documents", (done) => {
   return request(app)
     .delete("/user/documents")
+    .set("Authorization", `Bearer ${token}`)
     .expect("Content-Type", /json/)
     .expect(200)
     .then((res) => {

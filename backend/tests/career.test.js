@@ -1,92 +1,56 @@
 import app from "../app.js";
 import request from "supertest";
 import { UserCareer } from "../models/Career.js";
+let token;
 
 // add userCareer before all test cases
 beforeAll(async () => {
-  const userCareer = new UserCareer({
-    _id: "602cab72ee2f463f6c289172",
-    resume: "shubham.netlify.com",
-    career_instances: {
-      company_name: "tcw",
-      company_post: "null",
-      finance: {
-        in_hand: "5000rs",
-        ctc: "45",
-        salary_slips: "3343",
-      },
-    },
-    non_service_persuits: {
-      freelancing: "TCW",
-      bussiness: "group",
-      non_profits: "profitable",
-    },
-    password: "secret",
-    layer: 8,
-  });
-  await userCareer.save();
-  console.log("before All test cases");
-  const career = await UserCareer.findOne({ _id: "602cab72ee2f463f6c289172" });
-  console.log(career);
-});
-
-// GET all career
-test("GET all career", (done) => {
-  return request(app)
-    .get("/user/career")
-    .expect("Content-Type", /json/)
-    .expect(200)
-    .then((res) => {
-      expect(res.body).toBeInstanceOf(Array);
-      done();
+  // user log in and get token
+  await request(app)
+    .post("/user/login")
+    .send({
+      email: "sd@gmail.com",
+      password: "test1234",
+    })
+    .then((response) => {
+      token = response.body.token; // save the token!
     });
+
+  // delete career
+  await UserCareer.deleteMany({});
 });
 
-// GET career by id
-test("GET career by ID", (done) => {
+// POST 1 career
+test("POST 1 career", (done) => {
   return request(app)
-    .post("/user/career/602cab72ee2f463f6c289172")
-    .send({ password: "secret" })
-    .set("Accept", "application/json")
-    .expect("Content-Type", /json/)
-    .expect(200)
-    .then((res) => {
-      expect(res.body).toBeInstanceOf(Object);
-      expect(Object.keys(res.body)).toEqual(
-        expect.arrayContaining([
-          "resume",
-          "career_instances",
-          "non_service_persuits",
-          "password",
-          "layer",
-        ])
-      );
-      done();
-    });
-});
-
-// POST all career
-test("POST all career", (done) => {
-  return request(app)
-    .post("/user/career")
+    .post("/user/career/post")
+    .set("Authorization", `Bearer ${token}`)
     .send({
       resume: "mainak.netlify.com",
-      career_instances: {
-        company_name: "qa",
-        company_post: "developer",
-        finance: {
-          in_hand: "9000rs",
-          ctc: "1000",
-          salary_slips: "222222",
+      career_instances: [
+        {
+          company_name: "qa",
+          company_post: "developer",
+          finance: {
+            in_hand: "9000rs",
+            ctc: "1000",
+            salary_slips: "222222",
+          },
         },
-      },
-      non_service_persuits: {
-        freelancing: "TCW",
-        bussiness: "group",
-        non_profits: "profitable",
-      },
-      password: "secret2",
-      layer: 10,
+      ],
+      non_service_persuits: [
+        {
+          freelancing: "TCW",
+          bussiness: "group",
+          non_profits: "profitable",
+        },
+        {
+          freelancing: "DSC",
+          bussiness: "group",
+          non_profits: "profitable",
+        },
+      ],
+      password: "secret",
     })
     .set("Accept", "application/json")
     .expect("Content-Type", /json/)
@@ -99,17 +63,82 @@ test("POST all career", (done) => {
           "career_instances",
           "non_service_persuits",
           "password",
-          "layer",
         ])
       );
       done();
     });
 });
 
-// UPDATE Detail by ID
-test("UPDATE career by ID", (done) => {
+// Cannot POST career (give error)
+test("Cannot POST career more than 1", (done) => {
   return request(app)
-    .put("/user/career/602cab72ee2f463f6c289172")
+    .post("/user/career/post")
+    .set("Authorization", `Bearer ${token}`)
+    .send({
+      resume: "shubham.heroku.com",
+      career_instances: [
+        {
+          company_name: "println",
+          company_post: "social media handler",
+          finance: {
+            in_hand: "100000rs",
+            ctc: "10000",
+            salary_slips: "4444444",
+          },
+        },
+      ],
+      non_service_persuits: [
+        {
+          freelancing: "TCW",
+          bussiness: "group",
+          non_profits: "profitable",
+        },
+        {
+          freelancing: "QA",
+          bussiness: "group",
+          non_profits: "profitable",
+        },
+      ],
+      password: "secret2",
+    })
+    .set("Accept", "application/json")
+    .expect("Content-Type", /json/)
+    .expect(404)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      expect(res.body).toHaveProperty("message", "one career already be given");
+      done();
+    });
+});
+
+// GET career
+test("GET career", (done) => {
+  return request(app)
+    .post("/user/career")
+    .set("Authorization", `Bearer ${token}`)
+    .send({ password: "secret" })
+    .set("Accept", "application/json")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      expect(Object.keys(res.body)).toEqual(
+        expect.arrayContaining([
+          "resume",
+          "career_instances",
+          "non_service_persuits",
+          "password",
+        ])
+      );
+      done();
+    });
+});
+
+// UPDATE career
+test("UPDATE career ", (done) => {
+  return request(app)
+    .put("/user/career")
+    .set("Authorization", `Bearer ${token}`)
     .send({ resume: "wolverine.heroku.com" })
     .set("Accept", "application/json")
     .expect("Content-Type", /json/)
@@ -121,7 +150,6 @@ test("UPDATE career by ID", (done) => {
           "resume",
           "career_instances",
           "non_service_persuits",
-          "layer",
           "password",
         ])
       );
@@ -130,22 +158,11 @@ test("UPDATE career by ID", (done) => {
     });
 });
 
-// DELETE career by ID
-test("DELETE career by ID", (done) => {
-  return request(app)
-    .delete("/user/career/602cab72ee2f463f6c289172")
-    .expect("Content-Type", /json/)
-    .expect(200)
-    .then((res) => {
-      expect(res.body).toBeInstanceOf(Object);
-      done();
-    });
-});
-
 // DELETE all career
 test("DELETE all career", (done) => {
   return request(app)
     .delete("/user/career")
+    .set("Authorization", `Bearer ${token}`)
     .expect("Content-Type", /json/)
     .expect(200)
     .then((res) => {

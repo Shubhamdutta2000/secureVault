@@ -2,22 +2,11 @@ import { UserEducation } from "../models/Education.js";
 import bcrypt from "bcrypt";
 
 // @route: GET /user/education
-// @purpose: get all user education
+// @purpose: get user education
 export const getUserEducation = async (req, res) => {
-  const userEducation = await UserEducation.find();
-  if (userEducation) {
-    res.status(200).json(userEducation);
-  } else {
-    res.status(404).json({ errMessage: "no user education details present" });
-  }
-};
-
-// @route: GET /user/education/:id
-// @purpose: get user education by id
-export const getUserEducationById = async (req, res) => {
   const { password } = req.body;
 
-  const userEducation = await UserEducation.findOne({ _id: req.params.id });
+  const userEducation = await UserEducation.findOne({}).populate("user");
   if (userEducation) {
     const hashedPassword = userEducation.password;
     const checkEducationPassword = await bcrypt.compare(
@@ -35,15 +24,21 @@ export const getUserEducationById = async (req, res) => {
 };
 
 // @route: POST /user/education
-// @purpose: POST user education
+// @purpose: POST 1 user education
 export const postUserEducation = async (req, res) => {
-  const body = req.body;
-  const userEducation = new UserEducation(body);
-  try {
-    await userEducation.save();
-    res.status(200).json(userEducation);
-  } catch (error) {
-    res.status(404).json({ errMessage: error });
+  const educationExist = await UserEducation.findOne({});
+  if (!educationExist) {
+    const body = req.body;
+    body.user = req.user._id; // add authenticated user id
+    const userEducation = new UserEducation(body);
+    try {
+      await userEducation.save();
+      res.status(200).json(userEducation);
+    } catch (error) {
+      res.status(404).json({ errMessage: error });
+    }
+  } else {
+    res.status(404).json({ message: "one education already be given" });
   }
 };
 
@@ -55,7 +50,7 @@ export const putUserEducation = async (req, res) => {
     console.log(body);
     console.log(req.params.id);
     const updateduserEducation = await UserEducation.findOneAndUpdate(
-      { _id: req.params.id },
+      {},
       body,
       {
         new: true,
@@ -72,19 +67,6 @@ export const putUserEducation = async (req, res) => {
 export const deleteUserEducation = async (req, res) => {
   try {
     const deletedUserEducation = await UserEducation.deleteMany();
-    res.status(200).json(deletedUserEducation);
-  } catch (error) {
-    res.status(404).json({ errMessage: error });
-  }
-};
-
-// @route: DELETE /user/education/:id
-// @purpose: delete all user education by id
-export const deleteUserEducationById = async (req, res) => {
-  try {
-    const deletedUserEducation = await UserEducation.findByIdAndRemove(
-      req.params.id
-    );
     res.status(200).json(deletedUserEducation);
   } catch (error) {
     res.status(404).json({ errMessage: error });

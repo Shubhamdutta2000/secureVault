@@ -1,83 +1,30 @@
 import app from "../app.js";
 import request from "supertest";
-import { UserEducation } from "../models/Education.js";
+import { UserDocument } from "../models/Document.js";
+let token;
 
 // add userEducation before all test cases
 beforeAll(async () => {
-  const userEducation = new UserEducation({
-    _id: "602cab72ee2f463f6c289172",
-    class_representative_boards: {
-      marks: 200,
-      grade: "A",
-      admit_card: "abc.com",
-      registration_card: "xyz.com",
-      pass_certificate: "pqr.com",
-      grade_certificate: "hello.com",
-    },
-    college: {
-      degree: "BTECH",
-      course: "CST",
-      discipline: "null",
-      semester_sheets: "null",
-      final_year_projects: ["memory-app", "eCommerce"],
-      degree_certificates: ["btech", "mca", "mtech"],
-      other_certificate: [
-        {
-          academy: "web app ml",
-          sports: "cricket",
-          events: "quiz",
-        },
-      ],
-    },
-    password: "SECRETMESSAGE",
-    layer: 4,
-  });
-  await userEducation.save();
-  console.log("before All test cases");
-  const education = await UserEducation.findOne({
-    _id: "602cab72ee2f463f6c289172",
-  });
-  console.log(education);
-});
-
-// GET all education
-test("GET all education details", (done) => {
-  return request(app)
-    .get("/user/education")
-    .expect("Content-Type", /json/)
-    .expect(200)
-    .then((res) => {
-      expect(res.body).toBeInstanceOf(Array);
-      done();
+  // user log in and get token
+  await request(app)
+    .post("/user/login")
+    .send({
+      email: "sd@gmail.com",
+      password: "test1234",
+    })
+    .then((response) => {
+      token = response.body.token; // save the token!
     });
+
+  // delete document
+  await UserDocument.deleteMany({});
 });
 
-// GET education details by id
-test("GET education details by ID", (done) => {
+// POST 1 education detail
+test("POST 1 eduation detail", (done) => {
   return request(app)
-    .post("/user/education/602cab72ee2f463f6c289172")
-    .send({ password: "SECRETMESSAGE" })
-    .set("Accept", "application/json")
-    .expect("Content-Type", /json/)
-    .expect(200)
-    .then((res) => {
-      expect(res.body).toBeInstanceOf(Object);
-      expect(Object.keys(res.body)).toEqual(
-        expect.arrayContaining([
-          "class_representative_boards",
-          "college",
-          "layer",
-          "password",
-        ])
-      );
-      done();
-    });
-});
-
-// POST all education details
-test("POST all eduation details", (done) => {
-  return request(app)
-    .post("/user/education")
+    .post("/user/education/post")
+    .set("Authorization", `Bearer ${token}`)
     .send({
       class_representative_boards: {
         marks: 300,
@@ -105,8 +52,7 @@ test("POST all eduation details", (done) => {
           },
         ],
       },
-      password: "SECRETMESSAGE2",
-      layer: 8,
+      password: "SECRETMESSAGE",
     })
     .set("Accept", "application/json")
     .expect("Content-Type", /json/)
@@ -117,7 +63,75 @@ test("POST all eduation details", (done) => {
         expect.arrayContaining([
           "class_representative_boards",
           "college",
-          "layer",
+          "password",
+        ])
+      );
+      done();
+    });
+});
+
+// Cannot POST document
+test("Cannot POST education more than 1", (done) => {
+  return request(app)
+    .post("/user/education/post")
+    .set("Authorization", `Bearer ${token}`)
+    .send({
+      class_representative_boards: {
+        marks: 400,
+        grade: "A++",
+        admit_card: "cde.com",
+        registration_card: "abc.com",
+        pass_certificate: "lmn.com",
+        grade_certificate: "yoyo.com",
+      },
+      college: {
+        degree: "BCA",
+        course: "Computer Application",
+        discipline: "medium",
+        semester_sheets: "bolbona",
+        final_year_projects: [
+          "covid-19 tracker-app",
+          "social-media management tool",
+        ],
+        degree_certificates: ["btech", "mca"],
+        other_certificate: [
+          {
+            academy: "machine learning",
+            sports: "cricket",
+            events: "stand up comedy",
+          },
+        ],
+      },
+      password: "SECRETMESSAGE2",
+    })
+    .set("Accept", "application/json")
+    .expect("Content-Type", /json/)
+    .expect(404)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      expect(res.body).toHaveProperty(
+        "message",
+        "one education already be given"
+      );
+      done();
+    });
+});
+
+// GET education detail
+test("GET education detail", (done) => {
+  return request(app)
+    .post("/user/education")
+    .set("Authorization", `Bearer ${token}`)
+    .send({ password: "SECRETMESSAGE" })
+    .set("Accept", "application/json")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      expect(Object.keys(res.body)).toEqual(
+        expect.arrayContaining([
+          "class_representative_boards",
+          "college",
           "password",
         ])
       );
@@ -126,9 +140,10 @@ test("POST all eduation details", (done) => {
 });
 
 // UPDATE ducation Detail by ID
-test("UPDATE education details by ID", (done) => {
+test("UPDATE education detail", (done) => {
   return request(app)
-    .put("/user/education/602cab72ee2f463f6c289172")
+    .put("/user/education")
+    .set("Authorization", `Bearer ${token}`)
     .send({
       college: {
         course: "CSIT",
@@ -143,7 +158,6 @@ test("UPDATE education details by ID", (done) => {
         expect.arrayContaining([
           "class_representative_boards",
           "college",
-          "layer",
           "password",
         ])
       );
@@ -152,22 +166,11 @@ test("UPDATE education details by ID", (done) => {
     });
 });
 
-// DELETE Education details by ID
-test("DELETE Education details by ID", (done) => {
-  return request(app)
-    .delete("/user/education/602cab72ee2f463f6c289172")
-    .expect("Content-Type", /json/)
-    .expect(200)
-    .then((res) => {
-      expect(res.body).toBeInstanceOf(Object);
-      done();
-    });
-});
-
-// DELETE all Education details
-test("DELETE all Education details", (done) => {
+// DELETE Education detail
+test("DELETE Education detail", (done) => {
   return request(app)
     .delete("/user/education")
+    .set("Authorization", `Bearer ${token}`)
     .expect("Content-Type", /json/)
     .expect(200)
     .then((res) => {
