@@ -55,12 +55,10 @@ test("Cannot POST detail more than 1", (done) => {
     .post("/user/details/post")
     .set("Authorization", `Bearer ${token}`)
     .send({
-      adhaar_card: "1234",
-      driver_license: "142464556",
-      panCard: "1224353",
-      voter_card: "lol",
-      passport: "987654",
-      password: "ThisIsSecrets2",
+      address: "chittaranjan",
+      phn_no: 9002344,
+      dob: "2000, 11, 15",
+      password: "ThisIsSecrets",
     })
     .set("Accept", "application/json")
     .expect("Content-Type", /json/)
