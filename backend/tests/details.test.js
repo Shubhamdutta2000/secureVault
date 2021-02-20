@@ -25,6 +25,7 @@ test("POST 1 detail", (done) => {
     .post("/user/details/post")
     .set("Authorization", `Bearer ${token}`)
     .send({
+      bio: "I am a CST student, Web developer specialist and coding enthusiast",
       address: "chittaranjan",
       phn_no: 9002344,
       dob: "2000, 11, 15",
@@ -38,6 +39,7 @@ test("POST 1 detail", (done) => {
       expect(Object.keys(res.body)).toEqual(
         expect.arrayContaining([
           "name",
+          "bio",
           "address",
           "phn_no",
           "email",
@@ -55,6 +57,7 @@ test("Cannot POST detail more than 1", (done) => {
     .post("/user/details/post")
     .set("Authorization", `Bearer ${token}`)
     .send({
+      bio: "I am a CST student, Web developer specialist and coding enthusiast",
       address: "chittaranjan",
       phn_no: 9002344,
       dob: "2000, 11, 15",
@@ -84,6 +87,7 @@ test("GET 1 detail", (done) => {
       expect(Object.keys(res.body)).toEqual(
         expect.arrayContaining([
           "name",
+          "bio",
           "address",
           "phn_no",
           "email",
@@ -109,6 +113,7 @@ test("UPDATE detail", (done) => {
       expect(Object.keys(res.body)).toEqual(
         expect.arrayContaining([
           "name",
+          "bio",
           "address",
           "phn_no",
           "email",

@@ -27,6 +27,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzgzODI5OCwiZXhwIjoxNjEzODc0Mjk4fQ.sWf1KAFchczf7hZS17zg4GFHl6pAxLqCr1pQtN5HsOQ
 
 {
+    "bio": "I am a CST student, Web developer specialist and coding enthusiast",
     "address": "chittaranjan",
     "phn_no": 9002344,
     "dob": "1990, 11, 15",
