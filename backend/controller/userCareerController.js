@@ -26,6 +26,7 @@ export const postUserCareer = async (req, res) => {
   const careerExist = await UserCareer.findOne({});
   if (!careerExist) {
     const body = req.body;
+    body.user = req.user._id;
     const userCareer = new UserCareer(body);
     try {
       await userCareer.save();

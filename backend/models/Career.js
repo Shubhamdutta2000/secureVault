@@ -21,6 +21,11 @@ const nonServicesPersuitsSchema = Schema({
 });
 
 const careerSchema = Schema({
+  user: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+    ref: "User",
+  },
   resume: String,
   career_instances: [careerInstancesSchema],
   non_service_persuits: [nonServicesPersuitsSchema],
