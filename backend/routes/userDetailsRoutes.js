@@ -1,27 +1,21 @@
 import express from "express";
 const router = express.Router();
 import {
-  getUserDetails,
-  getUserDetailById,
+  getUserDetail,
   postUserDetails,
   deleteUserDetails,
   putUserDetails,
-  deleteUserDetailById,
 } from "../controller/userDetailsController.js";
+import authProtect from "../middleware/authenticate.js";
 
 // Individual routes
 
 // Details routes
 router
   .route("/")
-  .get(getUserDetails)
-  .post(postUserDetails)
-  .delete(deleteUserDetails);
-
-router
-  .route("/:id")
-  .post(getUserDetailById)
-  .put(putUserDetails)
-  .delete(deleteUserDetailById);
+  .post(authProtect, getUserDetail)
+  .put(authProtect, putUserDetails)
+  .delete(authProtect, deleteUserDetails);
+router.route("/post").post(authProtect, postUserDetails);
 
 export default router;

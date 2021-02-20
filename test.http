@@ -1,35 +1,50 @@
-#############   User Details   ##############
-
-###############   POST user details  ##################
-POST http://localhost:5000/user/details
+############    User  #######################
+POST http://localhost:5000/user/signup
 Content-Type: application/json
 
 {
-    "name": "mita",
-    "address": "chittaranjan",
-    "phn_no": 9002344,
-    "email": "md@gm.com",
-    "key": "44",
-    "dob": "1990, 11, 15",
-    "password": "ThisIsSecrets",
-    "layer": 12
+  "name": "Shubham",
+  "email": "sd@gmail.com",
+  "password": "test1234"
 }
 
-#############    GET user details by id    ###################
-POST http://localhost:5000/user/details/602a84771e68ca3f300267ec
+###########
+
+POST http://localhost:5000/user/login
 Content-Type: application/json
+
+{
+  "email": "sd@gmail.com",
+  "password": "test1234"
+}
+
+
+#############   User Details   ##############
+
+###############   POST user details  ##################
+POST http://localhost:5000/user/details/post
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzgzODI5OCwiZXhwIjoxNjEzODc0Mjk4fQ.sWf1KAFchczf7hZS17zg4GFHl6pAxLqCr1pQtN5HsOQ
+
+{
+    "address": "chittaranjan",
+    "phn_no": 9002344,
+    "dob": "1990, 11, 15",
+    "password": "ThisIsSecrets"
+}
+
+#############    GET user detail    ###################
+POST http://localhost:5000/user/details
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzgzODI5OCwiZXhwIjoxNjEzODc0Mjk4fQ.sWf1KAFchczf7hZS17zg4GFHl6pAxLqCr1pQtN5HsOQ
 
 {
   "password": "ThisIsSecrets"
 }
 
-
-#############    GET user details    ###################
-GET http://localhost:5000/user/details
-
-
 #############    PUT user details    ###################
-PUT http://localhost:5000/user/details/602ca379110d1e0e48dfdf1f
+PUT http://localhost:5000/user/details
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzgzODI5OCwiZXhwIjoxNjEzODc0Mjk4fQ.sWf1KAFchczf7hZS17zg4GFHl6pAxLqCr1pQtN5HsOQ
 Content-Type: application/json
 
 {
@@ -38,10 +53,7 @@ Content-Type: application/json
 
 #############   DELETE user details   ###################
 DELETE http://localhost:5000/user/details
-
-
-#############   DELETE user details by id   ###################
-DELETE http://localhost:5000/user/details/602779eedc4e143174869ed3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzgzODI5OCwiZXhwIjoxNjEzODc0Mjk4fQ.sWf1KAFchczf7hZS17zg4GFHl6pAxLqCr1pQtN5HsOQ
 
 
 
