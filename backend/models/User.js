@@ -1,31 +1,31 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
+import bcrypt from "bcrypt";
 
 const userSchema = new Schema({
-  userDetails: {
-    type: Schema.Types.ObjectId,
-    ref: "Detail",
+  name: {
+    type: String,
+    required: true,
   },
-  userDocuments: {
-    type: Schema.Types.ObjectId,
-    ref: "Document",
+  email: {
+    type: String,
+    required: true,
   },
-  userEducation: {
-    type: Schema.Types.ObjectId,
-    ref: "Education",
+  password: {
+    type: String,
+    required: true,
   },
-  userCareer: {
-    type: Schema.Types.ObjectId,
-    ref: "Career",
-  },
-  userFinance: {
-    type: Schema.Types.ObjectId,
-    ref: "Finance",
-  },
-  userMedical: {
-    type: Schema.Types.ObjectId,
-    ref: "Medical",
-  },
+});
+
+userSchema.methods.checkPassword = async function (enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
+};
+
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) {
+    next();
+  }
+  this.password = await bcrypt.hash(this.password, 10);
 });
 
 const UserModel = mongoose.model("User", userSchema);

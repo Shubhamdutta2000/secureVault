@@ -5,18 +5,31 @@ import bcrypt from "bcrypt";
 
 // individual details
 const detailsSchema = new Schema({
-  name: String,
-  address: String,
-  phn_no: Number,
-  email: String,
-  key: String,
-  dob: String,
-  password: {
+  user: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+    ref: "User",
+  },
+  name: {
     type: String,
     required: true,
   },
-  layer: {
+  address: {
+    type: String,
+    required: true,
+  },
+  phn_no: {
     type: Number,
+  },
+  email: {
+    type: String,
+  },
+  dob: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
     required: true,
   },
 });
@@ -24,7 +37,7 @@ const detailsSchema = new Schema({
 //  Encrypt a password before saving document
 detailsSchema.pre("save", async function (next) {
   // hashing of password based on layer no.
-  this.password = await bcrypt.hash(this.password, this.layer);
+  this.password = await bcrypt.hash(this.password, 10);
 });
 
 const UserDetail = mongoose.model("Detail", detailsSchema);

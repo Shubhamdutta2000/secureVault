@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
 import {
-  getUserDocuments,
+  getUserDocument,
   postUserDocuments,
   putUserDocuments,
   deleteUserDocuments,
@@ -12,7 +12,7 @@ import {
 // Documents routes
 router
   .route("/")
-  .post(getUserDocuments)
+  .post(getUserDocument)
   .put(putUserDocuments)
   .delete(deleteUserDocuments);
 router.post("/post", postUserDocuments);

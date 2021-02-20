@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 
 // @route: GET /user/documents
 // @purpose: get 1 user documents
-export const getUserDocuments = async (req, res) => {
+export const getUserDocument = async (req, res) => {
   const { password } = req.body;
 
   const userDocuments = await UserDocument.findOne({});

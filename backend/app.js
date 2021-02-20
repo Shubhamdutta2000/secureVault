@@ -8,6 +8,7 @@ import userEducationRouter from "./routes/userEducationRoutes.js";
 import userFinanceRouter from "./routes/userFinanceRoutes.js";
 import userMedicalRouter from "./routes/userMedicalRoutes.js";
 import mongooseConnection from "./config/db.js";
+import userRouter from "./routes/userRouter.js";
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -27,5 +28,6 @@ app.use("/user/career", userCareerRouter);
 app.use("/user/education", userEducationRouter);
 app.use("/user/finance", userFinanceRouter);
 app.use("/user/medical", userMedicalRouter);
+app.use("/user", userRouter);
 
 export default app;
