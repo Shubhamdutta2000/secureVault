@@ -24,7 +24,7 @@ Content-Type: application/json
 ###############   POST user details  ##################
 POST http://localhost:5000/user/details/post
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzExOTdiZjBkYjhjMTA5Y2Q0ZDAzYyIsImlhdCI6MTYxMzgzMzIwMywiZXhwIjoxNjEzODY5MjAzfQ.Q6GmWNPFX3gtLMnOJkcXeu25wBBI9_mhDcRtlIjFEgI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzgzODI5OCwiZXhwIjoxNjEzODc0Mjk4fQ.sWf1KAFchczf7hZS17zg4GFHl6pAxLqCr1pQtN5HsOQ
 
 {
     "address": "chittaranjan",
@@ -36,14 +36,15 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzExOTdiZ
 #############    GET user detail    ###################
 POST http://localhost:5000/user/details
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzExOTdiZjBkYjhjMTA5Y2Q0ZDAzYyIsImlhdCI6MTYxMzgzMzIwMywiZXhwIjoxNjEzODY5MjAzfQ.Q6GmWNPFX3gtLMnOJkcXeu25wBBI9_mhDcRtlIjFEgI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzgzODI5OCwiZXhwIjoxNjEzODc0Mjk4fQ.sWf1KAFchczf7hZS17zg4GFHl6pAxLqCr1pQtN5HsOQ
 
 {
   "password": "ThisIsSecrets"
 }
 
 #############    PUT user details    ###################
-PUT http://localhost:5000/user/details/602ca379110d1e0e48dfdf1f
+PUT http://localhost:5000/user/details
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzgzODI5OCwiZXhwIjoxNjEzODc0Mjk4fQ.sWf1KAFchczf7hZS17zg4GFHl6pAxLqCr1pQtN5HsOQ
 Content-Type: application/json
 
 {
@@ -52,7 +53,7 @@ Content-Type: application/json
 
 #############   DELETE user details   ###################
 DELETE http://localhost:5000/user/details
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzExOTdiZjBkYjhjMTA5Y2Q0ZDAzYyIsImlhdCI6MTYxMzgzMzIwMywiZXhwIjoxNjEzODY5MjAzfQ.Q6GmWNPFX3gtLMnOJkcXeu25wBBI9_mhDcRtlIjFEgI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzgzODI5OCwiZXhwIjoxNjEzODc0Mjk4fQ.sWf1KAFchczf7hZS17zg4GFHl6pAxLqCr1pQtN5HsOQ
 
 
 

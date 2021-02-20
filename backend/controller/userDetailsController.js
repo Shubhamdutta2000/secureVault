@@ -47,14 +47,9 @@ export const putUserDetails = async (req, res) => {
   try {
     const body = req.body;
     console.log(body);
-    console.log(req.params.id);
-    const updateduserDetails = await UserDetail.findOneAndUpdate(
-      { _id: req.params.id },
-      body,
-      {
-        new: true,
-      }
-    );
+    const updateduserDetails = await UserDetail.findOneAndUpdate({}, body, {
+      new: true,
+    });
     res.status(200).json(updateduserDetails);
   } catch (error) {
     res.status(404).json({ errMessage: error });
