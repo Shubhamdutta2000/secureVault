@@ -113,38 +113,38 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3Z
 #############   User Career   ##############
 
 ###############   POST user career  ##################
-POST http://localhost:5000/user/career
+POST http://localhost:5000/user/career/post
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzgzODI5OCwiZXhwIjoxNjEzODc0Mjk4fQ.sWf1KAFchczf7hZS17zg4GFHl6pAxLqCr1pQtN5HsOQ
 Content-Type: application/json
 
 {
    "resume": "shubham.netlify.com",
-    "career_instances": 
-      {
+    "career_instances": [{
         "company_name": "tcw",
         "company_post": "null",
-        "finance": 
-          {
+        "finance": {
             "in_hand": "5000rs",
             "ctc": "45",
             "salary_slips": "3343"
           }
-      },
-    "non_service_persuits":
-      {
+      }],
+    "non_service_persuits":[{
         "freelancing": "TCW",
         "bussiness": "group",
         "non_profits": "profitable"
-      },
-    "password": "secret",
-    "layer": 8
+      }, 
+      {
+        "freelancing": "QA",
+        "bussiness": "group",
+        "non_profits": "profitable"
+      }],
+    "password": "secret"
 }
 
 
-#############   GET all user career       ######################
-GET http://localhost:5000/user/career
- 
-#############    GET user career by id   ###################
-POST  http://localhost:5000/user/career/6027afe689bc343060b29775
+#############    GET user career   ###################
+POST  http://localhost:5000/user/career
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzgzODI5OCwiZXhwIjoxNjEzODc0Mjk4fQ.sWf1KAFchczf7hZS17zg4GFHl6pAxLqCr1pQtN5HsOQ
 Content-Type: application/json
 
 {
@@ -152,7 +152,8 @@ Content-Type: application/json
 }
 
 #############    PUT user career    ###################
-PUT http://localhost:5000/user/career/60275ef5449d6e1c4448a187
+PUT http://localhost:5000/user/career
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzgzODI5OCwiZXhwIjoxNjEzODc0Mjk4fQ.sWf1KAFchczf7hZS17zg4GFHl6pAxLqCr1pQtN5HsOQ
 Content-Type: application/json
 
 {
@@ -167,11 +168,7 @@ Content-Type: application/json
 
 #############    DELETE user career    ###################
 DELETE  http://localhost:5000/user/career
-
-
-#############    DELETE user career by id    ###################
-DELETE  http://localhost:5000/user/career/60277a7ddc4e143174869edd
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzgzODI5OCwiZXhwIjoxNjEzODc0Mjk4fQ.sWf1KAFchczf7hZS17zg4GFHl6pAxLqCr1pQtN5HsOQ
 
 
 
