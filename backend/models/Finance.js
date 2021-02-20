@@ -2,14 +2,12 @@ import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 const Schema = mongoose.Schema;
 
-//@ pan card details
-const panCard = new Schema({
-  panCard: String,
-});
-
 // assets details
 const assetsSchema = Schema({
-  commodities: String,
+  commodities: {
+    type: String,
+    required: true,
+  },
   cryptocurrencies: String,
   stocks: String,
   mutual_funds: String,
@@ -18,16 +16,17 @@ const assetsSchema = Schema({
 
 // user finance details
 const financeSchema = Schema({
-  panCard: panCard,
+  user: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+    ref: "User",
+  },
+  panCard: String,
   itr_forms: String,
   bank_transaction: String,
-  assets: assetsSchema,
+  assets: [assetsSchema],
   password: {
     type: String,
-    required: true,
-  },
-  layer: {
-    type: Number,
     required: true,
   },
 });
@@ -35,7 +34,7 @@ const financeSchema = Schema({
 //  Encrypt a password before saving document
 financeSchema.pre("save", async function (next) {
   // hashing of password based on layer no.
-  this.password = await bcrypt.hash(this.password, this.layer);
+  this.password = await bcrypt.hash(this.password, 10);
 });
 
 const UserFinance = mongoose.model("Finance", financeSchema);

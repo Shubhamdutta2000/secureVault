@@ -2,26 +2,20 @@ import express from "express";
 const router = express.Router();
 import {
   getUserMedical,
-  getUserMedicalById,
   postUserMedical,
   putUserMedical,
   deleteUserMedical,
-  deleteUserMedicalById,
 } from "../controller/userMedicalController.js";
+import authProtect from "../middleware/authenticate.js";
 
 // Individual routes
 
 // Medical routes
 router
   .route("/")
-  .get(getUserMedical)
-  .post(postUserMedical)
-  .delete(deleteUserMedical);
-
-router
-  .route("/:id")
-  .post(getUserMedicalById)
-  .put(putUserMedical)
-  .delete(deleteUserMedicalById);
+  .post(authProtect, getUserMedical)
+  .put(authProtect, putUserMedical)
+  .delete(authProtect, deleteUserMedical);
+router.route("/post").post(authProtect, postUserMedical);
 
 export default router;

@@ -1,89 +1,43 @@
 import app from "../app.js";
 import request from "supertest";
 import { UserFinance } from "../models/Finance.js";
+let token;
 
-// add userDetails before all test cases
 beforeAll(async () => {
-  const userDetails = new UserFinance({
-    _id: "602cab72ee2f463f6c289172",
-    panCard: {
-      panCard: "23325457",
-    },
-    itr_forms: "lol",
-    bank_transaction: "null",
-    assets: {
-      commodities: "abcdef",
-      cryptocurrencies: "pqrs",
-      stocks: "hello",
-      mutual_funds: "null",
-      ipos: "null",
-    },
-    password: "SECRET",
-    layer: 6,
-  });
-  await userDetails.save();
-  console.log("before All test cases");
-  const details = await UserFinance.findOne({
-    _id: "602cab72ee2f463f6c289172",
-  });
-  console.log(details);
-});
-
-// GET all Finance details
-test("GET all Finance details", (done) => {
-  return request(app)
-    .get("/user/finance")
-    .expect("Content-Type", /json/)
-    .expect(200)
-    .then((res) => {
-      expect(res.body).toBeInstanceOf(Array);
-      done();
-    });
-});
-
-// GET finance details by ID
-test("GET finance details by ID", (done) => {
-  return request(app)
-    .post("/user/finance/602cab72ee2f463f6c289172")
-    .send({ password: "SECRET" })
-    .set("Accept", "application/json")
-    .expect("Content-Type", /json/)
-    .expect(200)
-    .then((res) => {
-      expect(res.body).toBeInstanceOf(Object);
-      expect(Object.keys(res.body)).toEqual(
-        expect.arrayContaining([
-          "panCard",
-          "itr_forms",
-          "bank_transaction",
-          "assets",
-          "password",
-          "layer",
-        ])
-      );
-      done();
-    });
-});
-
-// POST all finance details
-test("POST all finance details", (done) => {
-  return request(app)
-    .post("/user/finance")
+  // user log in and get token
+  await request(app)
+    .post("/user/login")
     .send({
-      panCard: {
-        panCard: "12345678",
-      },
+      email: "sd@gmail.com",
+      password: "test1234",
+    })
+    .then((response) => {
+      token = response.body.token; // save the token!
+    });
+
+  // delete finance
+  await UserFinance.deleteMany({});
+});
+
+// POST 1 finance details
+test("POST 1 finance details", (done) => {
+  return request(app)
+    .post("/user/finance/post")
+    .set("Authorization", `Bearer ${token}`)
+    .send({
+      panCard: "12345567",
       itr_forms: "aye",
       bank_transaction: "200000",
-      assets: {
-        commodities: "yoHoney",
-        cryptocurrencies: "wolf",
-        stocks: "null",
-        mutual_funds: "nill",
-        ipos: "null",
-      },
-      password: "SECRET2",
-      layer: 9,
+      assets: [
+        {
+          commodities: "yoHoney",
+          cryptocurrencies: "wolf",
+          stocks: "null",
+          mutual_funds: "nill",
+          ipos: "null",
+        },
+      ],
+      password: "SECRET",
     })
     .set("Accept", "application/json")
     .expect("Content-Type", /json/)
@@ -97,17 +51,74 @@ test("POST all finance details", (done) => {
           "bank_transaction",
           "assets",
           "password",
-          "layer",
         ])
       );
       done();
     });
 });
 
-// UPDATE finance Detail by ID
-test("UPDATE finance details by ID", (done) => {
+// Cannot POST finance detail
+test("Cannot POST finance detail more than 1", (done) => {
   return request(app)
-    .put("/user/finance/602cab72ee2f463f6c289172")
+    .post("/user/finance/post")
+    .set("Authorization", `Bearer ${token}`)
+    .send({
+      panCard: "98765432",
+      itr_forms: "aye",
+      bank_transaction: "45500",
+      assets: [
+        {
+          commodities: "helloMoto",
+          cryptocurrencies: "bitcoin",
+          stocks: "200 dollar",
+          mutual_funds: "100 dollar",
+          ipos: "null",
+        },
+      ],
+      password: "SECRET2",
+    })
+    .set("Accept", "application/json")
+    .expect("Content-Type", /json/)
+    .expect(404)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      expect(res.body).toHaveProperty(
+        "message",
+        "one finance already be given"
+      );
+      done();
+    });
+});
+
+// GET finance detail
+test("GET finance detail", (done) => {
+  return request(app)
+    .post("/user/finance")
+    .set("Authorization", `Bearer ${token}`)
+    .send({ password: "SECRET" })
+    .set("Accept", "application/json")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .then((res) => {
+      expect(res.body).toBeInstanceOf(Object);
+      expect(Object.keys(res.body)).toEqual(
+        expect.arrayContaining([
+          "panCard",
+          "itr_forms",
+          "bank_transaction",
+          "assets",
+          "password",
+        ])
+      );
+      done();
+    });
+});
+
+// UPDATE finance Detail
+test("UPDATE finance detail", (done) => {
+  return request(app)
+    .put("/user/finance")
+    .set("Authorization", `Bearer ${token}`)
     .send({ itr_forms: "noOneCares", bank_transaction: "400000" })
     .set("Accept", "application/json")
     .expect("Content-Type", /json/)
@@ -121,7 +132,6 @@ test("UPDATE finance details by ID", (done) => {
           "bank_transaction",
           "assets",
           "password",
-          "layer",
         ])
       );
       expect(res.body).toHaveProperty("itr_forms", "noOneCares");
@@ -130,22 +140,11 @@ test("UPDATE finance details by ID", (done) => {
     });
 });
 
-// DELETE finance details by ID
-test("DELETE finance details by ID", (done) => {
-  return request(app)
-    .delete("/user/finance/602cab72ee2f463f6c289172")
-    .expect("Content-Type", /json/)
-    .expect(200)
-    .then((res) => {
-      expect(res.body).toBeInstanceOf(Object);
-      done();
-    });
-});
-
 // DELETE all finance details
 test("DELETE all finance details", (done) => {
   return request(app)
     .delete("/user/finance")
+    .set("Authorization", `Bearer ${token}`)
     .expect("Content-Type", /json/)
     .expect(200)
     .then((res) => {
