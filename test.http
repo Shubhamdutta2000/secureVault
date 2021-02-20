@@ -249,35 +249,28 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3Z
 #############   User Finance   ##############
 
 ###############   POST user Finance  ##################
-POST http://localhost:5000/user/finance
+POST http://localhost:5000/user/finance/post
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzgzODI5OCwiZXhwIjoxNjEzODc0Mjk4fQ.sWf1KAFchczf7hZS17zg4GFHl6pAxLqCr1pQtN5HsOQ
 Content-Type: application/json
 
 {
- "panCard":
-      {
-        "panCard": "23325457"
-      },
+    "panCard":"123456",
     "itr_forms": "lol",
     "bank_transaction": "null",
-    "assets":
-      {
+    "assets":[{
         "commodities": "abcdef",
         "cryptocurrencies": "pqrs",
         "stocks": "hello",
         "mutual_funds": "null",
         "ipos": "null"
-      },
-    "password": "SECRET",
-    "layer": 6
+      }],
+    "password": "SECRET"
 }
 
-#############    GET user finance    ###################
-GET http://localhost:5000/user/finance
 
-
-
-#############    GET user finance by id   ###################
-POST http://localhost:5000/user/finance/602d68fc7798603a10b4512a
+#############    GET user finance   ###################
+POST http://localhost:5000/user/finance
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzgzODI5OCwiZXhwIjoxNjEzODc0Mjk4fQ.sWf1KAFchczf7hZS17zg4GFHl6pAxLqCr1pQtN5HsOQ
 Content-Type: application/json
 
 {
@@ -286,7 +279,8 @@ Content-Type: application/json
 
 
 #############    PUT user finance    ###################
-PUT http://localhost:5000/user/finance/602d68fc7798603a10b4512a
+PUT http://localhost:5000/user/finance
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzgzODI5OCwiZXhwIjoxNjEzODc0Mjk4fQ.sWf1KAFchczf7hZS17zg4GFHl6pAxLqCr1pQtN5HsOQ
 Content-Type: application/json
 
 {
@@ -296,11 +290,7 @@ Content-Type: application/json
 
 #############   DELETE user finance   ###################
 DELETE http://localhost:5000/user/finance
-
-
-#############   DELETE user finance by Id   ###################
-DELETE http://localhost:5000/user/finance/602d68fc7798603a10b4512a
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzgzODI5OCwiZXhwIjoxNjEzODc0Mjk4fQ.sWf1KAFchczf7hZS17zg4GFHl6pAxLqCr1pQtN5HsOQ
 
 
 

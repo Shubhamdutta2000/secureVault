@@ -2,22 +2,11 @@ import { UserFinance } from "../models/Finance.js";
 import bcrypt from "bcrypt";
 
 // @route: GET /user/finance
-// @purpose: get all user finance
+// @purpose: get user finance
 export const getUserFinance = async (req, res) => {
-  const userFinance = await UserFinance.find();
-  if (userFinance) {
-    res.status(200).json(userFinance);
-  } else {
-    res.status(404).json({ errMessage: "no user finance details present" });
-  }
-};
-
-// @route: GET /user/finance/:id
-// @purpose: get user finance by id
-export const getUserFinanceById = async (req, res) => {
   const { password } = req.body;
 
-  const userFinance = await UserFinance.findOne({ _id: req.params.id });
+  const userFinance = await UserFinance.findOne({}).populate("user");
   if (userFinance) {
     const hashedPassword = userFinance.password;
     const checkFinancePassword = await bcrypt.compare(password, hashedPassword);
@@ -34,13 +23,19 @@ export const getUserFinanceById = async (req, res) => {
 // @route: POST /user/finance
 // @purpose: POST user finance
 export const postUserFinance = async (req, res) => {
-  const body = req.body;
-  const userFinance = new UserFinance(body);
-  try {
-    await userFinance.save();
-    res.status(200).json(userFinance);
-  } catch (error) {
-    res.status(404).json({ errMessage: error });
+  const financeExist = await UserFinance.findOne({});
+  if (!financeExist) {
+    const body = req.body;
+    body.user = req.user._id; //add authenticated user id
+    const userFinance = new UserFinance(body);
+    try {
+      await userFinance.save();
+      res.status(200).json(userFinance);
+    } catch (error) {
+      res.status(404).json({ errMessage: error });
+    }
+  } else {
+    res.status(404).json({ message: "one finance already be given" });
   }
 };
 
@@ -51,13 +46,9 @@ export const putUserFinance = async (req, res) => {
     const body = req.body;
     console.log(body);
     console.log(req.params.id);
-    const updateduserFinance = await UserFinance.findOneAndUpdate(
-      { _id: req.params.id },
-      body,
-      {
-        new: true,
-      }
-    );
+    const updateduserFinance = await UserFinance.findOneAndUpdate({}, body, {
+      new: true,
+    });
     res.status(200).json(updateduserFinance);
   } catch (error) {
     res.status(404).json({ errMessage: error });
