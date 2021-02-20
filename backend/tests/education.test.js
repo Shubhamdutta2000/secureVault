@@ -70,7 +70,7 @@ test("POST 1 eduation detail", (done) => {
     });
 });
 
-// Cannot POST document
+// Cannot POST education
 test("Cannot POST education more than 1", (done) => {
   return request(app)
     .post("/user/education/post")
