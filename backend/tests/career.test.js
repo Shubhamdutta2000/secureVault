@@ -27,29 +27,20 @@ test("POST 1 career", (done) => {
     .set("Authorization", `Bearer ${token}`)
     .send({
       resume: "mainak.netlify.com",
-      career_instances: [
-        {
-          company_name: "qa",
-          company_post: "developer",
-          finance: {
-            in_hand: "9000rs",
-            ctc: "1000",
-            salary_slips: "222222",
-          },
+      career_instances: {
+        company_name: "qa",
+        company_post: "developer",
+        finance: {
+          in_hand: "9000rs",
+          ctc: "1000",
+          salary_slips: "222222",
         },
-      ],
-      non_service_persuits: [
-        {
-          freelancing: "TCW",
-          bussiness: "group",
-          non_profits: "profitable",
-        },
-        {
-          freelancing: "DSC",
-          bussiness: "group",
-          non_profits: "profitable",
-        },
-      ],
+      },
+      non_service_persuits: {
+        freelancing: "TCW",
+        bussiness: "group",
+        non_profits: "profitable",
+      },
       password: "secret",
     })
     .set("Accept", "application/json")
@@ -76,29 +67,20 @@ test("Cannot POST career more than 1", (done) => {
     .set("Authorization", `Bearer ${token}`)
     .send({
       resume: "shubham.heroku.com",
-      career_instances: [
-        {
-          company_name: "println",
-          company_post: "social media handler",
-          finance: {
-            in_hand: "100000rs",
-            ctc: "10000",
-            salary_slips: "4444444",
-          },
+      career_instances: {
+        company_name: "println",
+        company_post: "social media handler",
+        finance: {
+          in_hand: "100000rs",
+          ctc: "10000",
+          salary_slips: "4444444",
         },
-      ],
-      non_service_persuits: [
-        {
-          freelancing: "TCW",
-          bussiness: "group",
-          non_profits: "profitable",
-        },
-        {
-          freelancing: "QA",
-          bussiness: "group",
-          non_profits: "profitable",
-        },
-      ],
+      },
+      non_service_persuits: {
+        freelancing: "TCW",
+        bussiness: "group",
+        non_profits: "profitable",
+      },
       password: "secret2",
     })
     .set("Accept", "application/json")

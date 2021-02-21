@@ -15,9 +15,9 @@ const collegeSchema = Schema({
   course: String,
   discipline: String,
   semester_sheets: String,
-  final_year_projects: Array,
-  degree_certificates: Array,
-  other_certificate: [otherCertificate],
+  final_year_projects: String,
+  degree_certificates: String,
+  other_certificate: otherCertificate,
 });
 
 // class 10 and 12 board details

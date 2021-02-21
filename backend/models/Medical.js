@@ -15,7 +15,7 @@ const medicalSchema = Schema({
     required: true,
     ref: "User",
   },
-  vaccination_records: [recordsSchema],
+  vaccination_records: recordsSchema,
   medical_illness_long_term: String,
   password: {
     type: String,

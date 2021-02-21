@@ -27,8 +27,8 @@ const careerSchema = Schema({
     ref: "User",
   },
   resume: String,
-  career_instances: [careerInstancesSchema],
-  non_service_persuits: [nonServicesPersuitsSchema],
+  career_instances: careerInstancesSchema,
+  non_service_persuits: nonServicesPersuitsSchema,
   password: {
     type: String,
     required: true,

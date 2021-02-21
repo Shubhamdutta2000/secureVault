@@ -28,15 +28,13 @@ test("POST 1 finance details", (done) => {
       panCard: "12345567",
       itr_forms: "aye",
       bank_transaction: "200000",
-      assets: [
-        {
-          commodities: "yoHoney",
-          cryptocurrencies: "wolf",
-          stocks: "null",
-          mutual_funds: "nill",
-          ipos: "null",
-        },
-      ],
+      assets: {
+        commodities: "yoHoney",
+        cryptocurrencies: "wolf",
+        stocks: "null",
+        mutual_funds: "nill",
+        ipos: "null",
+      },
       password: "SECRET",
     })
     .set("Accept", "application/json")
@@ -66,15 +64,13 @@ test("Cannot POST finance detail more than 1", (done) => {
       panCard: "98765432",
       itr_forms: "aye",
       bank_transaction: "45500",
-      assets: [
-        {
-          commodities: "helloMoto",
-          cryptocurrencies: "bitcoin",
-          stocks: "200 dollar",
-          mutual_funds: "100 dollar",
-          ipos: "null",
-        },
-      ],
+      assets: {
+        commodities: "helloMoto",
+        cryptocurrencies: "bitcoin",
+        stocks: "200 dollar",
+        mutual_funds: "100 dollar",
+        ipos: "null",
+      },
       password: "SECRET2",
     })
     .set("Accept", "application/json")

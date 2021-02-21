@@ -1,6 +1,6 @@
 import app from "../app.js";
 import request from "supertest";
-import { UserDocument } from "../models/Document.js";
+import { UserEducation } from "../models/Education.js";
 let token;
 
 // add userEducation before all test cases
@@ -17,7 +17,7 @@ beforeAll(async () => {
     });
 
   // delete document
-  await UserDocument.deleteMany({});
+  await UserEducation.deleteMany({});
 });
 
 // POST 1 education detail
@@ -39,18 +39,13 @@ test("POST 1 eduation detail", (done) => {
         course: "Computer Application",
         discipline: "medium",
         semester_sheets: "bolbona",
-        final_year_projects: [
-          "covid-19 tracker-app",
-          "social-media management tool",
-        ],
-        degree_certificates: ["bca", "mca"],
-        other_certificate: [
-          {
-            academy: "web app ml",
-            sports: "football",
-            events: "stand up comedy",
-          },
-        ],
+        final_year_projects: "covid-19 tracker-app",
+        degree_certificates: "bca",
+        other_certificate: {
+          academy: "web app ml",
+          sports: "football",
+          events: "stand up comedy",
+        },
       },
       password: "SECRETMESSAGE",
     })
@@ -89,18 +84,13 @@ test("Cannot POST education more than 1", (done) => {
         course: "Computer Application",
         discipline: "medium",
         semester_sheets: "bolbona",
-        final_year_projects: [
-          "covid-19 tracker-app",
-          "social-media management tool",
-        ],
-        degree_certificates: ["btech", "mca"],
-        other_certificate: [
-          {
-            academy: "machine learning",
-            sports: "cricket",
-            events: "stand up comedy",
-          },
-        ],
+        final_year_projects: "covid-19 tracker-app",
+        degree_certificates: "btech",
+        other_certificate: {
+          academy: "machine learning",
+          sports: "cricket",
+          events: "stand up comedy",
+        },
       },
       password: "SECRETMESSAGE2",
     })

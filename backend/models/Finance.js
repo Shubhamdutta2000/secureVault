@@ -24,7 +24,7 @@ const financeSchema = Schema({
   panCard: String,
   itr_forms: String,
   bank_transaction: String,
-  assets: [assetsSchema],
+  assets: assetsSchema,
   password: {
     type: String,
     required: true,

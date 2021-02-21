@@ -25,14 +25,12 @@ test("POST 1 medical detail", (done) => {
     .post("/user/medical/post")
     .set("Authorization", `Bearer ${token}`)
     .send({
-      vaccination_records: [
-        {
-          vaccine_name: "pox vaccine",
-          vaccine_date: "2002, 14, 15",
-          administered_by: "2002, 14, 15",
-          administered_at: "2002, 14, 15",
-        },
-      ],
+      vaccination_records: {
+        vaccine_name: "pox vaccine",
+        vaccine_date: "2002, 14, 15",
+        administered_by: "2002, 14, 15",
+        administered_at: "2002, 14, 15",
+      },
       medical_illness_long_term: "issued",
       password: "ISSECRET",
     })
@@ -54,14 +52,12 @@ test("Cannot POST medical detail more than 1", (done) => {
     .post("/user/medical/post")
     .set("Authorization", `Bearer ${token}`)
     .send({
-      vaccination_records: [
-        {
-          vaccine_name: "corona vaccine",
-          vaccine_date: "2002, 14, 15",
-          administered_by: "2002, 14, 15",
-          administered_at: "2002, 14, 15",
-        },
-      ],
+      vaccination_records: {
+        vaccine_name: "corona vaccine",
+        vaccine_date: "2002, 14, 15",
+        administered_by: "2002, 14, 15",
+        administered_at: "2002, 14, 15",
+      },
       medical_illness_long_term: "not-issued",
       password: "ISSECRET2",
     })
@@ -102,11 +98,9 @@ test("UPDATE medical detail", (done) => {
     .put("/user/medical")
     .set("Authorization", `Bearer ${token}`)
     .send({
-      vaccination_records: [
-        {
-          vaccine_name: "covid-19 virus recovery",
-        },
-      ],
+      vaccination_records: {
+        vaccine_name: "covid-19 virus recovery",
+      },
     })
     .set("Accept", "application/json")
     .expect("Content-Type", /json/)
@@ -116,7 +110,7 @@ test("UPDATE medical detail", (done) => {
       expect(Object.keys(res.body)).toEqual(
         expect.arrayContaining(["vaccination_records", "password"])
       );
-      expect(res.body.vaccination_records[0]).toHaveProperty(
+      expect(res.body.vaccination_records).toHaveProperty(
         "vaccine_name",
         "covid-19 virus recovery"
       );
