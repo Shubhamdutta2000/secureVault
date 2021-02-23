@@ -16,7 +16,7 @@ import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import LockIcon from "@material-ui/icons/Lock";
 
-import { useStyles } from "./Custom Styles/loginForm";
+import { useStyles } from "./Custom Styles/loginSignupForm";
 
 const LoginScreen = () => {
   const classes = useStyles();
@@ -46,7 +46,7 @@ const LoginScreen = () => {
               src="assets/images/teamwork.png"
               alt="teamwork"
             />
-            <h3 className={classes.login}>LOGIN</h3>
+            <h3 className={classes.heading}>LOGIN</h3>
 
             {/*// FORM FOR LOGIN //*/}
 
@@ -124,7 +124,7 @@ const LoginScreen = () => {
 
               <Grid container>
                 <Grid item>
-                  <Typography component="h5" className={classes.register}>
+                  <Typography component="h5" className={classes.register_login}>
                     Haven't Registered yet? &nbsp;
                     <Link to="/register" variant="body2">
                       Register

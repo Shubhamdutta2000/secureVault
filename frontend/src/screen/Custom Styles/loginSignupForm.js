@@ -15,9 +15,9 @@ export const useStyles = makeStyles((theme) => ({
   avatar: {
     width: "4.8rem",
   },
-  login: {
+  heading: {
     fontWeight: "bold",
-    fontSize: "2.5rem",
+    fontSize: "2.2rem",
     lineHeight: "1.8rem",
     letterSpacing: "-0.01em",
     color: "#0062D1",
@@ -33,7 +33,7 @@ export const useStyles = makeStyles((theme) => ({
         borderColor: "#46BFE0",
       },
     },
-    paddingBottom: theme.spacing(3.6),
+    paddingBottom: theme.spacing(2.5),
     width: "80%",
 
     [theme.breakpoints.down("xs")]: {
@@ -63,7 +63,7 @@ export const useStyles = makeStyles((theme) => ({
     width: "1.2rem",
   },
 
-  register: {
+  register_login: {
     paddingTop: theme.spacing(2.8),
     marginLeft: "6rem",
 
