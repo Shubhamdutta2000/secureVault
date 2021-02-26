@@ -73,3 +73,11 @@ export const userRegister = (name, email, password) => async (dispatch) => {
     });
   }
 };
+
+// logout action
+export const userLogout = () => (dispatch) => {
+  localStorage.removeItem("userInfo");
+  dispatch({
+    type: USER_LOGOUT,
+  });
+};

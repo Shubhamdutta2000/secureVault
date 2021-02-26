@@ -7,9 +7,19 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
+// REDUX
+import { userLogout } from "../redux/actions/userAction";
+import { useDispatch } from "react-redux";
+
 import { useStyles } from "./customStyles/header";
 const Header = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  // handling logout
+  const logoutHandler = () => {
+    dispatch(userLogout());
+  };
 
   return (
     <div className={classes.root}>
@@ -35,7 +45,11 @@ const Header = () => {
             POST
           </Button>
           <ExitToAppIcon />
-          <Button className={classes.button} color="inherit">
+          <Button
+            className={classes.button}
+            onClick={logoutHandler}
+            color="inherit"
+          >
             LOGOUT
           </Button>
         </Toolbar>
