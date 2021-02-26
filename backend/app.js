@@ -9,6 +9,7 @@ import userFinanceRouter from "./routes/userFinanceRoutes.js";
 import userMedicalRouter from "./routes/userMedicalRoutes.js";
 import mongooseConnection from "./config/db.js";
 import userRouter from "./routes/userRouter.js";
+import cors from "cors";
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -19,6 +20,7 @@ mongooseConnection();
 
 //Middleware
 app.use(morgan("dev"));
+app.use(cors());
 
 //Routes
 app.use("/", homeRouter);

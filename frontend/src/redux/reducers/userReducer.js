@@ -8,20 +8,14 @@ import {
   USER_REGISTER_SUCCESS,
 } from "../actionTypes/userConstants";
 
-export const userLoginReducer = (
-  state = {
-    loading: false,
-    isAuthenticated: false,
-    error: null,
-  },
-  action
-) => {
+export const userLoginReducer = (state = {}, action) => {
   switch (action.type) {
     case USER_LOGIN_REQUEST:
       return {
         loading: true,
         isAuthenticated: false,
         error: null,
+        userInfo: null,
       };
 
     case USER_LOGIN_SUCCESS:
@@ -53,6 +47,7 @@ export const userRegisterReducer = (
   state = {
     loading: false,
     error: null,
+    userInfo: null,
   },
   action
 ) => {

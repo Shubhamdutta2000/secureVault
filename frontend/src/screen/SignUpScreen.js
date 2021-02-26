@@ -17,6 +17,10 @@ import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import LockIcon from "@material-ui/icons/Lock";
 import GroupIcon from "@material-ui/icons/Group";
 
+// REDUX
+import { userRegister } from "../redux/actions/userAction";
+import { useDispatch, useSelector } from "react-redux";
+
 import { useStyles } from "./Custom Styles/loginSignupForm";
 
 const LoginScreen = () => {
@@ -28,8 +32,15 @@ const LoginScreen = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordVisibility, setPasswordVisibility] = useState("");
 
+  // REDUX
+  const dispatch = useDispatch();
+
   // submit handler
-  const submitHandler = () => {};
+  const submitHandler = (event) => {
+    event.preventDefault();
+
+    dispatch(userRegister(name, email, password));
+  };
 
   return (
     <div className={classes.root}>
