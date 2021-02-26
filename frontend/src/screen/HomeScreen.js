@@ -7,10 +7,10 @@ import { Button } from "@material-ui/core";
 const useStyles = makeStyles({
   heading: {
     position: "absolute",
-    top: "16rem",
+    top: "18rem",
     fontStyle: "italic",
     fontWeight: "500",
-    fontSize: "3.6rem",
+    fontSize: "4rem",
     lineHeight: "127px",
 
     letterSpacing: " -0.001em",
@@ -22,11 +22,11 @@ const useStyles = makeStyles({
 
   para: {
     position: "absolute",
-    top: "50%",
-    fontStyle: "normal",
+    top: "51%",
+    fontStyle: "italic",
     fontWeight: "500",
-    fontSize: "2rem",
-    lineHeight: "3rem",
+    fontSize: "1.9rem",
+    lineHeight: "1rem",
     letterSpacing: "-0.001em",
 
     color: "#1488B5",
@@ -37,11 +37,11 @@ const useStyles = makeStyles({
   },
   button: {
     position: "absolute",
-    top: "60%",
+    top: "59%",
     background:
       "linear-gradient(90.56deg, #0079A9 0.49%, rgba(100, 200, 240, 0.74) 114.34%)",
-    borderRadius: "75px",
-    width: "14rem",
+    borderRadius: "28rem",
+    width: "15rem",
     height: "4rem",
 
     fontStyle: "italic",
