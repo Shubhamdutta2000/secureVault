@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { Button } from "@material-ui/core";
@@ -7,6 +7,13 @@ import { useStyles } from "./Custom Styles/homeScreen";
 
 const HomeScreen = () => {
   const classes = useStyles();
+
+  const allsecrets = useRef(null);
+  const executeScroll = () => {
+    allsecrets.current.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
 
   return (
     <>
@@ -19,7 +26,9 @@ const HomeScreen = () => {
           <Typography className={classes.para} variant="h1" component="h2">
             Your secrets are safe with us
           </Typography>
-          <Button className={classes.button}>Continue</Button>
+          <Button className={classes.button} onClick={executeScroll}>
+            Continue
+          </Button>
         </Grid>
         <Grid item xs={12} md={6}>
           <img
@@ -31,7 +40,12 @@ const HomeScreen = () => {
       </Grid>
 
       {/* all secrets sections */}
-      <Typography className={classes.allSecrets} variant="h2" component="h4">
+      <Typography
+        ref={allsecrets}
+        className={classes.allSecrets}
+        variant="h2"
+        component="h4"
+      >
         All Secrets
       </Typography>
       <Grid container spacing={1}>
