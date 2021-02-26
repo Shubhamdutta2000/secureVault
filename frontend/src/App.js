@@ -5,18 +5,20 @@ import { useSelector } from "react-redux";
 import Header from "./components/Header";
 
 import "./App.css";
+import HomeScreen from "./screen/HomeScreen";
 
 function App() {
   const { userInfo } = useSelector((state) => state.userLogin);
 
   return (
     <BrowserRouter>
-      <Header />
+      {userInfo && <Header />}
       <div className="App">
         <Switch>
           {!userInfo && <Redirect exact from="/" to="/login" />}
-          <Route path="/login" component={LoginScreen} exact />
+          <Route component={LoginScreen} path="/login" exact />
           <Route component={SignUpScreen} path="/register" />
+          <Route component={HomeScreen} path="/" exact />
         </Switch>
       </div>
     </BrowserRouter>
