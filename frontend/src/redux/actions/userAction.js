@@ -10,6 +10,7 @@ import {
 
 import axios from "axios";
 
+// user login action
 export const userLogin = (email, password) => async (dispatch, getState) => {
   try {
     dispatch({
@@ -40,6 +41,7 @@ export const userLogin = (email, password) => async (dispatch, getState) => {
   }
 };
 
+// user register action
 export const userRegister = (name, email, password) => async (dispatch) => {
   try {
     dispatch({

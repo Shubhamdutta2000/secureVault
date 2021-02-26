@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
@@ -22,7 +22,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { useStyles } from "./Custom Styles/loginSignupForm";
 
-const LoginScreen = () => {
+const LoginScreen = ({ history }) => {
   const classes = useStyles();
 
   const [email, setEmail] = useState("");
@@ -31,11 +31,18 @@ const LoginScreen = () => {
 
   // REDUX
   const dispatch = useDispatch();
+  const { userInfo } = useSelector((state) => state.userLogin);
+
+  // redirect to home page if logged in
+  useEffect(() => {
+    if (userInfo) {
+      history.push("/");
+    }
+  }, [history, userInfo]);
 
   // submit handler
   const submitHandler = (event) => {
     event.preventDefault();
-
     dispatch(userLogin(email, password));
   };
 
