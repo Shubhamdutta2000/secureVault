@@ -10,9 +10,8 @@ const useStyles = makeStyles({
     top: "18rem",
     fontStyle: "italic",
     fontWeight: "500",
-    fontSize: "4rem",
+    fontSize: "4.4rem",
     lineHeight: "127px",
-
     letterSpacing: " -0.001em",
     background:
       "linear-gradient(10.56deg,  #003145    0.49%,rgba(0, 152, 176, 0.26) 114.34%)",
@@ -22,13 +21,12 @@ const useStyles = makeStyles({
 
   para: {
     position: "absolute",
-    top: "51%",
+    top: "51.6%",
     fontStyle: "italic",
     fontWeight: "500",
-    fontSize: "1.9rem",
+    fontSize: "2.2rem",
     lineHeight: "1rem",
     letterSpacing: "-0.001em",
-
     color: "#1488B5",
   },
   image: {
@@ -37,16 +35,16 @@ const useStyles = makeStyles({
   },
   button: {
     position: "absolute",
-    top: "59%",
+    top: "60%",
     background:
       "linear-gradient(90.56deg, #0079A9 0.49%, rgba(100, 200, 240, 0.74) 114.34%)",
     borderRadius: "28rem",
-    width: "15rem",
-    height: "4rem",
+    width: "16rem",
+    height: "4.2rem",
 
     fontStyle: "italic",
     fontWeight: "bold",
-    fontSize: "1.45rem",
+    fontSize: "1.7rem",
     textAlign: "center",
     letterSpacing: "-0.01em",
     color: "#FFFFFF",

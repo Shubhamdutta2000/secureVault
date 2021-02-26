@@ -44,7 +44,7 @@ const Header = () => {
           <Button className={classes.button} color="inherit">
             POST
           </Button>
-          <ExitToAppIcon />
+          <ExitToAppIcon fontSize="large" />
           <Button
             className={classes.button}
             onClick={logoutHandler}
