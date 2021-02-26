@@ -8,9 +8,11 @@ export const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(4.8),
     textAlign: "center",
     color: theme.palette.text.secondary,
+    marginTop: "3rem",
   },
   image: {
     marginTop: "-3rem",
+    height: "50rem",
   },
   avatar: {
     width: "4.8rem",

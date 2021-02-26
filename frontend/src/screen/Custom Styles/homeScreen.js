@@ -58,6 +58,7 @@ export const useStyles = makeStyles({
   },
   doc: {
     paddingTop: "4rem",
+    cursor: "pointer",
     filter: "drop-shadow(10px 10px 24px rgba(0, 0, 0, 0.42))",
   },
   folder_name: {
