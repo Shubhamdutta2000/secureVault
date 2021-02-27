@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { Button, TextField } from "@material-ui/core";
@@ -9,10 +9,27 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
+// REDUX
+import { useDispatch, useSelector } from "react-redux";
+import { getDetails } from "../redux/actions/detailsAction";
+
 import { useStyles } from "./Custom Styles/homeScreen";
 
-const HomeScreen = () => {
+const HomeScreen = ({ history }) => {
   const classes = useStyles();
+  const [password, setPassword] = useState("");
+  const [open, setOpen] = useState(false);
+
+  const dispatch = useDispatch();
+  const { details, error } = useSelector((state) => state.userDetails);
+
+  useEffect(() => {
+    if (details) {
+      history.push("/details");
+    } else if (error) {
+      alert(error.message);
+    }
+  }, [details, history, error]);
 
   const allsecrets = useRef(null);
   const executeScroll = () => {
@@ -21,7 +38,10 @@ const HomeScreen = () => {
     });
   };
 
-  const [open, setOpen] = React.useState(false);
+  const handleSubmit = () => {
+    dispatch(getDetails(password));
+    setOpen(false);
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -177,6 +197,8 @@ const HomeScreen = () => {
             className={classes.input}
             autoFocus
             margin="dense"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             id="Password"
             label="Password"
             type="password"
@@ -195,7 +217,7 @@ const HomeScreen = () => {
           </Button>
           <Button
             size="large"
-            onClick={handleClose}
+            onClick={handleSubmit}
             className={classes.dialogButton}
             color="primary"
           >

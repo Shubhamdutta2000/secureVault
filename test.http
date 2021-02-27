@@ -24,7 +24,7 @@ Content-Type: application/json
 ###############   POST user details  ##################
 POST http://localhost:5000/user/details/post
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzkxMjEyMCwiZXhwIjoxNjEzOTQ4MTIwfQ.Jhm6FdJNwTv_NQgF6419gdnmBTONgSiG1IscZ8nLqPU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYjBlNWMyZDkzNTEyOGZkNTE4MSIsImlhdCI6MTYxNDQ1NTA2MSwiZXhwIjoxNjE0NDkxMDYxfQ.rWpnr96_gaVbqY5kddfpqc8EbUvYOp4qr4Lf8QYWpgU
 
 {
     "bio": "I am a CST student, Web developer specialist and coding enthusiast",
@@ -37,7 +37,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3Z
 #############    GET user detail    ###################
 POST http://localhost:5000/user/details
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzEzN2Q3ZDQwZjkzNGQzOGFjMmQ1MCIsImlhdCI6MTYxMzkxMjEyMCwiZXhwIjoxNjEzOTQ4MTIwfQ.Jhm6FdJNwTv_NQgF6419gdnmBTONgSiG1IscZ8nLqPU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYjBlNWMyZDkzNTEyOGZkNTE4MSIsImlhdCI6MTYxNDQ1NTA2MSwiZXhwIjoxNjE0NDkxMDYxfQ.rWpnr96_gaVbqY5kddfpqc8EbUvYOp4qr4Lf8QYWpgU
 
 {
   "password": "ThisIsSecrets"

@@ -10,14 +10,21 @@ import {
 import axios from "axios";
 
 // get user details action
-export const getDetails = (password) => async (dispatch) => {
+export const getDetails = (password) => async (dispatch, getState) => {
   try {
     dispatch({
       type: REQUEST_DETAILS,
     });
 
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
     const config = {
       "Content-Type": "application/json",
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
     };
 
     const { data } = await axios.post(
