@@ -73,7 +73,7 @@ const DetailsScreen = ({ history }) => {
                     multiline
                     rows={1}
                     onChange={(e) => setName(e.target.value)}
-                    labelWidth={50}
+                    labelWidth={65}
                   />
                 </FormControl>
 
@@ -87,7 +87,7 @@ const DetailsScreen = ({ history }) => {
                     onChange={(e) => setBio(e.target.value)}
                     multiline
                     rows={4}
-                    labelWidth={78}
+                    labelWidth={40}
                   />
                 </FormControl>
 
@@ -104,7 +104,7 @@ const DetailsScreen = ({ history }) => {
                     multiline
                     rows={1}
                     onChange={(e) => setAddress(e.target.value)}
-                    labelWidth={50}
+                    labelWidth={98}
                   />
                 </FormControl>
 
@@ -127,7 +127,7 @@ const DetailsScreen = ({ history }) => {
                     multiline
                     rows={1}
                     onChange={(e) => setEmail(e.target.value)}
-                    labelWidth={50}
+                    labelWidth={66}
                   />
                 </FormControl>
 
@@ -159,7 +159,7 @@ const DetailsScreen = ({ history }) => {
                     multiline
                     rows={1}
                     onChange={(e) => setDob(e.target.value)}
-                    labelWidth={50}
+                    labelWidth={55}
                   />
                 </FormControl>
 

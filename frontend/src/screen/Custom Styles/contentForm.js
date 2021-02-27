@@ -37,6 +37,10 @@ export const useStyles = makeStyles((theme) => ({
         borderRadius: "0.6rem",
       },
     },
+    "& ::placeholder": {
+      paddingTop: "2rem",
+      fontSize: "1.4rem",
+    },
     paddingBottom: theme.spacing(4),
     width: "80%",
     [theme.breakpoints.down("xs")]: {
