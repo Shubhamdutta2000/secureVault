@@ -70,4 +70,23 @@ export const useStyles = makeStyles({
     letterSpacing: "-0.01em",
     color: "#016E99",
   },
+
+  input: {
+    "& label": {
+      fontWeight: "550",
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#46BFE0",
+      },
+    },
+    paddingBottom: "1.4rem",
+    width: "100%",
+  },
+  dialogTitle: {
+    color: "#00648C",
+  },
+  dialogButton: {
+    fontWeight: "700",
+  },
 });

@@ -1,7 +1,13 @@
 import React, { useRef } from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import { Button } from "@material-ui/core";
+import { Button, TextField } from "@material-ui/core";
+
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 
 import { useStyles } from "./Custom Styles/homeScreen";
 
@@ -13,6 +19,16 @@ const HomeScreen = () => {
     allsecrets.current.scrollIntoView({
       behavior: "smooth",
     });
+  };
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -51,6 +67,7 @@ const HomeScreen = () => {
       <Grid container spacing={1}>
         <Grid item xs={12} md={4}>
           <img
+            onClick={handleClickOpen}
             className={classes.doc}
             src="assets/images/folder.png"
             alt="details_folder"
@@ -66,6 +83,7 @@ const HomeScreen = () => {
 
         <Grid item xs={12} md={4}>
           <img
+            onClick={handleClickOpen}
             className={classes.doc}
             src="assets/images/folder.png"
             alt="details_folder"
@@ -81,6 +99,7 @@ const HomeScreen = () => {
 
         <Grid item xs={12} md={4}>
           <img
+            onClick={handleClickOpen}
             className={classes.doc}
             src="assets/images/folder.png"
             alt="details_folder"
@@ -96,6 +115,7 @@ const HomeScreen = () => {
 
         <Grid item xs={12} md={4}>
           <img
+            onClick={handleClickOpen}
             className={classes.doc}
             src="assets/images/folder.png"
             alt="details_folder"
@@ -111,6 +131,7 @@ const HomeScreen = () => {
 
         <Grid item xs={12} md={4}>
           <img
+            onClick={handleClickOpen}
             className={classes.doc}
             src="assets/images/folder.png"
             alt="details_folder"
@@ -126,6 +147,7 @@ const HomeScreen = () => {
 
         <Grid item xs={12} md={4}>
           <img
+            onClick={handleClickOpen}
             className={classes.doc}
             src="assets/images/folder.png"
             alt="details_folder"
@@ -139,6 +161,48 @@ const HomeScreen = () => {
           </Typography>
         </Grid>
       </Grid>
+
+      {/*// DIALOG BOX //*/}
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle className={classes.dialogTitle} id="alert-dialog-title">
+          Enter Password to show Content
+        </DialogTitle>
+        <DialogContent dividers>
+          <TextField
+            className={classes.input}
+            autoFocus
+            margin="dense"
+            id="Password"
+            label="Password"
+            type="password"
+            fullWidth
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button
+            size="large"
+            className={classes.dialogButton}
+            onClick={handleClose}
+            color="primary"
+            autoFocus
+          >
+            Close
+          </Button>
+          <Button
+            size="large"
+            onClick={handleClose}
+            className={classes.dialogButton}
+            color="primary"
+          >
+            SUBMIT
+          </Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 };
