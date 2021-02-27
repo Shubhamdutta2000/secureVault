@@ -23,14 +23,6 @@ const HomeScreen = ({ history }) => {
   const dispatch = useDispatch();
   const { details, error } = useSelector((state) => state.userDetails);
 
-  useEffect(() => {
-    if (details) {
-      history.push("/details");
-    } else if (error) {
-      alert(error.message);
-    }
-  }, [details, history, error]);
-
   const allsecrets = useRef(null);
   const executeScroll = () => {
     allsecrets.current.scrollIntoView({
@@ -40,6 +32,12 @@ const HomeScreen = ({ history }) => {
 
   const handleSubmit = () => {
     dispatch(getDetails(password));
+    console.log(details);
+    if (details) {
+      history.push("/details");
+    } else if (error) {
+      alert(error.message);
+    }
     setOpen(false);
   };
 

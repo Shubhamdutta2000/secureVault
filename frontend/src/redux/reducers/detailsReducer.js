@@ -8,7 +8,10 @@ import {
 } from "../actionTypes/detailsConstants";
 
 // details reducer
-export const detailsReducer = (state = {}, action) => {
+export const detailsReducer = (
+  state = { loading: true, details: null, error: null },
+  action
+) => {
   switch (action.type) {
     case REQUEST_DETAILS:
       return {

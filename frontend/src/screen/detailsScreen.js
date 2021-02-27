@@ -19,6 +19,8 @@ const DetailsScreen = ({ history }) => {
 
   const { loading, details, error } = useSelector((state) => state.userDetails);
 
+  console.log(details);
+
   const [name, setName] = useState(details.user.name);
   const [bio, setBio] = useState(details.bio);
   const [address, setAddress] = useState(details.address);
