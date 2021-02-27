@@ -37,6 +37,9 @@ export const getDetails = (password) => async (dispatch, getState) => {
       type: FETCH_DETAILS,
       payload: data,
     });
+
+    // store user details in localStorage
+    localStorage.setItem("userDetails", JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: DETAILS_FAILED,

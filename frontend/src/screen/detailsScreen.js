@@ -17,12 +17,14 @@ import { useStyles } from "./Custom Styles/contentForm";
 const DetailsScreen = ({ history }) => {
   const classes = useStyles();
 
-  const [name, setName] = useState("");
-  const [bio, setBio] = useState("");
-  const [address, setAddress] = useState("");
-  const [email, setEmail] = useState("");
-  const [phn, setPhn] = useState("");
-  const [dob, setDob] = useState("");
+  const { loading, details, error } = useSelector((state) => state.userDetails);
+
+  const [name, setName] = useState(details.user.name);
+  const [bio, setBio] = useState(details.bio);
+  const [address, setAddress] = useState(details.address);
+  const [email, setEmail] = useState(details.user.email);
+  const [phn, setPhn] = useState(details.phn_no);
+  const [dob, setDob] = useState(details.dob);
 
   // REDUX
   const dispatch = useDispatch();
@@ -64,6 +66,9 @@ const DetailsScreen = ({ history }) => {
                     value={name}
                     multiline
                     rows={1}
+                    inputProps={{
+                      style: { fontSize: 26, paddingTop: "0.6rem" },
+                    }} // font size of input text
                     onChange={(e) => setName(e.target.value)}
                     labelWidth={65}
                   />
@@ -79,6 +84,13 @@ const DetailsScreen = ({ history }) => {
                     onChange={(e) => setBio(e.target.value)}
                     multiline
                     rows={4}
+                    inputProps={{
+                      style: {
+                        fontSize: 20,
+                        paddingTop: "0.6rem",
+                        lineHeight: "1.4rem",
+                      },
+                    }} // font size of input text
                     labelWidth={40}
                   />
                 </FormControl>
@@ -95,6 +107,9 @@ const DetailsScreen = ({ history }) => {
                     value={address}
                     multiline
                     rows={1}
+                    inputProps={{
+                      style: { fontSize: 26, paddingTop: "0.6rem" },
+                    }} // font size of input text
                     onChange={(e) => setAddress(e.target.value)}
                     labelWidth={98}
                   />
@@ -118,6 +133,9 @@ const DetailsScreen = ({ history }) => {
                     value={email}
                     multiline
                     rows={1}
+                    inputProps={{
+                      style: { fontSize: 26, paddingTop: "0.6rem" },
+                    }} // font size of input text
                     onChange={(e) => setEmail(e.target.value)}
                     labelWidth={66}
                   />
@@ -135,6 +153,9 @@ const DetailsScreen = ({ history }) => {
                     value={phn}
                     multiline
                     rows={1}
+                    inputProps={{
+                      style: { fontSize: 26, paddingTop: "0.6rem" },
+                    }} // font size of input text
                     onChange={(e) => setPhn(e.target.value)}
                     labelWidth={78}
                   />
@@ -150,6 +171,9 @@ const DetailsScreen = ({ history }) => {
                     value={dob}
                     multiline
                     rows={1}
+                    inputProps={{
+                      style: { fontSize: 26, paddingTop: "0.6rem" },
+                    }} // font size of input text
                     onChange={(e) => setDob(e.target.value)}
                     labelWidth={55}
                   />
