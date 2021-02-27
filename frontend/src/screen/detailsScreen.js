@@ -7,17 +7,9 @@ import Typography from "@material-ui/core/Typography";
 import InputLabel from "@material-ui/core/InputLabel";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import FormControl from "@material-ui/core/FormControl";
-import InputAdornment from "@material-ui/core/InputAdornment";
 import { Button } from "@material-ui/core";
 
-import IconButton from "@material-ui/core/IconButton";
-import EmailIcon from "@material-ui/icons/Email";
-import VisibilityIcon from "@material-ui/icons/Visibility";
-import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
-import LockIcon from "@material-ui/icons/Lock";
-
 // REDUX
-import { userLogin } from "../redux/actions/userAction";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useStyles } from "./Custom Styles/contentForm";
