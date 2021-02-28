@@ -132,9 +132,6 @@ const DetailsScreen = ({ history }) => {
                       labelWidth={98}
                     />
                   </FormControl>
-
-                  {/*//////////////////////     VALIDATION ERROR MESSAGE     ////////////////////////*/}
-                  {/* {error && <Message varient="error">{error}</Message>} */}
                 </Grid>
 
                 {/* RIGHT SIDE */}
@@ -198,9 +195,6 @@ const DetailsScreen = ({ history }) => {
                       labelWidth={55}
                     />
                   </FormControl>
-
-                  {/*//////////////////////     VALIDATION ERROR MESSAGE     ////////////////////////*/}
-                  {/* {error && <Message varient="error">{error}</Message>} */}
                 </Grid>
 
                 <Button
