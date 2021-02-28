@@ -9,6 +9,9 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
+import folder from "../assets/images/folder.png";
+import globe from "../assets/images/globe.png";
+
 // REDUX
 import { useDispatch, useSelector } from "react-redux";
 import { getDetails } from "../redux/actions/detailsAction";
@@ -83,11 +86,7 @@ const HomeScreen = ({ history }) => {
           </Button>
         </Grid>
         <Grid item xs={12} md={6}>
-          <img
-            src="assets/images/globe.png"
-            className={classes.image}
-            alt="globe"
-          />
+          <img src={globe} className={classes.image} alt="globe" />
         </Grid>
       </Grid>
 
@@ -107,7 +106,7 @@ const HomeScreen = ({ history }) => {
               <img
                 onClick={() => handleClickOpen(content)}
                 className={classes.doc}
-                src="assets/images/folder.png"
+                src={folder}
                 alt="details_folder"
               />
               <Typography

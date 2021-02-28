@@ -28,5 +28,6 @@ export const useStyles = makeStyles((theme) => ({
     lineHeight: "1rem",
     letterSpacing: "-0.001em",
     paddingRight: "2.2rem",
+    color: "#fff",
   },
 }));

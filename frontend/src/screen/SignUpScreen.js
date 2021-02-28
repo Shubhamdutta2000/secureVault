@@ -17,6 +17,9 @@ import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import LockIcon from "@material-ui/icons/Lock";
 import GroupIcon from "@material-ui/icons/Group";
 
+import teamwork from "../assets/images/teamwork.png";
+import signUpButton from "../assets/images/signup.png";
+
 // REDUX
 import { userRegister } from "../redux/actions/userAction";
 import { useDispatch, useSelector } from "react-redux";
@@ -54,20 +57,12 @@ const SignUpScreen = ({ history }) => {
     <div className={classes.root}>
       <Grid container spacing={10}>
         <Grid item xs={12} sm={6}>
-          <img
-            src="assets/images/signup.png"
-            className={classes.image}
-            alt="login_image"
-          />
+          <img src={signUpButton} className={classes.image} alt="login_image" />
         </Grid>
 
         <Grid item xs={12} sm={6}>
           <Paper elevation={18} className={classes.paper}>
-            <img
-              className={classes.avatar}
-              src="assets/images/teamwork.png"
-              alt="teamwork"
-            />
+            <img className={classes.avatar} src={teamwork} alt="teamwork" />
             <h3 className={classes.heading}>SIGNUP</h3>
 
             {/*// FORM FOR SIGNUP //*/}

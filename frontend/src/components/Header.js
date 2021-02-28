@@ -7,11 +7,13 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
+import postButton from "../assets/images/postButton.png";
 // REDUX
 import { userLogout } from "../redux/actions/userAction";
 import { useDispatch } from "react-redux";
 
 import { useStyles } from "./customStyles/header";
+import { Link } from "react-router-dom";
 const Header = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -37,13 +39,13 @@ const Header = () => {
             SecretVault
           </Typography>
           <img
+            src={postButton}
             className={classes.postIllustration}
-            src="assets/images/postButton.png"
             alt="post button"
           />
-          <Button className={classes.button} color="inherit">
-            POST
-          </Button>
+          <Link to="/home/post/details">
+            <Button className={classes.button}>POST</Button>
+          </Link>
           <ExitToAppIcon fontSize="large" />
           <Button
             className={classes.button}
