@@ -30,14 +30,18 @@ const HomeScreen = ({ history }) => {
     });
   };
 
+  useEffect(() => {
+    if (error) {
+      alert(error.message);
+    }
+  }, [details, error]);
+
   const handleSubmit = () => {
     dispatch(getDetails(password));
     console.log(details);
-    if (details) {
-      history.push("/details");
-    } else if (error) {
-      alert(error.message);
-    }
+
+    history.push("/details");
+
     setOpen(false);
   };
 

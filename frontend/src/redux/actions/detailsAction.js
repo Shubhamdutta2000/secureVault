@@ -32,14 +32,13 @@ export const getDetails = (password) => async (dispatch, getState) => {
       { password },
       config
     );
+    console.log("ACTION:", data);
 
     dispatch({
       type: FETCH_DETAILS,
       payload: data,
     });
-
-    // store user details in localStorage
-    localStorage.setItem("userDetails", JSON.stringify(data));
+    console.log("fetch details");
   } catch (error) {
     dispatch({
       type: DETAILS_FAILED,

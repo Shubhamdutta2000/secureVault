@@ -16,14 +16,8 @@ const userInfoFromLocalStorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
   : null;
 
-// GET user info from local Storage
-const userDetailsFromLocalStorage = localStorage.getItem("userDetails")
-  ? JSON.parse(localStorage.getItem("userDetails"))
-  : null;
-
 const initialState = {
   userLogin: { userInfo: userInfoFromLocalStorage },
-  userDetails: { details: userDetailsFromLocalStorage },
 };
 
 const middleware = [thunk];

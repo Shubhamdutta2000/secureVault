@@ -9,7 +9,7 @@ import {
 
 // details reducer
 export const detailsReducer = (
-  state = { loading: true, details: null, error: null },
+  state = { loading: false, details: null, error: null },
   action
 ) => {
   switch (action.type) {

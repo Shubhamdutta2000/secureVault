@@ -56,6 +56,7 @@ export const useStyles = makeStyles((theme) => ({
     height: "3.4rem",
     marginBottom: "0.4rem",
     borderRadius: "10rem",
+    margin: "auto",
 
     [theme.breakpoints.down("xs")]: {
       width: "100%",

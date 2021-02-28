@@ -13,6 +13,8 @@ import { Button } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useStyles } from "./Custom Styles/contentForm";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 
 const DetailsScreen = ({ history }) => {
   const classes = useStyles();
@@ -21,12 +23,12 @@ const DetailsScreen = ({ history }) => {
 
   console.log(details);
 
-  const [name, setName] = useState(details.user.name);
-  const [bio, setBio] = useState(details.bio);
-  const [address, setAddress] = useState(details.address);
-  const [email, setEmail] = useState(details.user.email);
-  const [phn, setPhn] = useState(details.phn_no);
-  const [dob, setDob] = useState(details.dob);
+  const [name, setName] = useState("");
+  const [bio, setBio] = useState("");
+  const [address, setAddress] = useState("");
+  const [email, setEmail] = useState("");
+  const [phn, setPhn] = useState("");
+  const [dob, setDob] = useState("");
 
   // REDUX
   const dispatch = useDispatch();
@@ -36,8 +38,17 @@ const DetailsScreen = ({ history }) => {
   useEffect(() => {
     if (!userInfo) {
       history.push("/login");
+    } else if (details) {
+      setName(details.user.name);
+      setBio(details.bio);
+      setAddress(details.address);
+      setEmail(details.user.email);
+      setPhn(details.phn_no);
+      setDob(details.dob);
+    } else if (!details && !loading) {
+      history.push("/");
     }
-  }, [history, userInfo]);
+  }, [history, userInfo, details, loading]);
 
   // submit handler
   const submitHandler = (event) => {
@@ -52,148 +63,158 @@ const DetailsScreen = ({ history }) => {
       <Grid container spacing={10}>
         <Grid item xs={12}>
           <Paper elevation={18} className={classes.paper}>
-            {/*// FORM FOR LOGIN //*/}
-            <Grid container spacing={10}>
-              {/* LEFT SIDE */}
-              <Grid item xs={12} md={6}>
-                <FormControl variant="outlined" className={classes.input}>
-                  <InputLabel htmlFor="outlined-adornment-name">
-                    Name
-                  </InputLabel>
-                  <OutlinedInput
-                    id="outlined-adornment-name"
-                    placeholder="Name"
-                    required
-                    type="text"
-                    value={name}
-                    multiline
-                    rows={1}
-                    inputProps={{
-                      style: { fontSize: 26, paddingTop: "0.6rem" },
-                    }} // font size of input text
-                    onChange={(e) => setName(e.target.value)}
-                    labelWidth={65}
-                  />
-                </FormControl>
+            {loading ? (
+              <Loader />
+            ) : error ? (
+              <Message children={error.message} varient="warning" />
+            ) : (
+              <Grid container spacing={10}>
+                {/* LEFT SIDE */}
+                <Grid item xs={12} md={6}>
+                  <FormControl variant="outlined" className={classes.input}>
+                    <InputLabel htmlFor="outlined-adornment-name">
+                      Name
+                    </InputLabel>
+                    <OutlinedInput
+                      id="outlined-adornment-name"
+                      placeholder="Name"
+                      required
+                      type="text"
+                      value={name}
+                      multiline
+                      rows={1}
+                      inputProps={{
+                        style: { fontSize: 26, paddingTop: "0.6rem" },
+                      }} // font size of input text
+                      onChange={(e) => setName(e.target.value)}
+                      labelWidth={65}
+                    />
+                  </FormControl>
 
-                <FormControl variant="outlined" className={classes.input}>
-                  <InputLabel htmlFor="outlined-adornment-bio">Bio</InputLabel>
-                  <OutlinedInput
-                    id="outlined-adornment-bio"
-                    placeholder="Bio"
-                    required
-                    value={bio}
-                    onChange={(e) => setBio(e.target.value)}
-                    multiline
-                    rows={4}
-                    inputProps={{
-                      style: {
-                        fontSize: 20,
-                        paddingTop: "0.6rem",
-                        lineHeight: "1.4rem",
-                      },
-                    }} // font size of input text
-                    labelWidth={40}
-                  />
-                </FormControl>
+                  <FormControl variant="outlined" className={classes.input}>
+                    <InputLabel htmlFor="outlined-adornment-bio">
+                      Bio
+                    </InputLabel>
+                    <OutlinedInput
+                      id="outlined-adornment-bio"
+                      placeholder="Bio"
+                      required
+                      value={bio}
+                      onChange={(e) => setBio(e.target.value)}
+                      multiline
+                      rows={4}
+                      inputProps={{
+                        style: {
+                          fontSize: 20,
+                          paddingTop: "0.6rem",
+                          lineHeight: "1.4rem",
+                        },
+                      }} // font size of input text
+                      labelWidth={40}
+                    />
+                  </FormControl>
 
-                <FormControl variant="outlined" className={classes.input}>
-                  <InputLabel htmlFor="outlined-adornment-address">
-                    Address
-                  </InputLabel>
-                  <OutlinedInput
-                    id="outlined-adornment-address"
-                    placeholder="Address"
-                    required
-                    type="text"
-                    value={address}
-                    multiline
-                    rows={1}
-                    inputProps={{
-                      style: { fontSize: 26, paddingTop: "0.6rem" },
-                    }} // font size of input text
-                    onChange={(e) => setAddress(e.target.value)}
-                    labelWidth={98}
-                  />
-                </FormControl>
+                  <FormControl variant="outlined" className={classes.input}>
+                    <InputLabel htmlFor="outlined-adornment-address">
+                      Address
+                    </InputLabel>
+                    <OutlinedInput
+                      id="outlined-adornment-address"
+                      placeholder="Address"
+                      required
+                      type="text"
+                      value={address}
+                      multiline
+                      rows={1}
+                      inputProps={{
+                        style: { fontSize: 26, paddingTop: "0.6rem" },
+                      }} // font size of input text
+                      onChange={(e) => setAddress(e.target.value)}
+                      labelWidth={98}
+                    />
+                  </FormControl>
 
-                {/*//////////////////////     VALIDATION ERROR MESSAGE     ////////////////////////*/}
-                {/* {error && <Message varient="error">{error}</Message>} */}
+                  {/*//////////////////////     VALIDATION ERROR MESSAGE     ////////////////////////*/}
+                  {/* {error && <Message varient="error">{error}</Message>} */}
+                </Grid>
+
+                {/* RIGHT SIDE */}
+                <Grid item xs={12} md={6}>
+                  <FormControl variant="outlined" className={classes.input}>
+                    <InputLabel htmlFor="outlined-adornment-email">
+                      Email
+                    </InputLabel>
+                    <OutlinedInput
+                      id="outlined-adornment-email"
+                      placeholder="Email Address"
+                      required
+                      type="text"
+                      value={email}
+                      multiline
+                      rows={1}
+                      inputProps={{
+                        style: { fontSize: 26, paddingTop: "0.6rem" },
+                      }} // font size of input text
+                      onChange={(e) => setEmail(e.target.value)}
+                      labelWidth={66}
+                    />
+                  </FormControl>
+
+                  <FormControl variant="outlined" className={classes.input}>
+                    <InputLabel htmlFor="outlined-adornment-phn">
+                      Phone
+                    </InputLabel>
+                    <OutlinedInput
+                      id="outlined-adornment-phn"
+                      placeholder="Phone"
+                      required
+                      type="text"
+                      value={phn}
+                      multiline
+                      rows={1}
+                      inputProps={{
+                        style: { fontSize: 26, paddingTop: "0.6rem" },
+                      }} // font size of input text
+                      onChange={(e) => setPhn(e.target.value)}
+                      labelWidth={78}
+                    />
+                  </FormControl>
+
+                  <FormControl variant="outlined" className={classes.input}>
+                    <InputLabel htmlFor="outlined-adornment-dob">
+                      DOB
+                    </InputLabel>
+                    <OutlinedInput
+                      id="outlined-adornment-dob"
+                      placeholder="Date Of Birth"
+                      required
+                      type="text"
+                      value={dob}
+                      multiline
+                      rows={1}
+                      inputProps={{
+                        style: { fontSize: 26, paddingTop: "0.6rem" },
+                      }} // font size of input text
+                      onChange={(e) => setDob(e.target.value)}
+                      labelWidth={55}
+                    />
+                  </FormControl>
+
+                  {/*//////////////////////     VALIDATION ERROR MESSAGE     ////////////////////////*/}
+                  {/* {error && <Message varient="error">{error}</Message>} */}
+                </Grid>
+
+                <Button
+                  className={classes.button}
+                  onClick={submitHandler}
+                  size="large"
+                  variant="contained"
+                  color="primary"
+                >
+                  UPDATE
+                </Button>
               </Grid>
-
-              {/* RIGHT SIDE */}
-              <Grid item xs={12} md={6}>
-                <FormControl variant="outlined" className={classes.input}>
-                  <InputLabel htmlFor="outlined-adornment-email">
-                    Email
-                  </InputLabel>
-                  <OutlinedInput
-                    id="outlined-adornment-email"
-                    placeholder="Email Address"
-                    required
-                    type="text"
-                    value={email}
-                    multiline
-                    rows={1}
-                    inputProps={{
-                      style: { fontSize: 26, paddingTop: "0.6rem" },
-                    }} // font size of input text
-                    onChange={(e) => setEmail(e.target.value)}
-                    labelWidth={66}
-                  />
-                </FormControl>
-
-                <FormControl variant="outlined" className={classes.input}>
-                  <InputLabel htmlFor="outlined-adornment-phn">
-                    Phone
-                  </InputLabel>
-                  <OutlinedInput
-                    id="outlined-adornment-phn"
-                    placeholder="Phone"
-                    required
-                    type="text"
-                    value={phn}
-                    multiline
-                    rows={1}
-                    inputProps={{
-                      style: { fontSize: 26, paddingTop: "0.6rem" },
-                    }} // font size of input text
-                    onChange={(e) => setPhn(e.target.value)}
-                    labelWidth={78}
-                  />
-                </FormControl>
-
-                <FormControl variant="outlined" className={classes.input}>
-                  <InputLabel htmlFor="outlined-adornment-dob">DOB</InputLabel>
-                  <OutlinedInput
-                    id="outlined-adornment-dob"
-                    placeholder="Date Of Birth"
-                    required
-                    type="text"
-                    value={dob}
-                    multiline
-                    rows={1}
-                    inputProps={{
-                      style: { fontSize: 26, paddingTop: "0.6rem" },
-                    }} // font size of input text
-                    onChange={(e) => setDob(e.target.value)}
-                    labelWidth={55}
-                  />
-                </FormControl>
-
-                {/*//////////////////////     VALIDATION ERROR MESSAGE     ////////////////////////*/}
-                {/* {error && <Message varient="error">{error}</Message>} */}
-              </Grid>
-            </Grid>
-            <Button
-              className={classes.button}
-              onClick={submitHandler}
-              size="large"
-              variant="contained"
-              color="primary"
-            >
-              UPDATE
-            </Button>
+            )}
           </Paper>
         </Grid>
       </Grid>
