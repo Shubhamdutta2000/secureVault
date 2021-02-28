@@ -19,6 +19,16 @@ const HomeScreen = ({ history }) => {
   const classes = useStyles();
   const [password, setPassword] = useState("");
   const [open, setOpen] = useState(false);
+  const [content, setContent] = useState(""); // set content on every click on content folders
+
+  const contents = [
+    "Details",
+    "Documents",
+    "Career",
+    "Education",
+    "Finance",
+    "Medical",
+  ];
 
   const dispatch = useDispatch();
   const { details, error } = useSelector((state) => state.userDetails);
@@ -36,21 +46,25 @@ const HomeScreen = ({ history }) => {
     }
   }, [details, error]);
 
-  const handleSubmit = () => {
-    dispatch(getDetails(password));
-    console.log(details);
+  console.log(content);
 
-    history.push("/details");
-
-    setOpen(false);
-  };
-
-  const handleClickOpen = () => {
+  // open dialog box and set content
+  const handleClickOpen = (content) => {
+    setContent(content);
     setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  // submit acc. to content
+  const handleSubmit = (content) => {
+    if (content === "Details") {
+      dispatch(getDetails(password));
+      history.push("/details");
+      setOpen(false);
+    }
   };
 
   return (
@@ -87,101 +101,25 @@ const HomeScreen = ({ history }) => {
         All Secrets
       </Typography>
       <Grid container spacing={1}>
-        <Grid item xs={12} md={4}>
-          <img
-            onClick={handleClickOpen}
-            className={classes.doc}
-            src="assets/images/folder.png"
-            alt="details_folder"
-          />
-          <Typography
-            className={classes.folder_name}
-            variant="h3"
-            component="h4"
-          >
-            Details
-          </Typography>
-        </Grid>
-
-        <Grid item xs={12} md={4}>
-          <img
-            onClick={handleClickOpen}
-            className={classes.doc}
-            src="assets/images/folder.png"
-            alt="details_folder"
-          />
-          <Typography
-            className={classes.folder_name}
-            variant="h3"
-            component="h4"
-          >
-            Documents
-          </Typography>
-        </Grid>
-
-        <Grid item xs={12} md={4}>
-          <img
-            onClick={handleClickOpen}
-            className={classes.doc}
-            src="assets/images/folder.png"
-            alt="details_folder"
-          />
-          <Typography
-            className={classes.folder_name}
-            variant="h3"
-            component="h4"
-          >
-            Education
-          </Typography>
-        </Grid>
-
-        <Grid item xs={12} md={4}>
-          <img
-            onClick={handleClickOpen}
-            className={classes.doc}
-            src="assets/images/folder.png"
-            alt="details_folder"
-          />
-          <Typography
-            className={classes.folder_name}
-            variant="h3"
-            component="h4"
-          >
-            Career
-          </Typography>
-        </Grid>
-
-        <Grid item xs={12} md={4}>
-          <img
-            onClick={handleClickOpen}
-            className={classes.doc}
-            src="assets/images/folder.png"
-            alt="details_folder"
-          />
-          <Typography
-            className={classes.folder_name}
-            variant="h3"
-            component="h4"
-          >
-            Medical
-          </Typography>
-        </Grid>
-
-        <Grid item xs={12} md={4}>
-          <img
-            onClick={handleClickOpen}
-            className={classes.doc}
-            src="assets/images/folder.png"
-            alt="details_folder"
-          />
-          <Typography
-            className={classes.folder_name}
-            variant="h3"
-            component="h4"
-          >
-            Finance
-          </Typography>
-        </Grid>
+        {contents.map((content, index) => {
+          return (
+            <Grid key={index} item xs={12} md={4}>
+              <img
+                onClick={() => handleClickOpen(content)}
+                className={classes.doc}
+                src="assets/images/folder.png"
+                alt="details_folder"
+              />
+              <Typography
+                className={classes.folder_name}
+                variant="h3"
+                component="h4"
+              >
+                {content}
+              </Typography>
+            </Grid>
+          );
+        })}
       </Grid>
 
       {/*// DIALOG BOX //*/}
@@ -219,7 +157,7 @@ const HomeScreen = ({ history }) => {
           </Button>
           <Button
             size="large"
-            onClick={handleSubmit}
+            onClick={() => handleSubmit(content)} // submit acc. to content onCLick
             className={classes.dialogButton}
             color="primary"
           >
