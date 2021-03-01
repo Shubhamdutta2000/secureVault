@@ -9,6 +9,7 @@ import OutlinedInput from "@material-ui/core/OutlinedInput";
 import FormControl from "@material-ui/core/FormControl";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import { Button } from "@material-ui/core";
+import MenuItem from "@material-ui/core/MenuItem";
 
 import IconButton from "@material-ui/core/IconButton";
 import EmailIcon from "@material-ui/icons/Email";
@@ -20,7 +21,7 @@ import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import LockIcon from "@material-ui/icons/Lock";
-
+import Select from "@material-ui/core/Select";
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
@@ -46,6 +47,7 @@ const PostDetails = ({ history }) => {
   const [dob, setDob] = useState(new Date("1900-01-01T21:11:00"));
   const [password, setPassword] = useState("");
   const [passwordVisibility, setPasswordVisibility] = useState("");
+  const [content, setContent] = useState("");
 
   // REDUX
   const dispatch = useDispatch();
@@ -62,10 +64,36 @@ const PostDetails = ({ history }) => {
     event.preventDefault();
   };
 
+  // change dropdown menu
+  const handleChange = (content) => {
+    setContent(content);
+    history.push(`/home/post/${content}`);
+  };
+
   return (
     <div className={classes.root}>
       <Grid container spacing={10}>
         <Grid item xs={12} sm={6}>
+          <FormControl variant="outlined" className={classes.formControl}>
+            <Select
+              labelId="demo-simple-select-outlined-label"
+              id="demo-simple-select-outlined"
+              value={content}
+              displayEmpty
+              onChange={(e) => handleChange(e.target.value)}
+              className={classes.select}
+              inputProps={{ "aria-label": "Without label" }}
+            >
+              <MenuItem value="">Details</MenuItem>
+              <MenuItem value="documents">Documents</MenuItem>
+              <MenuItem value="education">Education</MenuItem>
+              <MenuItem value="career">Career</MenuItem>
+              <MenuItem value="finance">Finance</MenuItem>
+              <MenuItem value="medical">Medical</MenuItem>
+              {/* <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem> */}
+            </Select>
+          </FormControl>
           <img
             className={classes.postImage}
             src={postIllustration}
@@ -92,7 +120,7 @@ const PostDetails = ({ history }) => {
                     </InputAdornment>
                   }
                   onChange={(e) => setName(e.target.value)}
-                  labelWidth={65}
+                  labelWidth={45}
                 />
               </FormControl>
 
@@ -114,7 +142,7 @@ const PostDetails = ({ history }) => {
                       <AssignmentIndIcon className={classes.icon} />
                     </InputAdornment>
                   }
-                  labelWidth={40}
+                  labelWidth={30}
                 />
               </FormControl>
 
@@ -134,7 +162,7 @@ const PostDetails = ({ history }) => {
                     </InputAdornment>
                   }
                   onChange={(e) => setAddress(e.target.value)}
-                  labelWidth={98}
+                  labelWidth={70}
                 />
               </FormControl>
 
@@ -173,7 +201,7 @@ const PostDetails = ({ history }) => {
                     </InputAdornment>
                   }
                   onChange={(e) => setPhn(e.target.value)}
-                  labelWidth={78}
+                  labelWidth={50}
                 />
               </FormControl>
 

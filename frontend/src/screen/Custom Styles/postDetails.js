@@ -11,6 +11,23 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: "0rem",
   },
 
+  formControl: {
+    margin: theme.spacing(2),
+    minWidth: 300,
+    borderColor: "#00709C",
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        border: "0.1rem solid #00709C",
+      },
+    },
+  },
+  select: {
+    marginTop: theme.spacing(1),
+    color: "#00709C",
+    fontSize: "1.6rem",
+    fontStyle: "italic",
+  },
+
   input: {
     "& label": {
       color: theme.palette.info.main,
