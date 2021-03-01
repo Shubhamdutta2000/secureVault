@@ -4,12 +4,14 @@ import { generateToken } from "../utils/generateToken.js";
 // @purpose: Register new user and get token
 // @route:   POST /user/register
 // @access   Public
-export const registerUser = async (req, res) => {
+export const registerUser = async (req, res, next) => {
   const { name, email, password } = req.body;
   const userExists = await UserModel.findOne({ email: email });
 
   if (userExists) {
-    res.status(400).json({ message: "User already exists" });
+    res.status(400);
+    const err = new Error("User already exists");
+    next(err);
   }
   const user = await UserModel.create({
     name,
@@ -24,14 +26,16 @@ export const registerUser = async (req, res) => {
       password: user.password,
     });
   } else {
-    res.status(404).json({ message: "Invaid User data" });
+    res.status(404);
+    const err = new Error("Invaid User data");
+    next(err);
   }
 };
 
 // @purpose:   Auth user and get token
 // @route:  POST /user/login
 // @access  Public
-export const loginUser = async (req, res) => {
+export const loginUser = async (req, res, next) => {
   const { email, password } = req.body;
   const user = await UserModel.findOne({ email: email });
 
@@ -43,6 +47,8 @@ export const loginUser = async (req, res) => {
       token: generateToken(user._id),
     });
   } else {
-    res.status(401).json({ message: "Invalid email or password" });
+    res.status(401);
+    const err = new Error("Invalid email or password");
+    next(err);
   }
 };
