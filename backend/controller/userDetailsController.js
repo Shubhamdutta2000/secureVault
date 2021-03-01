@@ -66,7 +66,7 @@ export const putUserDetails = async (req, res, next) => {
 
 // @route: DELETE /user/details
 // @purpose: delete all user details
-export const deleteUserDetails = async (req, res) => {
+export const deleteUserDetails = async (req, res, next) => {
   try {
     const deletedUserDetails = await UserDetail.deleteMany();
     res.status(200).json(deletedUserDetails);
@@ -78,7 +78,7 @@ export const deleteUserDetails = async (req, res) => {
 
 // @route: DELETE /user/details/:id
 // @purpose: delete user details by id
-export const deleteUserDetailById = async (req, res) => {
+export const deleteUserDetailById = async (req, res, next) => {
   try {
     const deletedUserDetail = await UserDetail.findByIdAndRemove(req.params.id);
     res.status(200).json(deletedUserDetail);

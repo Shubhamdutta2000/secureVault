@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 
 // @route: GET /user/documents
 // @purpose: get 1 user documents
-export const getUserDocument = async (req, res) => {
+export const getUserDocument = async (req, res, next) => {
   const { password } = req.body;
 
   const userDocuments = await UserDocument.findOne({}).populate("user");
@@ -29,7 +29,7 @@ export const getUserDocument = async (req, res) => {
 
 // @route: POST /user/documents/post
 // @purpose: POST user document (only 1)
-export const postUserDocuments = async (req, res) => {
+export const postUserDocuments = async (req, res, next) => {
   const documentsExist = await UserDocument.findOne({});
   if (!documentsExist) {
     const body = req.body;
@@ -51,7 +51,7 @@ export const postUserDocuments = async (req, res) => {
 
 // @route: PUT /user/documents
 // @purpose: PUT user documents
-export const putUserDocuments = async (req, res) => {
+export const putUserDocuments = async (req, res, next) => {
   try {
     const body = req.body;
     console.log(body);
@@ -67,7 +67,7 @@ export const putUserDocuments = async (req, res) => {
 
 // @route: DELETE /user/documents
 // @purpose: delete all user documents
-export const deleteUserDocuments = async (req, res) => {
+export const deleteUserDocuments = async (req, res, next) => {
   try {
     const deletedUserDocuments = await UserDocument.deleteMany();
     res.status(200).json(deletedUserDocuments);

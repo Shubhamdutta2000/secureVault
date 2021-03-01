@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 
 // @route: GET /user/medical
 // @purpose: get user medical
-export const getUserMedical = async (req, res) => {
+export const getUserMedical = async (req, res, next) => {
   const { password } = req.body;
 
   const userMedical = await UserMedical.findOne({}).populate("user");
@@ -13,16 +13,20 @@ export const getUserMedical = async (req, res) => {
     if (checkMedicalPassword) {
       res.status(200).json(userMedical);
     } else {
-      res.status(401).json({ message: "password does not match" });
+      res.status(401);
+      const err = new Error("password does not match");
+      next(err);
     }
   } else {
-    res.status(404).json({ message: "user medical details does not exist" });
+    res.status(404);
+    const err = new Error("user medical details does not exist");
+    next(err);
   }
 };
 
 // @route: POST /user/medical
 // @purpose: POST user medical
-export const postUserMedical = async (req, res) => {
+export const postUserMedical = async (req, res, next) => {
   const medicalExist = await UserMedical.findOne({});
   if (!medicalExist) {
     const body = req.body;
@@ -32,16 +36,19 @@ export const postUserMedical = async (req, res) => {
       await userMedical.save();
       res.status(200).json(userMedical);
     } catch (error) {
-      res.status(404).json({ errMessage: error });
+      res.status(404);
+      next(error);
     }
   } else {
-    res.status(404).json({ message: "one medical already be given" });
+    res.status(404);
+    const err = new Error("one medical already be given");
+    next(err);
   }
 };
 
 // @route: PUT /user/medical
 // @purpose: PUT user medical
-export const putUserMedical = async (req, res) => {
+export const putUserMedical = async (req, res, next) => {
   try {
     const body = req.body;
     console.log(body);
@@ -50,17 +57,19 @@ export const putUserMedical = async (req, res) => {
     });
     res.status(200).json(updatedUserMedical);
   } catch (error) {
-    res.status(404).json({ errMessage: error });
+    res.status(404);
+    next(error);
   }
 };
 
 // @route: DELETE /user/medical
 // @purpose: delete all user medical
-export const deleteUserMedical = async (req, res) => {
+export const deleteUserMedical = async (req, res, next) => {
   try {
     const deletedUserMedical = await UserMedical.deleteMany();
     res.status(200).json(deletedUserMedical);
   } catch (error) {
-    res.status(404).json({ errMessage: error });
+    res.status(404);
+    next(error);
   }
 };
