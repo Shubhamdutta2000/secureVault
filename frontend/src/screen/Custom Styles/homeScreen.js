@@ -17,7 +17,7 @@ export const useStyles = makeStyles({
 
   para: {
     position: "absolute",
-    top: "51.6%",
+    top: "58%",
     fontStyle: "italic",
     fontWeight: "500",
     fontSize: "2.2rem",
@@ -31,7 +31,7 @@ export const useStyles = makeStyles({
   },
   button: {
     position: "absolute",
-    top: "60%",
+    top: "66%",
     background:
       "linear-gradient(90.56deg, #0079A9 0.49%, rgba(100, 200, 240, 0.74) 114.34%)",
     borderRadius: "28rem",
