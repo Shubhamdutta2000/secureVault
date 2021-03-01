@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 
 // @route: GET /user/details
 // @purpose: get user details
-export const getUserDetail = async (req, res) => {
+export const getUserDetail = async (req, res, next) => {
   const { password } = req.body;
 
   const userDetails = await UserDetail.findOne({}).populate("user");
@@ -13,16 +13,20 @@ export const getUserDetail = async (req, res) => {
     if (checkDetailsPassword) {
       res.status(200).json(userDetails);
     } else {
-      res.status(401).json({ message: "password does not match" });
+      res.status(401);
+      const err = new Error("password does not match");
+      next(err);
     }
   } else {
-    res.status(404).json({ message: "user details does not exist" });
+    res.status(404);
+    const err = new Error("user details does not exist");
+    next(err);
   }
 };
 
 // @route: POST /user/details
 // @purpose: post user details (only 1)
-export const postUserDetails = async (req, res) => {
+export const postUserDetails = async (req, res, next) => {
   const detailsExist = await UserDetail.findOne({});
   if (!detailsExist) {
     const body = req.body;
@@ -34,16 +38,19 @@ export const postUserDetails = async (req, res) => {
       await userDetails.save();
       res.status(200).json(userDetails);
     } catch (error) {
-      res.status(404).json({ errMessage: error });
+      res.status(404);
+      next(error);
     }
   } else {
-    res.status(404).json({ message: "one detail already be given" });
+    res.status(404);
+    const err = new Error("one detail already given");
+    next(err);
   }
 };
 
 // @route: PUT /user/details
 // @purpose: PUT user details
-export const putUserDetails = async (req, res) => {
+export const putUserDetails = async (req, res, next) => {
   try {
     const body = req.body;
     console.log(body);
@@ -52,7 +59,8 @@ export const putUserDetails = async (req, res) => {
     });
     res.status(200).json(updateduserDetails);
   } catch (error) {
-    res.status(404).json({ errMessage: error });
+    res.status(404);
+    next(error);
   }
 };
 
@@ -63,7 +71,8 @@ export const deleteUserDetails = async (req, res) => {
     const deletedUserDetails = await UserDetail.deleteMany();
     res.status(200).json(deletedUserDetails);
   } catch (error) {
-    res.status(404).json({ errMessage: error });
+    res.status(404);
+    next(err);
   }
 };
 
@@ -74,6 +83,7 @@ export const deleteUserDetailById = async (req, res) => {
     const deletedUserDetail = await UserDetail.findByIdAndRemove(req.params.id);
     res.status(200).json(deletedUserDetail);
   } catch (error) {
-    res.status(404).json({ errMessage: error });
+    res.status(404);
+    next(error);
   }
 };

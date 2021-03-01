@@ -16,10 +16,14 @@ export const getUserDocument = async (req, res) => {
     if (checkDocumentPassword) {
       res.status(200).json(userDocuments);
     } else {
-      res.status(401).json({ message: "password does not match" });
+      res.status(401);
+      const err = new Error("password does not match");
+      next(err);
     }
   } else {
-    res.status(404).json({ message: "user documents does not exist" });
+    res.status(404);
+    const err = new Error("user documents does not exist");
+    next(err);
   }
 };
 
@@ -35,10 +39,13 @@ export const postUserDocuments = async (req, res) => {
       await userDocuments.save();
       res.status(200).json(userDocuments);
     } catch (error) {
-      res.status(404).json({ errMessage: error });
+      res.status(404);
+      next(error);
     }
   } else {
-    res.status(404).json({ message: "one document already be given" });
+    res.status(404);
+    const err = new Error("one document already be given");
+    next(err);
   }
 };
 
@@ -53,7 +60,8 @@ export const putUserDocuments = async (req, res) => {
     });
     res.status(200).json(updateduserDocuments);
   } catch (error) {
-    res.status(404).json({ errMessage: error });
+    res.status(404);
+    next(error);
   }
 };
 
@@ -64,6 +72,7 @@ export const deleteUserDocuments = async (req, res) => {
     const deletedUserDocuments = await UserDocument.deleteMany();
     res.status(200).json(deletedUserDocuments);
   } catch (error) {
-    res.status(404).json({ errMessage: error });
+    res.status(404);
+    next(error);
   }
 };

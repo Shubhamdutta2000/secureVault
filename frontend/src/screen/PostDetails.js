@@ -28,11 +28,16 @@ import {
 } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 
+// components
+import Loader from "../components/Loader";
+import Message from "../components/Message";
+
 //image
 import postIllustration from "../assets/images/postIllustration.png";
 
 // REDUX
 import { useDispatch, useSelector } from "react-redux";
+import { postDetails } from "../redux/actions/detailsAction";
 
 import { useStyles } from "./Custom Styles/postDetails";
 
@@ -43,7 +48,7 @@ const PostDetails = ({ history }) => {
   const [bio, setBio] = useState("");
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
-  const [phn, setPhn] = useState("");
+  const [phn_no, setPhn_no] = useState("");
   const [dob, setDob] = useState(new Date("1900-01-01T21:11:00"));
   const [password, setPassword] = useState("");
   const [passwordVisibility, setPasswordVisibility] = useState("");
@@ -52,6 +57,7 @@ const PostDetails = ({ history }) => {
   // REDUX
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.userLogin);
+  const { loading, details, error } = useSelector((state) => state.userDetails);
 
   useEffect(() => {
     if (!userInfo) {
@@ -60,12 +66,22 @@ const PostDetails = ({ history }) => {
   });
 
   // submit handler
-  const submitHandler = (event) => {
+  const submitPostHandler = (event) => {
     event.preventDefault();
+    dispatch(
+      postDetails({
+        bio: bio,
+        address: address,
+        email: email,
+        phn_no: phn_no,
+        dob: dob.toString().substring(0, 15),
+        password: password,
+      })
+    );
   };
 
-  // change dropdown menu
-  const handleChange = (content) => {
+  // change dropdown menu for content
+  const handleContentChange = (content) => {
     setContent(content);
     history.push(`/home/post/${content}`);
   };
@@ -74,13 +90,14 @@ const PostDetails = ({ history }) => {
     <div className={classes.root}>
       <Grid container spacing={10}>
         <Grid item xs={12} sm={6}>
+          {/* dropdown menu */}
           <FormControl variant="outlined" className={classes.formControl}>
             <Select
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select-outlined"
               value={content}
               displayEmpty
-              onChange={(e) => handleChange(e.target.value)}
+              onChange={(e) => handleContentChange(e.target.value)}
               className={classes.select}
               inputProps={{ "aria-label": "Without label" }}
             >
@@ -90,10 +107,9 @@ const PostDetails = ({ history }) => {
               <MenuItem value="career">Career</MenuItem>
               <MenuItem value="finance">Finance</MenuItem>
               <MenuItem value="medical">Medical</MenuItem>
-              {/* <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem> */}
             </Select>
           </FormControl>
+          {/* image of postIllustration */}
           <img
             className={classes.postImage}
             src={postIllustration}
@@ -123,7 +139,6 @@ const PostDetails = ({ history }) => {
                   labelWidth={45}
                 />
               </FormControl>
-
               <FormControl variant="outlined" className={classes.input}>
                 <InputLabel htmlFor="outlined-adornment-bio">Bio</InputLabel>
                 <OutlinedInput
@@ -145,7 +160,6 @@ const PostDetails = ({ history }) => {
                   labelWidth={30}
                 />
               </FormControl>
-
               <FormControl variant="outlined" className={classes.input}>
                 <InputLabel htmlFor="outlined-adornment-address">
                   Address
@@ -165,7 +179,6 @@ const PostDetails = ({ history }) => {
                   labelWidth={70}
                 />
               </FormControl>
-
               <FormControl variant="outlined" className={classes.input}>
                 <InputLabel htmlFor="outlined-adornment-email">
                   Email
@@ -185,26 +198,26 @@ const PostDetails = ({ history }) => {
                   labelWidth={50}
                 />
               </FormControl>
-
               <FormControl variant="outlined" className={classes.input}>
-                <InputLabel htmlFor="outlined-adornment-phn">Phone</InputLabel>
+                <InputLabel htmlFor="outlined-adornment-phn_no">
+                  Phone
+                </InputLabel>
                 <OutlinedInput
-                  id="outlined-adornment-phn"
+                  id="outlined-adornment-phn_no"
                   placeholder="Phone"
                   required
                   type="text"
-                  value={phn}
+                  value={phn_no}
                   multiline
                   startAdornment={
                     <InputAdornment position="start">
                       <PhoneIcon className={classes.icon} />
                     </InputAdornment>
                   }
-                  onChange={(e) => setPhn(e.target.value)}
+                  onChange={(e) => setPhn_no(e.target.value)}
                   labelWidth={50}
                 />
               </FormControl>
-
               <FormControl
                 variant="outlined"
                 style={{ marginTop: "-1rem" }}
@@ -229,7 +242,6 @@ const PostDetails = ({ history }) => {
                   />
                 </MuiPickersUtilsProvider>
               </FormControl>
-
               <FormControl variant="outlined" className={classes.input}>
                 <InputLabel htmlFor="outlined-adornment-password">
                   Password
@@ -267,13 +279,19 @@ const PostDetails = ({ history }) => {
                   labelWidth={78}
                 />
               </FormControl>
-
-              {/*//////////////////////     VALIDATION ERROR MESSAGE     ////////////////////////*/}
-              {/* {error && <Message varient="error">{error}</Message>} */}
-
+              <br />
+              {/* show loading or error onSubmit */}
+              {loading ? (
+                <Loader />
+              ) : error ? (
+                <Message varient="error">{error}</Message>
+              ) : (
+                <Message varient="success">POST successfully submitted</Message>
+              )}
+              <br />
               <Button
                 className={classes.button}
-                onClick={submitHandler}
+                onClick={submitPostHandler}
                 size="large"
                 variant="contained"
                 color="primary"

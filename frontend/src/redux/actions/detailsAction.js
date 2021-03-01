@@ -42,20 +42,30 @@ export const getDetails = (password) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: DETAILS_FAILED,
-      payload: error,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
     });
   }
 };
 
 // post user details action
-export const postDetails = (details) => async (dispatch) => {
+export const postDetails = (details) => async (dispatch, getState) => {
   try {
     dispatch({
       type: REQUEST_DETAILS,
     });
 
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
     const config = {
       "Content-Type": "application/json",
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
     };
 
     const { data } = await axios.post(
@@ -71,7 +81,10 @@ export const postDetails = (details) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: DETAILS_FAILED,
-      payload: error,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
     });
   }
 };
