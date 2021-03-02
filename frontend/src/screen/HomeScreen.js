@@ -58,7 +58,11 @@ const HomeScreen = ({ history }) => {
   const handleSubmit = (content) => {
     if (content === "Details") {
       dispatch(getDetails(password));
-      history.push("/details");
+      // pass props to the history object
+      history.push({
+        pathname: "/details",
+        state: { password: password },
+      });
       setOpen(false);
     }
   };

@@ -95,8 +95,8 @@ export const postDetails = (details) => async (dispatch, getState) => {
   }
 };
 
-// put user details action
-export const putDetails = (details) => async (dispatch, getState) => {
+// update user details action
+export const updateDetails = (details) => async (dispatch, getState) => {
   try {
     dispatch({
       type: DETAILS_UPDATE_REQUEST,

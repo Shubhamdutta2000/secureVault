@@ -8,14 +8,16 @@ import InputLabel from "@material-ui/core/InputLabel";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import FormControl from "@material-ui/core/FormControl";
 import { Button } from "@material-ui/core";
+
 // REDUX
 import { useDispatch, useSelector } from "react-redux";
+import { getDetails, updateDetails } from "../redux/actions/detailsAction";
 
 import { useStyles } from "./Custom Styles/contentForm";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 
-const DetailsScreen = ({ history }) => {
+const DetailsScreen = ({ history, location }) => {
   const classes = useStyles();
 
   const [name, setName] = useState("");
@@ -32,6 +34,10 @@ const DetailsScreen = ({ history }) => {
     (state) => state.userFetchDetails
   );
 
+  const { details: updatedDetails } = useSelector(
+    (state) => state.userUpdateDetails
+  );
+
   // redirect to home page if logged in
   useEffect(() => {
     if (!userInfo) {
@@ -43,17 +49,34 @@ const DetailsScreen = ({ history }) => {
       setEmail(details.user.email);
       setPhn(details.phn_no);
       setDob(details.dob);
-    } else if (error) {
+    }
+    // show alert message & redirect to home page if error exists
+    else if (error) {
       alert(error);
       history.push("/");
-    } else if (!loading && !details) {
+    }
+    // redirect to home page if details does not contain
+    else if (!loading && !details) {
       history.push("/");
     }
   }, [history, userInfo, details, loading]);
 
+  // fetch details after update
+  useEffect(() => {
+    dispatch(getDetails(location.state.password)); // get password from homeScreen location state passed as props in history object
+  }, [dispatch, updatedDetails]);
+
   // submit handler
   const submitHandler = (event) => {
     event.preventDefault();
+    dispatch(
+      updateDetails({
+        bio: bio,
+        address: address,
+        phn_no: phn,
+        dob: dob.toString().substring(0, 15),
+      })
+    );
   };
 
   return (
@@ -69,7 +92,7 @@ const DetailsScreen = ({ history }) => {
             ) : error ? (
               <Message children={error} varient="warning" />
             ) : (
-              <Grid container spacing={10}>
+              <Grid container spacing={1}>
                 {/* LEFT SIDE */}
                 <Grid item xs={12} md={6}>
                   <FormControl variant="outlined" className={classes.input}>
@@ -199,6 +222,21 @@ const DetailsScreen = ({ history }) => {
                   </FormControl>
                 </Grid>
 
+                <Grid
+                  item
+                  style={{
+                    margin: "auto",
+                  }}
+                  xs={8}
+                >
+                  {/* Success message on updating details */}
+                  {updatedDetails && (
+                    <Message
+                      varient="success"
+                      children="Successfully update details"
+                    />
+                  )}
+                </Grid>
                 <Button
                   className={classes.button}
                   onClick={submitHandler}
