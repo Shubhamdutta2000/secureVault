@@ -46,7 +46,7 @@ export const postUserEducation = async (req, res, next) => {
     }
   } else {
     res.status(404);
-    const err = new Error(`one education already be given of ${req.user.name}`);
+    const err = new Error(`one education already given of ${req.user.name}`);
     next(err);
   }
 };

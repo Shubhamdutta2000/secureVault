@@ -1,7 +1,7 @@
 import app from "../app.js";
 import request from "supertest";
 import { UserDetail } from "../models/Detail.js";
-let token;
+let token, name;
 
 beforeAll(async () => {
   // user log in and get token
@@ -13,6 +13,7 @@ beforeAll(async () => {
     })
     .then((response) => {
       token = response.body.token; // save the token!
+      name = response.body.name;
     });
 
   // delete detail
@@ -20,7 +21,7 @@ beforeAll(async () => {
 });
 
 // POST all details
-test("POST 1 detail", (done) => {
+test("POST 1 detail of particular user", (done) => {
   return request(app)
     .post("/user/details/post")
     .set("Authorization", `Bearer ${token}`)
@@ -51,8 +52,8 @@ test("POST 1 detail", (done) => {
     });
 });
 
-// Cannot POST detail
-test("Cannot POST detail more than 1", (done) => {
+// Cannot POST detail of particular user
+test("Cannot POST detail more than 1 of particular user", (done) => {
   return request(app)
     .post("/user/details/post")
     .set("Authorization", `Bearer ${token}`)
@@ -68,13 +69,16 @@ test("Cannot POST detail more than 1", (done) => {
     .expect(404)
     .then((res) => {
       expect(res.body).toBeInstanceOf(Object);
-      expect(res.body).toHaveProperty("message", "one detail already be given");
+      expect(res.body).toHaveProperty(
+        "message",
+        `one detail already given of ${name}`
+      );
       done();
     });
 });
 
 // GET 1 detail
-test("GET 1 detail", (done) => {
+test("GET 1 detail of particular user", (done) => {
   return request(app)
     .post("/user/details")
     .set("Authorization", `Bearer ${token}`)
@@ -99,8 +103,8 @@ test("GET 1 detail", (done) => {
     });
 });
 
-// UPDATE Detail by ID
-test("UPDATE detail", (done) => {
+// UPDATE Detail of particular user
+test("UPDATE detail of particular user", (done) => {
   return request(app)
     .put("/user/details")
     .set("Authorization", `Bearer ${token}`)
@@ -126,8 +130,8 @@ test("UPDATE detail", (done) => {
     });
 });
 
-// DELETE all details
-test("DELETE all details", (done) => {
+// DELETE 1 detail of particular user
+test("DELETE detail of particular user", (done) => {
   return request(app)
     .delete("/user/details")
     .set("Authorization", `Bearer ${token}`)

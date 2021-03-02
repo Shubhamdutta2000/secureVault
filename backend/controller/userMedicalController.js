@@ -43,7 +43,7 @@ export const postUserMedical = async (req, res, next) => {
     }
   } else {
     res.status(404);
-    const err = new Error(`one medical already be given of ${req.user.name}`);
+    const err = new Error(`one medical already given of ${req.user.name}`);
     next(err);
   }
 };

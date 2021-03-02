@@ -1,7 +1,7 @@
 import app from "../app.js";
 import request from "supertest";
 import { UserDocument } from "../models/Document.js";
-let token;
+let token, name;
 
 beforeAll(async () => {
   // user log in and get token
@@ -13,6 +13,7 @@ beforeAll(async () => {
     })
     .then((response) => {
       token = response.body.token; // save the token!
+      name = response.body.name;
     });
 
   // delete document
@@ -20,7 +21,7 @@ beforeAll(async () => {
 });
 
 // POST all documents
-test("POST document", (done) => {
+test("POST document of particular user", (done) => {
   return request(app)
     .post("/user/documents/post")
     .set("Authorization", `Bearer ${token}`)
@@ -52,7 +53,7 @@ test("POST document", (done) => {
 });
 
 // GET 1 document
-test("GET 1 document", (done) => {
+test("GET document of particular user", (done) => {
   return request(app)
     .post("/user/documents")
     .set("Authorization", `Bearer ${token}`)
@@ -76,8 +77,8 @@ test("GET 1 document", (done) => {
     });
 });
 
-// Cannot POST document
-test("Cannot POST document more than 1", (done) => {
+// Cannot POST document of particular user
+test("Cannot POST document more than 1 of particular user", (done) => {
   return request(app)
     .post("/user/documents/post")
     .set("Authorization", `Bearer ${token}`)
@@ -96,14 +97,14 @@ test("Cannot POST document more than 1", (done) => {
       expect(res.body).toBeInstanceOf(Object);
       expect(res.body).toHaveProperty(
         "message",
-        "one document already be given"
+        `one document already given of ${name}`
       );
       done();
     });
 });
 
 // UPDATE Document
-test("UPDATE document", (done) => {
+test("UPDATE document of particular user", (done) => {
   return request(app)
     .put("/user/documents")
     .set("Authorization", `Bearer ${token}`)
@@ -129,8 +130,8 @@ test("UPDATE document", (done) => {
     });
 });
 
-// DELETE all documents
-test("DELETE all documents", (done) => {
+// DELETE 1 document  of particular user
+test("DELETE document of particular user", (done) => {
   return request(app)
     .delete("/user/documents")
     .set("Authorization", `Bearer ${token}`)

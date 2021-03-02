@@ -46,7 +46,7 @@ export const postUserDocuments = async (req, res, next) => {
     }
   } else {
     res.status(404);
-    const err = new Error("one document already be given");
+    const err = new Error(`one document already given of ${req.user.name}`);
     next(err);
   }
 };

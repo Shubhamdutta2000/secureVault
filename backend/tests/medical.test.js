@@ -1,7 +1,7 @@
 import app from "../app.js";
 import request from "supertest";
 import { UserMedical } from "../models/Medical.js";
-let token;
+let token, name;
 
 beforeAll(async () => {
   // user log in and get token
@@ -13,6 +13,7 @@ beforeAll(async () => {
     })
     .then((response) => {
       token = response.body.token; // save the token!
+      name = response.body.name;
     });
 
   // delete Medical details
@@ -20,7 +21,7 @@ beforeAll(async () => {
 });
 
 // POST 1 medical detail
-test("POST 1 medical detail", (done) => {
+test("POST 1 medical detail of particular user", (done) => {
   return request(app)
     .post("/user/medical/post")
     .set("Authorization", `Bearer ${token}`)
@@ -47,7 +48,7 @@ test("POST 1 medical detail", (done) => {
 });
 
 // Cannot POST medical detail
-test("Cannot POST medical detail more than 1", (done) => {
+test("Cannot POST medical detail more than 1 of particular user", (done) => {
   return request(app)
     .post("/user/medical/post")
     .set("Authorization", `Bearer ${token}`)
@@ -68,14 +69,14 @@ test("Cannot POST medical detail more than 1", (done) => {
       expect(res.body).toBeInstanceOf(Object);
       expect(res.body).toHaveProperty(
         "message",
-        "one medical already be given"
+        `one medical already given of ${name}`
       );
       done();
     });
 });
 
 // GET medical detail
-test("GET medical detail", (done) => {
+test("GET medical detail of particular user", (done) => {
   return request(app)
     .post("/user/medical")
     .set("Authorization", `Bearer ${token}`)
@@ -93,7 +94,7 @@ test("GET medical detail", (done) => {
 });
 
 // UPDATE medical Detail
-test("UPDATE medical detail", (done) => {
+test("UPDATE medical detail of particular user", (done) => {
   return request(app)
     .put("/user/medical")
     .set("Authorization", `Bearer ${token}`)
@@ -119,7 +120,7 @@ test("UPDATE medical detail", (done) => {
 });
 
 // DELETE medical detail
-test("DELETE medical detail", (done) => {
+test("DELETE medical detail of particular user", (done) => {
   return request(app)
     .delete("/user/medical")
     .set("Authorization", `Bearer ${token}`)

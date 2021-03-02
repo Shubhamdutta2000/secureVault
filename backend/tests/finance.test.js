@@ -1,7 +1,7 @@
 import app from "../app.js";
 import request from "supertest";
 import { UserFinance } from "../models/Finance.js";
-let token;
+let token, name;
 
 beforeAll(async () => {
   // user log in and get token
@@ -13,6 +13,7 @@ beforeAll(async () => {
     })
     .then((response) => {
       token = response.body.token; // save the token!
+      name = response.body.name;
     });
 
   // delete finance
@@ -20,7 +21,7 @@ beforeAll(async () => {
 });
 
 // POST 1 finance details
-test("POST 1 finance details", (done) => {
+test("POST finance details of particular user", (done) => {
   return request(app)
     .post("/user/finance/post")
     .set("Authorization", `Bearer ${token}`)
@@ -56,7 +57,7 @@ test("POST 1 finance details", (done) => {
 });
 
 // Cannot POST finance detail
-test("Cannot POST finance detail more than 1", (done) => {
+test("Cannot POST finance detail more than 1 of particular user", (done) => {
   return request(app)
     .post("/user/finance/post")
     .set("Authorization", `Bearer ${token}`)
@@ -80,14 +81,14 @@ test("Cannot POST finance detail more than 1", (done) => {
       expect(res.body).toBeInstanceOf(Object);
       expect(res.body).toHaveProperty(
         "message",
-        "one finance already be given"
+        `one finance already given of ${name}`
       );
       done();
     });
 });
 
 // GET finance detail
-test("GET finance detail", (done) => {
+test("GET finance detail of particular user", (done) => {
   return request(app)
     .post("/user/finance")
     .set("Authorization", `Bearer ${token}`)
@@ -111,7 +112,7 @@ test("GET finance detail", (done) => {
 });
 
 // UPDATE finance Detail
-test("UPDATE finance detail", (done) => {
+test("UPDATE finance detail of particular user", (done) => {
   return request(app)
     .put("/user/finance")
     .set("Authorization", `Bearer ${token}`)
@@ -137,7 +138,7 @@ test("UPDATE finance detail", (done) => {
 });
 
 // DELETE all finance details
-test("DELETE all finance details", (done) => {
+test("DELETE finance details of particular user", (done) => {
   return request(app)
     .delete("/user/finance")
     .set("Authorization", `Bearer ${token}`)

@@ -43,7 +43,7 @@ export const postUserFinance = async (req, res, next) => {
     }
   } else {
     res.status(404);
-    const err = new Error(`one finance already be given ${req.user.name}`);
+    const err = new Error(`one finance already given of ${req.user.name}`);
     next(err);
   }
 };

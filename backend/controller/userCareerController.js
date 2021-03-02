@@ -43,7 +43,7 @@ export const postUserCareer = async (req, res, next) => {
     }
   } else {
     res.status(404);
-    const err = new Error(`one career already be given of ${req.user.name}`);
+    const err = new Error(`one career already given of ${req.user.name}`);
     next(err);
   }
 };

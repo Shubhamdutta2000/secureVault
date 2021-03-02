@@ -1,7 +1,7 @@
 import app from "../app.js";
 import request from "supertest";
 import { UserEducation } from "../models/Education.js";
-let token;
+let token, name;
 
 // add userEducation before all test cases
 beforeAll(async () => {
@@ -14,6 +14,7 @@ beforeAll(async () => {
     })
     .then((response) => {
       token = response.body.token; // save the token!
+      name = response.body.name;
     });
 
   // delete document
@@ -21,7 +22,7 @@ beforeAll(async () => {
 });
 
 // POST 1 education detail
-test("POST 1 eduation detail", (done) => {
+test("POST eduation detail of particular user", (done) => {
   return request(app)
     .post("/user/education/post")
     .set("Authorization", `Bearer ${token}`)
@@ -66,7 +67,7 @@ test("POST 1 eduation detail", (done) => {
 });
 
 // Cannot POST education
-test("Cannot POST education more than 1", (done) => {
+test("Cannot POST education more than 1 of particular user", (done) => {
   return request(app)
     .post("/user/education/post")
     .set("Authorization", `Bearer ${token}`)
@@ -101,14 +102,14 @@ test("Cannot POST education more than 1", (done) => {
       expect(res.body).toBeInstanceOf(Object);
       expect(res.body).toHaveProperty(
         "message",
-        "one education already be given"
+        `one education already given of ${name}`
       );
       done();
     });
 });
 
 // GET education detail
-test("GET education detail", (done) => {
+test("GET education detail of particular user", (done) => {
   return request(app)
     .post("/user/education")
     .set("Authorization", `Bearer ${token}`)
@@ -130,7 +131,7 @@ test("GET education detail", (done) => {
 });
 
 // UPDATE ducation Detail by ID
-test("UPDATE education detail", (done) => {
+test("UPDATE education detail of particular user", (done) => {
   return request(app)
     .put("/user/education")
     .set("Authorization", `Bearer ${token}`)
@@ -157,7 +158,7 @@ test("UPDATE education detail", (done) => {
 });
 
 // DELETE Education detail
-test("DELETE Education detail", (done) => {
+test("DELETE Education detail of particular user", (done) => {
   return request(app)
     .delete("/user/education")
     .set("Authorization", `Bearer ${token}`)

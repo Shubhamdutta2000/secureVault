@@ -1,7 +1,7 @@
 import app from "../app.js";
 import request from "supertest";
 import { UserCareer } from "../models/Career.js";
-let token;
+let token, name;
 
 // add userCareer before all test cases
 beforeAll(async () => {
@@ -14,6 +14,7 @@ beforeAll(async () => {
     })
     .then((response) => {
       token = response.body.token; // save the token!
+      name = response.body.name;
     });
 
   // delete career
@@ -21,7 +22,7 @@ beforeAll(async () => {
 });
 
 // POST 1 career
-test("POST 1 career", (done) => {
+test("POST 1 career of particular user", (done) => {
   return request(app)
     .post("/user/career/post")
     .set("Authorization", `Bearer ${token}`)
@@ -61,7 +62,7 @@ test("POST 1 career", (done) => {
 });
 
 // Cannot POST career (give error)
-test("Cannot POST career more than 1", (done) => {
+test("Cannot POST career more than 1 of particular user", (done) => {
   return request(app)
     .post("/user/career/post")
     .set("Authorization", `Bearer ${token}`)
@@ -88,13 +89,16 @@ test("Cannot POST career more than 1", (done) => {
     .expect(404)
     .then((res) => {
       expect(res.body).toBeInstanceOf(Object);
-      expect(res.body).toHaveProperty("message", "one career already be given");
+      expect(res.body).toHaveProperty(
+        "message",
+        `one career already given of ${name}`
+      );
       done();
     });
 });
 
 // GET career
-test("GET career", (done) => {
+test("GET career of particular user", (done) => {
   return request(app)
     .post("/user/career")
     .set("Authorization", `Bearer ${token}`)
@@ -117,7 +121,7 @@ test("GET career", (done) => {
 });
 
 // UPDATE career
-test("UPDATE career ", (done) => {
+test("UPDATE career of particular user ", (done) => {
   return request(app)
     .put("/user/career")
     .set("Authorization", `Bearer ${token}`)
@@ -140,8 +144,8 @@ test("UPDATE career ", (done) => {
     });
 });
 
-// DELETE all career
-test("DELETE all career", (done) => {
+// DELETE career
+test("DELETE career of particular user", (done) => {
   return request(app)
     .delete("/user/career")
     .set("Authorization", `Bearer ${token}`)

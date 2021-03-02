@@ -4,7 +4,7 @@ import {
   getUserDocument,
   postUserDocuments,
   putUserDocuments,
-  deleteUserDocuments,
+  deleteUserDocument,
 } from "../controller/userDocumentsController.js";
 import authProtect from "../middleware/authenticate.js";
 
@@ -15,7 +15,7 @@ router
   .route("/")
   .post(authProtect, getUserDocument)
   .put(authProtect, putUserDocuments)
-  .delete(authProtect, deleteUserDocuments);
+  .delete(authProtect, deleteUserDocument);
 router.post("/post", authProtect, postUserDocuments);
 
 export default router;
