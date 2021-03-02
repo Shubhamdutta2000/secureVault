@@ -43,12 +43,6 @@ const HomeScreen = ({ history }) => {
     });
   };
 
-  useEffect(() => {
-    if (error) {
-      alert(error);
-    }
-  }, [details, error]);
-
   console.log(content);
 
   // open dialog box and set content

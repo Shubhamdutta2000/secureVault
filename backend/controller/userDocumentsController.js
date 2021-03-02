@@ -6,7 +6,9 @@ import bcrypt from "bcrypt";
 export const getUserDocument = async (req, res, next) => {
   const { password } = req.body;
 
-  const userDocuments = await UserDocument.findOne({}).populate("user");
+  const userDocuments = await UserDocument.findOne({
+    user: req.user._id,
+  }).populate("user");
   if (userDocuments) {
     const hashedPassword = userDocuments.password;
     const checkDocumentPassword = await bcrypt.compare(
@@ -30,7 +32,7 @@ export const getUserDocument = async (req, res, next) => {
 // @route: POST /user/documents/post
 // @purpose: POST user document (only 1)
 export const postUserDocuments = async (req, res, next) => {
-  const documentsExist = await UserDocument.findOne({});
+  const documentsExist = await UserDocument.findOne({ user: req.user._id });
   if (!documentsExist) {
     const body = req.body;
     body.user = req.user._id; // add authenticated user id
@@ -55,9 +57,13 @@ export const putUserDocuments = async (req, res, next) => {
   try {
     const body = req.body;
     console.log(body);
-    const updateduserDocuments = await UserDocument.findOneAndUpdate({}, body, {
-      new: true,
-    });
+    const updateduserDocuments = await UserDocument.findOneAndUpdate(
+      { user: req.user._id },
+      body,
+      {
+        new: true,
+      }
+    );
     res.status(200).json(updateduserDocuments);
   } catch (error) {
     res.status(404);
@@ -66,11 +72,13 @@ export const putUserDocuments = async (req, res, next) => {
 };
 
 // @route: DELETE /user/documents
-// @purpose: delete all user documents
-export const deleteUserDocuments = async (req, res, next) => {
+// @purpose: delete 1 user documents
+export const deleteUserDocument = async (req, res, next) => {
   try {
-    const deletedUserDocuments = await UserDocument.deleteMany();
-    res.status(200).json(deletedUserDocuments);
+    const deletedUserDocument = await UserDocument.deleteOne({
+      user: req.user._id,
+    });
+    res.status(200).json(deletedUserDocument);
   } catch (error) {
     res.status(404);
     next(error);

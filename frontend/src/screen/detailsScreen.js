@@ -44,7 +44,8 @@ const DetailsScreen = ({ history }) => {
       setEmail(details.user.email);
       setPhn(details.phn_no);
       setDob(details.dob);
-    } else if (!details && !loading) {
+    } else if (error) {
+      alert(error);
       history.push("/");
     }
   }, [history, userInfo, details, loading]);
@@ -65,7 +66,7 @@ const DetailsScreen = ({ history }) => {
             {loading ? (
               <Loader />
             ) : error ? (
-              <Message children={error.message} varient="warning" />
+              <Message children={error} varient="warning" />
             ) : (
               <Grid container spacing={10}>
                 {/* LEFT SIDE */}

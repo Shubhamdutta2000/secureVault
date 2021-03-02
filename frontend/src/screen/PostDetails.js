@@ -44,10 +44,8 @@ import { useStyles } from "./Custom Styles/postDetails";
 const PostDetails = ({ history }) => {
   const classes = useStyles();
 
-  const [name, setName] = useState("");
   const [bio, setBio] = useState("");
   const [address, setAddress] = useState("");
-  const [email, setEmail] = useState("");
   const [phn_no, setPhn_no] = useState("");
   const [dob, setDob] = useState(new Date("1900-01-01T21:11:00"));
   const [password, setPassword] = useState("");
@@ -72,7 +70,6 @@ const PostDetails = ({ history }) => {
       postDetails({
         bio: bio,
         address: address,
-        email: email,
         phn_no: phn_no,
         dob: dob.toString().substring(0, 15),
         password: password,
@@ -122,24 +119,6 @@ const PostDetails = ({ history }) => {
             {/*// FORM FOR DETAILS POST //*/}
             <form className={classes.form}>
               <FormControl variant="outlined" className={classes.input}>
-                <InputLabel htmlFor="outlined-adornment-name">Name</InputLabel>
-                <OutlinedInput
-                  id="outlined-adornment-name"
-                  placeholder="Name"
-                  required
-                  type="text"
-                  value={name}
-                  multiline
-                  startAdornment={
-                    <InputAdornment position="start">
-                      <PersonIcon className={classes.icon} />
-                    </InputAdornment>
-                  }
-                  onChange={(e) => setName(e.target.value)}
-                  labelWidth={45}
-                />
-              </FormControl>
-              <FormControl variant="outlined" className={classes.input}>
                 <InputLabel htmlFor="outlined-adornment-bio">Bio</InputLabel>
                 <OutlinedInput
                   id="outlined-adornment-bio"
@@ -177,25 +156,6 @@ const PostDetails = ({ history }) => {
                   }
                   onChange={(e) => setAddress(e.target.value)}
                   labelWidth={70}
-                />
-              </FormControl>
-              <FormControl variant="outlined" className={classes.input}>
-                <InputLabel htmlFor="outlined-adornment-email">
-                  Email
-                </InputLabel>
-                <OutlinedInput
-                  id="outlined-adornment-email"
-                  placeholder="Email Address"
-                  required
-                  type="text"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  startAdornment={
-                    <InputAdornment position="start">
-                      <EmailIcon className={classes.icon} />
-                    </InputAdornment>
-                  }
-                  labelWidth={50}
                 />
               </FormControl>
               <FormControl variant="outlined" className={classes.input}>

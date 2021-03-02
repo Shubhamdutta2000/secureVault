@@ -6,7 +6,9 @@ import bcrypt from "bcrypt";
 export const getUserEducation = async (req, res, next) => {
   const { password } = req.body;
 
-  const userEducation = await UserEducation.findOne({}).populate("user");
+  const userEducation = await UserEducation.findOne({
+    user: req.user._id,
+  }).populate("user");
   if (userEducation) {
     const hashedPassword = userEducation.password;
     const checkEducationPassword = await bcrypt.compare(
@@ -30,7 +32,7 @@ export const getUserEducation = async (req, res, next) => {
 // @route: POST /user/education
 // @purpose: POST 1 user education
 export const postUserEducation = async (req, res, next) => {
-  const educationExist = await UserEducation.findOne({});
+  const educationExist = await UserEducation.findOne({ user: req.user._id });
   if (!educationExist) {
     const body = req.body;
     body.user = req.user._id; // add authenticated user id
@@ -44,7 +46,7 @@ export const postUserEducation = async (req, res, next) => {
     }
   } else {
     res.status(404);
-    const err = new Error("one education already be given");
+    const err = new Error(`one education already be given of ${req.user.name}`);
     next(err);
   }
 };
@@ -57,7 +59,7 @@ export const putUserEducation = async (req, res, next) => {
     console.log(body);
     console.log(req.params.id);
     const updateduserEducation = await UserEducation.findOneAndUpdate(
-      {},
+      { user: req.user._id },
       body,
       {
         new: true,
@@ -71,10 +73,12 @@ export const putUserEducation = async (req, res, next) => {
 };
 
 // @route: DELETE /user/education
-// @purpose: delete all user education
+// @purpose: delete 1 user education
 export const deleteUserEducation = async (req, res, next) => {
   try {
-    const deletedUserEducation = await UserEducation.deleteMany();
+    const deletedUserEducation = await UserEducation.deleteOne({
+      user: req.user._id,
+    });
     res.status(200).json(deletedUserEducation);
   } catch (error) {
     res.status(404);

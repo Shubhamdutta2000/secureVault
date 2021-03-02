@@ -6,7 +6,9 @@ import bcrypt from "bcrypt";
 export const getUserCareer = async (req, res, next) => {
   const { password } = req.body;
 
-  const userCareer = await UserCareer.findOne({}).populate("user");
+  const userCareer = await UserCareer.findOne({ user: req.user._id }).populate(
+    "user"
+  );
   if (userCareer) {
     const hashedPassword = userCareer.password;
     const checkCareerPassword = await bcrypt.compare(password, hashedPassword);
@@ -27,7 +29,7 @@ export const getUserCareer = async (req, res, next) => {
 // @route: POST /user/career
 // @purpose: post 1 user career
 export const postUserCareer = async (req, res, next) => {
-  const careerExist = await UserCareer.findOne({});
+  const careerExist = await UserCareer.findOne({ user: req.user._id });
   if (!careerExist) {
     const body = req.body;
     body.user = req.user._id; // add authenticated user id
@@ -41,7 +43,7 @@ export const postUserCareer = async (req, res, next) => {
     }
   } else {
     res.status(404);
-    const err = new Error("one career already be given");
+    const err = new Error(`one career already be given of ${req.user.name}`);
     next(err);
   }
 };
@@ -52,22 +54,14 @@ export const putUserCareer = async (req, res, next) => {
   try {
     const body = req.body;
     console.log(body);
-    const updatedUserCareer = await UserCareer.findOneAndUpdate({}, body, {
-      new: true,
-    });
+    const updatedUserCareer = await UserCareer.findOneAndUpdate(
+      { user: req.user._id },
+      body,
+      {
+        new: true,
+      }
+    );
     res.status(200).json(updatedUserCareer);
-  } catch (error) {
-    res.status(404);
-    next(error);
-  }
-};
-
-// @route: DELETE /user/career
-// @purpose: delete all user career
-export const deleteUserCareer = async (req, res, next) => {
-  try {
-    const deletedUserCareer = await UserCareer.deleteMany();
-    res.status(200).json(deletedUserCareer);
   } catch (error) {
     res.status(404);
     next(error);
@@ -76,9 +70,11 @@ export const deleteUserCareer = async (req, res, next) => {
 
 // @route: DELETE /user/career/:id
 // @purpose: delete user career by id
-export const deleteUserCareerById = async (req, res, next) => {
+export const deleteUserCareer = async (req, res, next) => {
   try {
-    const deletedUserCareer = await UserCareer.findOneAndRemove(req.params.id);
+    const deletedUserCareer = await UserCareer.deleteOne({
+      user: req.user._id,
+    });
     res.status(200).json(deletedUserCareer);
   } catch (error) {
     res.status(404);

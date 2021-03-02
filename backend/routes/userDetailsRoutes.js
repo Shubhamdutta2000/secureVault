@@ -3,7 +3,7 @@ const router = express.Router();
 import {
   getUserDetail,
   postUserDetails,
-  deleteUserDetails,
+  deleteUserDetail,
   putUserDetails,
 } from "../controller/userDetailsController.js";
 import authProtect from "../middleware/authenticate.js";
@@ -15,7 +15,7 @@ router
   .route("/")
   .post(authProtect, getUserDetail)
   .put(authProtect, putUserDetails)
-  .delete(authProtect, deleteUserDetails);
+  .delete(authProtect, deleteUserDetail);
 router.route("/post").post(authProtect, postUserDetails);
 
 export default router;

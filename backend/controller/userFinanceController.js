@@ -6,7 +6,9 @@ import bcrypt from "bcrypt";
 export const getUserFinance = async (req, res, next) => {
   const { password } = req.body;
 
-  const userFinance = await UserFinance.findOne({}).populate("user");
+  const userFinance = await UserFinance.findOne({
+    user: req.user._id,
+  }).populate("user");
   if (userFinance) {
     const hashedPassword = userFinance.password;
     const checkFinancePassword = await bcrypt.compare(password, hashedPassword);
@@ -27,7 +29,7 @@ export const getUserFinance = async (req, res, next) => {
 // @route: POST /user/finance
 // @purpose: POST user finance
 export const postUserFinance = async (req, res, next) => {
-  const financeExist = await UserFinance.findOne({});
+  const financeExist = await UserFinance.findOne({ user: req.user._id });
   if (!financeExist) {
     const body = req.body;
     body.user = req.user._id; //add authenticated user id
@@ -41,7 +43,7 @@ export const postUserFinance = async (req, res, next) => {
     }
   } else {
     res.status(404);
-    const err = new Error("one finance already be given");
+    const err = new Error(`one finance already be given ${req.user.name}`);
     next(err);
   }
 };
@@ -53,9 +55,13 @@ export const putUserFinance = async (req, res, next) => {
     const body = req.body;
     console.log(body);
     console.log(req.params.id);
-    const updateduserFinance = await UserFinance.findOneAndUpdate({}, body, {
-      new: true,
-    });
+    const updateduserFinance = await UserFinance.findOneAndUpdate(
+      { user: req.user._id },
+      body,
+      {
+        new: true,
+      }
+    );
     res.status(200).json(updateduserFinance);
   } catch (error) {
     res.status(404);
@@ -63,25 +69,13 @@ export const putUserFinance = async (req, res, next) => {
   }
 };
 
-// @route: DELETE /user/finance
-// @purpose: delete all user finance
+// @route: DELETE /user/finance/
+// @purpose: delete 1 user finance
 export const deleteUserFinance = async (req, res, next) => {
   try {
-    const deletedUserFinance = await UserFinance.deleteMany();
-    res.status(200).json(deletedUserFinance);
-  } catch (error) {
-    res.status(404);
-    next(error);
-  }
-};
-
-// @route: DELETE /user/finance/:id
-// @purpose: delete all user finance by id
-export const deleteUserFinanceById = async (req, res, next) => {
-  try {
-    const deletedUserFinance = await UserFinance.findByIdAndRemove(
-      req.params.id
-    );
+    const deletedUserFinance = await UserFinance.deleteOne({
+      user: req.user._id,
+    });
     res.status(200).json(deletedUserFinance);
   } catch (error) {
     res.status(404);
