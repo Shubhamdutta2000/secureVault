@@ -23,17 +23,17 @@ import LockIcon from "@material-ui/icons/Lock";
 import Select from "@material-ui/core/Select";
 
 // components
-import Loader from "../components/Loader";
-import Message from "../components/Message";
+import Loader from "../../components/Loader";
+import Message from "../../components/Message";
 
 //image
-import postIllustration from "../assets/images/postIllustration.png";
+import postIllustration from "../../assets/images/postIllustration.png";
 
 // REDUX
 import { useDispatch, useSelector } from "react-redux";
-import { postDocuments } from "../redux/actions/documentsAction";
+import { postDocuments } from "../../redux/actions/documentsAction";
 
-import { useStyles } from "./Custom Styles/postContents/postDocuments";
+import { useStyles } from "./customStyles/postDocuments";
 
 const PostDocuments = ({ history }) => {
   const classes = useStyles();

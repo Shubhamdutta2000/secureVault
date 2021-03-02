@@ -29,17 +29,17 @@ import {
 import DateFnsUtils from "@date-io/date-fns";
 
 // components
-import Loader from "../components/Loader";
-import Message from "../components/Message";
+import Loader from "../../components/Loader";
+import Message from "../../components/Message";
 
 //image
-import postIllustration from "../assets/images/postIllustration.png";
+import postIllustration from "../../assets/images/postIllustration.png";
 
 // REDUX
 import { useDispatch, useSelector } from "react-redux";
-import { postDetails } from "../redux/actions/detailsAction";
+import { postDetails } from "../../redux/actions/detailsAction";
 
-import { useStyles } from "./Custom Styles/postContents/postDetails";
+import { useStyles } from "./customStyles/postDetails";
 
 const PostDetails = ({ history }) => {
   const classes = useStyles();

@@ -14,11 +14,11 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getDocuments,
   updateDocuments,
-} from "../redux/actions/documentsAction";
+} from "../../redux/actions/documentsAction";
 
-import { useStyles } from "./Custom Styles/contents/contentForm";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
+import { useStyles } from "./customStyles/getDocuments";
+import Loader from "../../components/Loader";
+import Message from "../../components/Message";
 
 const DocumentsScreen = ({ history, location }) => {
   const classes = useStyles();

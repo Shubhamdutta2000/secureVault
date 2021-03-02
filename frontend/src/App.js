@@ -7,10 +7,10 @@ import Header from "./components/Header";
 
 import "./App.css";
 import HomeScreen from "./screen/HomeScreen";
-import DetailsScreen from "./screen/DetailsScreen";
-import PostDetails from "./screen/PostDetailsScreen";
-import DocumentsScreen from "./screen/DocumentsScreen";
-import PostDocuments from "./screen/PostDocumentsScreen";
+import DetailsScreen from "./screen/details/DetailsScreen";
+import PostDetails from "./screen/details/PostDetailsScreen";
+import DocumentsScreen from "./screen/documents/DocumentsScreen";
+import PostDocuments from "./screen/documents/PostDocumentsScreen";
 
 function App() {
   const { userInfo } = useSelector((state) => state.userLogin);
