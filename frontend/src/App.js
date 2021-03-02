@@ -9,6 +9,7 @@ import "./App.css";
 import HomeScreen from "./screen/HomeScreen";
 import DetailsScreen from "./screen/DetailsScreen";
 import PostDetails from "./screen/PostDetailsScreen";
+import DocumentsScreen from "./screen/DocumentsScreen";
 
 function App() {
   const { userInfo } = useSelector((state) => state.userLogin);
@@ -22,6 +23,7 @@ function App() {
           {!userInfo && <Redirect exact from="/post/details" to="/login" />}
           <Route path="/home/post/details" component={PostDetails} />
           <Route component={DetailsScreen} path="/details" />
+          <Route component={DocumentsScreen} path="/documents" />
           <Route path="/" component={HomeScreen} exact />
           <Route component={LoginScreen} path="/login" />
           <Route component={SignUpScreen} path="/register" />
