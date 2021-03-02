@@ -22,7 +22,6 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   select: {
-    marginTop: theme.spacing(1),
     color: "#00709C",
     fontSize: "1.6rem",
     fontStyle: "italic",

@@ -16,6 +16,7 @@ import DriveEtaIcon from "@material-ui/icons/DriveEta";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import HowToVoteIcon from "@material-ui/icons/HowToVote";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
+import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import LockIcon from "@material-ui/icons/Lock";
@@ -195,6 +196,28 @@ const PostDocuments = ({ history }) => {
                   labelWidth={84}
                 />
               </FormControl>
+
+              <FormControl variant="outlined" className={classes.input}>
+                <InputLabel htmlFor="outlined-adornment-passport">
+                  Passport
+                </InputLabel>
+                <OutlinedInput
+                  id="outlined-adornment-passport"
+                  placeholder="Passport"
+                  required
+                  type="text"
+                  value={passport}
+                  multiline
+                  startAdornment={
+                    <InputAdornment position="start">
+                      <FlightTakeoffIcon className={classes.icon} />
+                    </InputAdornment>
+                  }
+                  onChange={(e) => setPassport(e.target.value)}
+                  labelWidth={74}
+                />
+              </FormControl>
+
               <FormControl variant="outlined" className={classes.input}>
                 <InputLabel htmlFor="outlined-adornment-password">
                   Password
@@ -237,7 +260,7 @@ const PostDocuments = ({ history }) => {
               {loading ? (
                 <Loader />
               ) : error ? (
-                <Message varient="error">{error}</Message>
+                  <Message varient="error">{error}</Message>
               ) : (
                 <Message varient="success">POST successfully submitted</Message>
               )}

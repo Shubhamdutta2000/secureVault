@@ -8,12 +8,11 @@ export const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(4.8),
     textAlign: "center",
     color: theme.palette.text.secondary,
-    marginTop: "0rem",
   },
 
   formControl: {
     margin: theme.spacing(2),
-    minWidth: 300,
+    minWidth: 340,
     borderColor: "#00709C",
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
@@ -22,7 +21,6 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   select: {
-    marginTop: theme.spacing(1),
     color: "#00709C",
     fontSize: "1.6rem",
     fontStyle: "italic",
