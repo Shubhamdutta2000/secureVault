@@ -7,8 +7,8 @@ import Header from "./components/Header";
 
 import "./App.css";
 import HomeScreen from "./screen/HomeScreen";
-import DetailsScreen from "./screen/detailsScreen";
-import PostDetails from "./screen/PostDetails";
+import DetailsScreen from "./screen/DetailsScreen";
+import PostDetails from "./screen/PostDetailsScreen";
 
 function App() {
   const { userInfo } = useSelector((state) => state.userLogin);
