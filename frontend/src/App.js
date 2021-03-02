@@ -10,6 +10,7 @@ import HomeScreen from "./screen/HomeScreen";
 import DetailsScreen from "./screen/DetailsScreen";
 import PostDetails from "./screen/PostDetailsScreen";
 import DocumentsScreen from "./screen/DocumentsScreen";
+import PostDocuments from "./screen/PostDocumentsScreen";
 
 function App() {
   const { userInfo } = useSelector((state) => state.userLogin);
@@ -21,12 +22,13 @@ function App() {
         <Switch>
           {!userInfo && <Redirect exact from="/" to="/login" />}
           {!userInfo && <Redirect exact from="/post/details" to="/login" />}
+          <Route path="/details" component={DetailsScreen} />
           <Route path="/home/post/details" component={PostDetails} />
-          <Route component={DetailsScreen} path="/details" />
-          <Route component={DocumentsScreen} path="/documents" />
+          <Route path="/documents" component={DocumentsScreen} />
+          <Route path="/home/post/documents" component={PostDocuments} />
           <Route path="/" component={HomeScreen} exact />
-          <Route component={LoginScreen} path="/login" />
-          <Route component={SignUpScreen} path="/register" />
+          <Route path="/login" component={LoginScreen} />
+          <Route path="/register" component={SignUpScreen} />
         </Switch>
       </div>
     </BrowserRouter>

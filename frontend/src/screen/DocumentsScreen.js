@@ -11,16 +11,19 @@ import { Button } from "@material-ui/core";
 
 // REDUX
 import { useDispatch, useSelector } from "react-redux";
-import { getDetails, updateDetails } from "../redux/actions/detailsAction";
+import {
+  getDocuments,
+  updateDocuments,
+} from "../redux/actions/documentsAction";
 
-import { useStyles } from "./Custom Styles/contentForm";
+import { useStyles } from "./Custom Styles/contents/contentForm";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 
 const DocumentsScreen = ({ history, location }) => {
   const classes = useStyles();
 
-  const [addhaarCard, setAddhaarCard] = useState("");
+  const [adhaarCard, setadhaarCard] = useState("");
   const [driverLicense, setDriverLicense] = useState("");
   const [panCard, setPanCard] = useState("");
   const [voterCard, setVoterCard] = useState("");
@@ -29,47 +32,52 @@ const DocumentsScreen = ({ history, location }) => {
   // REDUX
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.userLogin);
+  const { loading, documents, error } = useSelector(
+    (state) => state.userFetchDocuments
+  );
+  const { documents: updatedDocuments } = useSelector(
+    (state) => state.userUpdateDocuments
+  );
 
   // redirect to home page if logged in
   useEffect(() => {
     if (!userInfo) {
       history.push("/login");
+    } else if (documents) {
+      setadhaarCard(documents.adhaar_card);
+      setDriverLicense(documents.driver_license);
+      setPanCard(documents.panCard);
+      setVoterCard(documents.voter_card);
+      setPassport(documents.passport);
     }
-    // else if (details) {
-    //   setName(details.user.name);
-    //   setBio(details.bio);
-    //   setAddress(details.address);
-    //   setEmail(details.user.email);
-    //   setPhn(details.phn_no);
-    //   setDob(details.dob);
-    // }
-    // // show alert message & redirect to home page if error exists
-    // else if (error) {
-    //   alert(error);
-    //   history.push("/");
-    // }
-    // // redirect to home page if details does not contain
-    // else if (!loading && !details) {
-    //   history.push("/");
-    // }
-  }, [history, userInfo]);
+    // show alert message & redirect to home page if error exists
+    else if (error) {
+      alert(error);
+      history.push("/");
+    }
+    // redirect to home page if documents does not contain
+    else if (!loading && !documents) {
+      history.push("/");
+    }
+  }, [history, userInfo, documents, error]);
 
-  //   // fetch details after update
-  //   useEffect(() => {
-  //     dispatch(getDetails(location.state.password)); // get password from homeScreen location state passed as props in history object
-  //   }, [dispatch, updatedDetails]);
+  // fetch documents after update
+  useEffect(() => {
+    dispatch(getDocuments(location.state.password)); // get password from homeScreen location state passed as props in history object
+  }, [dispatch, updatedDocuments]);
 
   // submit handler
   const submitHandler = (event) => {
     event.preventDefault();
-    // dispatch(
-    //   updateDetails({
-    //     bio: bio,
-    //     address: address,
-    //     phn_no: phn,
-    //     dob: dob.toString().substring(0, 15),
-    //   })
-    // );
+    dispatch(
+      updateDocuments({
+        adhaar_card: adhaarCard,
+        driver_license: driverLicense,
+        panCard: panCard,
+        voter_card: voterCard,
+        passport: passport,
+      })
+    );
   };
 
   return (
@@ -80,147 +88,147 @@ const DocumentsScreen = ({ history, location }) => {
       <Grid container spacing={10}>
         <Grid item xs={12}>
           <Paper elevation={18} className={classes.paper}>
-            {/* {loading ? (
+            {loading ? (
               <Loader />
             ) : error ? (
               <Message children={error} varient="warning" />
-            ) : ( */}
-            <Grid container spacing={1}>
-              {/* LEFT SIDE */}
-              <Grid item xs={12} md={6}>
-                <FormControl variant="outlined" className={classes.input}>
-                  <InputLabel htmlFor="outlined-adornment-adhaarCard">
-                    Adhaar Card
-                  </InputLabel>
-                  <OutlinedInput
-                    id="outlined-adornment-adhaarCard"
-                    placeholder="Adhaar Card"
-                    required
-                    type="text"
-                    value={addhaarCard}
-                    multiline
-                    rows={1}
-                    inputProps={{
-                      style: { fontSize: 26, paddingTop: "0.6rem" },
-                    }} // font size of input text
-                    onChange={(e) => setAddhaarCard(e.target.value)}
-                    labelWidth={148}
-                  />
-                </FormControl>
+            ) : (
+              <Grid container spacing={1}>
+                {/* LEFT SIDE */}
+                <Grid item xs={12} md={6}>
+                  <FormControl variant="outlined" className={classes.input}>
+                    <InputLabel htmlFor="outlined-adornment-adhaarCard">
+                      Adhaar Card
+                    </InputLabel>
+                    <OutlinedInput
+                      id="outlined-adornment-adhaarCard"
+                      placeholder="Adhaar Card"
+                      required
+                      type="text"
+                      value={adhaarCard}
+                      multiline
+                      rows={1}
+                      inputProps={{
+                        style: { fontSize: 26, paddingTop: "0.6rem" },
+                      }} // font size of input text
+                      onChange={(e) => setadhaarCard(e.target.value)}
+                      labelWidth={148}
+                    />
+                  </FormControl>
 
-                <FormControl variant="outlined" className={classes.input}>
-                  <InputLabel htmlFor="outlined-adornment-driverLicense">
-                    Driver License
-                  </InputLabel>
-                  <OutlinedInput
-                    id="outlined-adornment-driverLicense"
-                    placeholder="Driver License"
-                    required
-                    multiline
-                    rows={1}
-                    value={driverLicense}
-                    onChange={(e) => setDriverLicense(e.target.value)}
-                    inputProps={{
-                      style: {
-                        fontSize: 26,
-                        paddingTop: "0.6rem",
-                        lineHeight: "1.4rem",
-                      },
-                    }} // font size of input text
-                    labelWidth={168}
-                  />
-                </FormControl>
+                  <FormControl variant="outlined" className={classes.input}>
+                    <InputLabel htmlFor="outlined-adornment-driverLicense">
+                      Driver License
+                    </InputLabel>
+                    <OutlinedInput
+                      id="outlined-adornment-driverLicense"
+                      placeholder="Driver License"
+                      required
+                      multiline
+                      rows={1}
+                      value={driverLicense}
+                      onChange={(e) => setDriverLicense(e.target.value)}
+                      inputProps={{
+                        style: {
+                          fontSize: 26,
+                          paddingTop: "0.6rem",
+                          lineHeight: "1.4rem",
+                        },
+                      }} // font size of input text
+                      labelWidth={168}
+                    />
+                  </FormControl>
 
-                <FormControl variant="outlined" className={classes.input}>
-                  <InputLabel htmlFor="outlined-adornment-panCard">
-                    Pan Card
-                  </InputLabel>
-                  <OutlinedInput
-                    id="outlined-adornment-panCard"
-                    placeholder="Pan Card"
-                    required
-                    type="text"
-                    value={panCard}
-                    multiline
-                    rows={1}
-                    inputProps={{
-                      style: { fontSize: 26, paddingTop: "0.6rem" },
-                    }} // font size of input text
-                    onChange={(e) => setPanCard(e.target.value)}
-                    labelWidth={108}
-                  />
-                </FormControl>
-              </Grid>
+                  <FormControl variant="outlined" className={classes.input}>
+                    <InputLabel htmlFor="outlined-adornment-panCard">
+                      Pan Card
+                    </InputLabel>
+                    <OutlinedInput
+                      id="outlined-adornment-panCard"
+                      placeholder="Pan Card"
+                      required
+                      type="text"
+                      value={panCard}
+                      multiline
+                      rows={1}
+                      inputProps={{
+                        style: { fontSize: 26, paddingTop: "0.6rem" },
+                      }} // font size of input text
+                      onChange={(e) => setPanCard(e.target.value)}
+                      labelWidth={108}
+                    />
+                  </FormControl>
+                </Grid>
 
-              {/* RIGHT SIDE */}
-              <Grid item xs={12} md={6}>
-                <FormControl variant="outlined" className={classes.input}>
-                  <InputLabel htmlFor="outlined-adornment-voterCard">
-                    Voter Card
-                  </InputLabel>
-                  <OutlinedInput
-                    id="outlined-adornment-voterCard"
-                    placeholder="Voter Card"
-                    required
-                    type="text"
-                    value={voterCard}
-                    multiline
-                    rows={1}
-                    inputProps={{
-                      style: { fontSize: 26, paddingTop: "0.6rem" },
-                    }} // font size of input text
-                    onChange={(e) => setVoterCard(e.target.value)}
-                    labelWidth={124}
-                  />
-                </FormControl>
+                {/* RIGHT SIDE */}
+                <Grid item xs={12} md={6}>
+                  <FormControl variant="outlined" className={classes.input}>
+                    <InputLabel htmlFor="outlined-adornment-voterCard">
+                      Voter Card
+                    </InputLabel>
+                    <OutlinedInput
+                      id="outlined-adornment-voterCard"
+                      placeholder="Voter Card"
+                      required
+                      type="text"
+                      value={voterCard}
+                      multiline
+                      rows={1}
+                      inputProps={{
+                        style: { fontSize: 26, paddingTop: "0.6rem" },
+                      }} // font size of input text
+                      onChange={(e) => setVoterCard(e.target.value)}
+                      labelWidth={124}
+                    />
+                  </FormControl>
 
-                <FormControl variant="outlined" className={classes.input}>
-                  <InputLabel htmlFor="outlined-adornment-passport">
-                    Passport
-                  </InputLabel>
-                  <OutlinedInput
-                    id="outlined-adornment-passport"
-                    placeholder="Passport"
-                    required
-                    type="text"
-                    value={passport}
-                    multiline
-                    rows={1}
-                    inputProps={{
-                      style: { fontSize: 26, paddingTop: "0.6rem" },
-                    }} // font size of input text
-                    onChange={(e) => setPassport(e.target.value)}
-                    labelWidth={104}
-                  />
-                </FormControl>
-              </Grid>
-              {/* 
+                  <FormControl variant="outlined" className={classes.input}>
+                    <InputLabel htmlFor="outlined-adornment-passport">
+                      Passport
+                    </InputLabel>
+                    <OutlinedInput
+                      id="outlined-adornment-passport"
+                      placeholder="Passport"
+                      required
+                      type="text"
+                      value={passport}
+                      multiline
+                      rows={1}
+                      inputProps={{
+                        style: { fontSize: 26, paddingTop: "0.6rem" },
+                      }} // font size of input text
+                      onChange={(e) => setPassport(e.target.value)}
+                      labelWidth={104}
+                    />
+                  </FormControl>
+                </Grid>
+
                 <Grid
                   item
                   style={{
                     margin: "auto",
                   }}
                   xs={8}
-                > */}
-              {/* Success message on updating details */}
-              {/* {updatedDetails && (
+                >
+                  {/* Success message on updating documents */}
+                  {updatedDocuments && (
                     <Message
                       varient="success"
-                      children="Successfully update details"
+                      children="Successfully update documents"
                     />
                   )}
-                </Grid> */}
-              <Button
-                className={classes.button}
-                onClick={submitHandler}
-                size="large"
-                variant="contained"
-                color="primary"
-              >
-                UPDATE
-              </Button>
-            </Grid>
-            {/* )} */}
+                </Grid>
+                <Button
+                  className={classes.button}
+                  onClick={submitHandler}
+                  size="large"
+                  variant="contained"
+                  color="primary"
+                >
+                  UPDATE
+                </Button>
+              </Grid>
+            )}
           </Paper>
         </Grid>
       </Grid>

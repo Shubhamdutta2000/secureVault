@@ -9,14 +9,26 @@ import {
   updateDetailsReducer,
   deleteDetailsReducer,
 } from "./reducers/detailsReducer";
+import {
+  documentsReducer,
+  postDocumentsReducer,
+  updateDocumentsReducer,
+  deleteDocumentsReducer,
+} from "./reducers/documentsReducer";
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
+  // details
   userFetchDetails: detailsReducer,
   userPostDetails: postDetailsReducer,
   userUpdateDetails: updateDetailsReducer,
-  userDeleteReducer: deleteDetailsReducer,
+  userDeleteDocuments: deleteDetailsReducer,
+  //documents
+  userFetchDocuments: documentsReducer,
+  userPostDocuments: postDocumentsReducer,
+  userUpdateDocuments: updateDocumentsReducer,
+  userDeleteDocuments: deleteDocumentsReducer,
 });
 
 // GET user info from local Storage

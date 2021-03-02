@@ -15,6 +15,7 @@ import globe from "../assets/images/globe.png";
 // REDUX
 import { useDispatch, useSelector } from "react-redux";
 import { getDetails } from "../redux/actions/detailsAction";
+import { getDocuments } from "../redux/actions/documentsAction";
 
 import { useStyles } from "./Custom Styles/homeScreen";
 
@@ -64,6 +65,14 @@ const HomeScreen = ({ history }) => {
         state: { password: password },
       });
       setOpen(false);
+    } else if (content === "Documents") {
+      dispatch(getDocuments(password));
+      // pass props to the history object
+      history.push({
+        pathname: "/documents",
+        state: { password: password },
+      });
+      setOpen(false);
     }
   };
 
@@ -104,7 +113,7 @@ const HomeScreen = ({ history }) => {
                 onClick={() => handleClickOpen(content)}
                 className={classes.doc}
                 src={folder}
-                alt="details_folder"
+                alt={`${content} folder`}
               />
               <Typography
                 className={classes.folder_name}

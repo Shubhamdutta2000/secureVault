@@ -13,7 +13,7 @@ import { Button } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetails, updateDetails } from "../redux/actions/detailsAction";
 
-import { useStyles } from "./Custom Styles/contentForm";
+import { useStyles } from "./Custom Styles/contents/contentForm";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 

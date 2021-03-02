@@ -12,21 +12,14 @@ import { Button } from "@material-ui/core";
 import MenuItem from "@material-ui/core/MenuItem";
 
 import IconButton from "@material-ui/core/IconButton";
-import EmailIcon from "@material-ui/icons/Email";
-import HomeIcon from "@material-ui/icons/Home";
-import PersonIcon from "@material-ui/icons/Person";
-import PhoneIcon from "@material-ui/icons/Phone";
-import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
+import DriveEtaIcon from "@material-ui/icons/DriveEta";
+import AssignmentIcon from "@material-ui/icons/Assignment";
+import HowToVoteIcon from "@material-ui/icons/HowToVote";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import LockIcon from "@material-ui/icons/Lock";
 import Select from "@material-ui/core/Select";
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker,
-} from "@material-ui/pickers";
-import DateFnsUtils from "@date-io/date-fns";
 
 // components
 import Loader from "../components/Loader";
@@ -37,17 +30,18 @@ import postIllustration from "../assets/images/postIllustration.png";
 
 // REDUX
 import { useDispatch, useSelector } from "react-redux";
-import { postDetails } from "../redux/actions/detailsAction";
+import { postDocuments } from "../redux/actions/documentsAction";
 
-import { useStyles } from "./Custom Styles/postContents/postDetails";
+import { useStyles } from "./Custom Styles/postContents/postDocuments";
 
-const PostDetails = ({ history }) => {
+const PostDocuments = ({ history }) => {
   const classes = useStyles();
 
-  const [bio, setBio] = useState("");
-  const [address, setAddress] = useState("");
-  const [phn_no, setPhn_no] = useState("");
-  const [dob, setDob] = useState(new Date("1900-01-01T21:11:00"));
+  const [adhaarCard, setAdhaarCard] = useState("");
+  const [driverLicense, setDriverLicense] = useState("");
+  const [panCard, setPanCard] = useState("");
+  const [voterCard, setVoterCard] = useState("");
+  const [passport, setPassport] = useState("");
   const [password, setPassword] = useState("");
   const [passwordVisibility, setPasswordVisibility] = useState("");
   const [content, setContent] = useState("");
@@ -55,8 +49,8 @@ const PostDetails = ({ history }) => {
   // REDUX
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.userLogin);
-  const { loading, details, error } = useSelector(
-    (state) => state.userPostDetails
+  const { loading, documents, error } = useSelector(
+    (state) => state.userPostDocuments
   );
 
   useEffect(() => {
@@ -69,11 +63,12 @@ const PostDetails = ({ history }) => {
   const submitPostHandler = (event) => {
     event.preventDefault();
     dispatch(
-      postDetails({
-        bio: bio,
-        address: address,
-        phn_no: phn_no,
-        dob: dob.toString().substring(0, 15),
+      postDocuments({
+        adhaar_card: adhaarCard,
+        driver_license: driverLicense,
+        panCard: panCard,
+        voter_card: voterCard,
+        passport: passport,
         password: password,
       })
     );
@@ -100,8 +95,8 @@ const PostDetails = ({ history }) => {
               className={classes.select}
               inputProps={{ "aria-label": "Without label" }}
             >
-              <MenuItem value="">Details</MenuItem>
-              <MenuItem value="documents">Documents</MenuItem>
+              <MenuItem value="details">Details</MenuItem>
+              <MenuItem value="">Documents</MenuItem>
               <MenuItem value="education">Education</MenuItem>
               <MenuItem value="career">Career</MenuItem>
               <MenuItem value="finance">Finance</MenuItem>
@@ -118,18 +113,18 @@ const PostDetails = ({ history }) => {
 
         <Grid item xs={12} sm={6}>
           <Paper elevation={18} className={classes.paper}>
-            {/*// FORM FOR DETAILS POST //*/}
+            {/*// FORM FOR DOCUMENTS POST //*/}
             <form className={classes.form}>
               <FormControl variant="outlined" className={classes.input}>
-                <InputLabel htmlFor="outlined-adornment-bio">Bio</InputLabel>
+                <InputLabel htmlFor="outlined-adornment-bio">
+                  Adhaar Card
+                </InputLabel>
                 <OutlinedInput
-                  id="outlined-adornment-bio"
-                  placeholder="Bio"
+                  id="outlined-adornment-adhaarCard"
+                  placeholder="Adhaar Card"
                   required
-                  value={bio}
-                  onChange={(e) => setBio(e.target.value)}
-                  multiline
-                  rows={1}
+                  value={adhaarCard}
+                  onChange={(e) => setAdhaarCard(e.target.value)}
                   inputProps={{
                     style: { paddingTop: "1rem" },
                   }} // font size of input text
@@ -138,71 +133,67 @@ const PostDetails = ({ history }) => {
                       <AssignmentIndIcon className={classes.icon} />
                     </InputAdornment>
                   }
-                  labelWidth={30}
+                  labelWidth={100}
                 />
               </FormControl>
               <FormControl variant="outlined" className={classes.input}>
-                <InputLabel htmlFor="outlined-adornment-address">
-                  Address
+                <InputLabel htmlFor="outlined-adornment-driverLicense">
+                  Driver License
                 </InputLabel>
                 <OutlinedInput
-                  id="outlined-adornment-address"
-                  placeholder="Address"
+                  id="outlined-adornment-driverLicense"
+                  placeholder="Driver License"
                   required
                   type="text"
-                  value={address}
+                  value={driverLicense}
                   startAdornment={
                     <InputAdornment position="start">
-                      <HomeIcon className={classes.icon} />
+                      <DriveEtaIcon className={classes.icon} />
                     </InputAdornment>
                   }
-                  onChange={(e) => setAddress(e.target.value)}
-                  labelWidth={70}
+                  onChange={(e) => setDriverLicense(e.target.value)}
+                  labelWidth={116}
                 />
               </FormControl>
               <FormControl variant="outlined" className={classes.input}>
-                <InputLabel htmlFor="outlined-adornment-phn_no">
-                  Phone
+                <InputLabel htmlFor="outlined-adornment-panCard">
+                  Pan Card
                 </InputLabel>
                 <OutlinedInput
-                  id="outlined-adornment-phn_no"
-                  placeholder="Phone"
+                  id="outlined-adornment-panCard"
+                  placeholder="Pan Card"
                   required
                   type="text"
-                  value={phn_no}
+                  value={panCard}
                   multiline
                   startAdornment={
                     <InputAdornment position="start">
-                      <PhoneIcon className={classes.icon} />
+                      <AssignmentIcon className={classes.icon} />
                     </InputAdornment>
                   }
-                  onChange={(e) => setPhn_no(e.target.value)}
-                  labelWidth={50}
+                  onChange={(e) => setPanCard(e.target.value)}
+                  labelWidth={76}
                 />
               </FormControl>
-              <FormControl
-                variant="outlined"
-                style={{ marginTop: "-1rem" }}
-                className={classes.input}
-              >
-                <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                  <KeyboardDatePicker
-                    disableToolbar
-                    variant="inline"
-                    format="MM-dd-yyyy"
-                    margin="normal"
-                    id="date-picker-inline"
-                    label="Date Of Birth"
-                    value={dob}
-                    inputProps={{
-                      style: { paddingTop: "0.4rem" },
-                    }} // font size of input text
-                    onChange={(e) => setDob(e)}
-                    KeyboardButtonProps={{
-                      "aria-label": "change date",
-                    }}
-                  />
-                </MuiPickersUtilsProvider>
+              <FormControl variant="outlined" className={classes.input}>
+                <InputLabel htmlFor="outlined-adornment-voterCard">
+                  Voter Card
+                </InputLabel>
+                <OutlinedInput
+                  id="outlined-adornment-voterCard"
+                  placeholder="Voter Card"
+                  required
+                  type="text"
+                  value={voterCard}
+                  multiline
+                  startAdornment={
+                    <InputAdornment position="start">
+                      <HowToVoteIcon className={classes.icon} />
+                    </InputAdornment>
+                  }
+                  onChange={(e) => setVoterCard(e.target.value)}
+                  labelWidth={84}
+                />
               </FormControl>
               <FormControl variant="outlined" className={classes.input}>
                 <InputLabel htmlFor="outlined-adornment-password">
@@ -268,4 +259,4 @@ const PostDetails = ({ history }) => {
   );
 };
 
-export default PostDetails;
+export default PostDocuments;
