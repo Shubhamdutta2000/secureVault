@@ -18,10 +18,6 @@ import Message from "../components/Message";
 const DetailsScreen = ({ history }) => {
   const classes = useStyles();
 
-  const { loading, details, error } = useSelector((state) => state.userDetails);
-
-  console.log(details);
-
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
   const [address, setAddress] = useState("");
@@ -32,6 +28,9 @@ const DetailsScreen = ({ history }) => {
   // REDUX
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.userLogin);
+  const { loading, details, error } = useSelector(
+    (state) => state.userFetchDetails
+  );
 
   // redirect to home page if logged in
   useEffect(() => {
@@ -46,6 +45,8 @@ const DetailsScreen = ({ history }) => {
       setDob(details.dob);
     } else if (error) {
       alert(error);
+      history.push("/");
+    } else if (!loading && !details) {
       history.push("/");
     }
   }, [history, userInfo, details, loading]);

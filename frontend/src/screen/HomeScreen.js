@@ -34,7 +34,6 @@ const HomeScreen = ({ history }) => {
   ];
 
   const dispatch = useDispatch();
-  const { loading, details, error } = useSelector((state) => state.userDetails);
 
   const allsecrets = useRef(null);
   const executeScroll = () => {

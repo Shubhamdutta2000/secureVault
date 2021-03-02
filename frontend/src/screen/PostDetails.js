@@ -55,7 +55,9 @@ const PostDetails = ({ history }) => {
   // REDUX
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.userLogin);
-  const { loading, details, error } = useSelector((state) => state.userDetails);
+  const { loading, details, error } = useSelector(
+    (state) => state.userPostDetails
+  );
 
   useEffect(() => {
     if (!userInfo) {
