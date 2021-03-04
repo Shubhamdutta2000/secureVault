@@ -24,7 +24,7 @@ Content-Type: application/json
 ###############   POST user details  ##################
 POST http://localhost:5000/user/details/post
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDgzMjUwMSwiZXhwIjoxNjE0ODY4NTAxfQ.15KSbDk8lKxkoaWYiRH2lK_UkQ6JddxUx5TC76tmu0o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDg2ODUyOSwiZXhwIjoxNjE0OTA0NTI5fQ.iw6OvEolao9e4HIv5WFDDYKZ4O6KMFABE4aj9kYzLro
 
 {
     "bio": "I am a CST student, Web developer specialist and coding enthusiast",
@@ -37,7 +37,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmN
 #############    GET user detail    ###################
 POST http://localhost:5000/user/details
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDgzMjUwMSwiZXhwIjoxNjE0ODY4NTAxfQ.15KSbDk8lKxkoaWYiRH2lK_UkQ6JddxUx5TC76tmu0o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDg2ODUyOSwiZXhwIjoxNjE0OTA0NTI5fQ.iw6OvEolao9e4HIv5WFDDYKZ4O6KMFABE4aj9kYzLro
 
 {
   "password": "2222"
@@ -45,7 +45,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmN
 
 #############    PUT user details    ###################
 PUT http://localhost:5000/user/details
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDgzMjUwMSwiZXhwIjoxNjE0ODY4NTAxfQ.15KSbDk8lKxkoaWYiRH2lK_UkQ6JddxUx5TC76tmu0o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDg2ODUyOSwiZXhwIjoxNjE0OTA0NTI5fQ.iw6OvEolao9e4HIv5WFDDYKZ4O6KMFABE4aj9kYzLro
 Content-Type: application/json
 
 {
@@ -54,7 +54,7 @@ Content-Type: application/json
  
 #############   DELETE user details   ###################
 DELETE http://localhost:5000/user/details
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDgzMjUwMSwiZXhwIjoxNjE0ODY4NTAxfQ.15KSbDk8lKxkoaWYiRH2lK_UkQ6JddxUx5TC76tmu0o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDg2ODUyOSwiZXhwIjoxNjE0OTA0NTI5fQ.iw6OvEolao9e4HIv5WFDDYKZ4O6KMFABE4aj9kYzLro
 
 
 
@@ -67,7 +67,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmN
 ##################   POST only 1 User Document  ####################
 
 POST http://localhost:5000/user/documents/post
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDgzMjUwMSwiZXhwIjoxNjE0ODY4NTAxfQ.15KSbDk8lKxkoaWYiRH2lK_UkQ6JddxUx5TC76tmu0o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDg2ODUyOSwiZXhwIjoxNjE0OTA0NTI5fQ.iw6OvEolao9e4HIv5WFDDYKZ4O6KMFABE4aj9kYzLro
 Content-Type: application/json
 
 {
@@ -82,7 +82,7 @@ Content-Type: application/json
 
 #############    GET user document   ###################
 POST http://localhost:5000/user/documents
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDgzMjUwMSwiZXhwIjoxNjE0ODY4NTAxfQ.15KSbDk8lKxkoaWYiRH2lK_UkQ6JddxUx5TC76tmu0o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDg2ODUyOSwiZXhwIjoxNjE0OTA0NTI5fQ.iw6OvEolao9e4HIv5WFDDYKZ4O6KMFABE4aj9kYzLro
 Content-Type: application/json
 
 {
@@ -92,7 +92,7 @@ Content-Type: application/json
 
 #############    PUT user documents    ###################
 PUT http://localhost:5000/user/documents
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDgzMjUwMSwiZXhwIjoxNjE0ODY4NTAxfQ.15KSbDk8lKxkoaWYiRH2lK_UkQ6JddxUx5TC76tmu0o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDg2ODUyOSwiZXhwIjoxNjE0OTA0NTI5fQ.iw6OvEolao9e4HIv5WFDDYKZ4O6KMFABE4aj9kYzLro
 Content-Type: application/json
 
 {
@@ -102,7 +102,7 @@ Content-Type: application/json
 
 #############   DELETE user documents   ###################
 DELETE http://localhost:5000/user/documents
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDgzMjUwMSwiZXhwIjoxNjE0ODY4NTAxfQ.15KSbDk8lKxkoaWYiRH2lK_UkQ6JddxUx5TC76tmu0o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDg2ODUyOSwiZXhwIjoxNjE0OTA0NTI5fQ.iw6OvEolao9e4HIv5WFDDYKZ4O6KMFABE4aj9kYzLro
 
 
 
@@ -114,7 +114,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmN
 
 ###############   POST user career  ##################
 POST http://localhost:5000/user/career/post
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDgzMjUwMSwiZXhwIjoxNjE0ODY4NTAxfQ.15KSbDk8lKxkoaWYiRH2lK_UkQ6JddxUx5TC76tmu0o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDg2ODUyOSwiZXhwIjoxNjE0OTA0NTI5fQ.iw6OvEolao9e4HIv5WFDDYKZ4O6KMFABE4aj9kYzLro
 Content-Type: application/json
 
 {
@@ -139,7 +139,7 @@ Content-Type: application/json
 
 #############    GET user career   ###################
 POST  http://localhost:5000/user/career
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDgzMjUwMSwiZXhwIjoxNjE0ODY4NTAxfQ.15KSbDk8lKxkoaWYiRH2lK_UkQ6JddxUx5TC76tmu0o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDg2ODUyOSwiZXhwIjoxNjE0OTA0NTI5fQ.iw6OvEolao9e4HIv5WFDDYKZ4O6KMFABE4aj9kYzLro
 Content-Type: application/json
 
 {
@@ -148,7 +148,7 @@ Content-Type: application/json
 
 #############    PUT user career    ###################
 PUT http://localhost:5000/user/career
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDgzMjUwMSwiZXhwIjoxNjE0ODY4NTAxfQ.15KSbDk8lKxkoaWYiRH2lK_UkQ6JddxUx5TC76tmu0o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDg2ODUyOSwiZXhwIjoxNjE0OTA0NTI5fQ.iw6OvEolao9e4HIv5WFDDYKZ4O6KMFABE4aj9kYzLro
 Content-Type: application/json
 
 {
@@ -171,7 +171,7 @@ Content-Type: application/json
 
 #############    DELETE user career    ###################
 DELETE  http://localhost:5000/user/career
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDgzMjUwMSwiZXhwIjoxNjE0ODY4NTAxfQ.15KSbDk8lKxkoaWYiRH2lK_UkQ6JddxUx5TC76tmu0o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDg2ODUyOSwiZXhwIjoxNjE0OTA0NTI5fQ.iw6OvEolao9e4HIv5WFDDYKZ4O6KMFABE4aj9kYzLro
 
 
 
@@ -183,7 +183,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmN
 
 ###############   POST user Education  ##################
 POST http://localhost:5000/user/education/post
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDgzMjUwMSwiZXhwIjoxNjE0ODY4NTAxfQ.15KSbDk8lKxkoaWYiRH2lK_UkQ6JddxUx5TC76tmu0o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDg2ODUyOSwiZXhwIjoxNjE0OTA0NTI5fQ.iw6OvEolao9e4HIv5WFDDYKZ4O6KMFABE4aj9kYzLro
 Content-Type: application/json
 
 {
@@ -212,13 +212,13 @@ Content-Type: application/json
             "events": "quiz"
           }
       },
-    "password": "SECRETMESSAGE2"
+    "password": "secret"
 }
 
 
 #############    GET user education      ###################
 POST http://localhost:5000/user/education
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDgzMjUwMSwiZXhwIjoxNjE0ODY4NTAxfQ.15KSbDk8lKxkoaWYiRH2lK_UkQ6JddxUx5TC76tmu0o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDg2ODUyOSwiZXhwIjoxNjE0OTA0NTI5fQ.iw6OvEolao9e4HIv5WFDDYKZ4O6KMFABE4aj9kYzLro
 Content-Type: application/json
 
 {
@@ -228,7 +228,7 @@ Content-Type: application/json
 
 #############    PUT user education    ###################
 PUT http://localhost:5000/user/education
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDgzMjUwMSwiZXhwIjoxNjE0ODY4NTAxfQ.15KSbDk8lKxkoaWYiRH2lK_UkQ6JddxUx5TC76tmu0o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDg2ODUyOSwiZXhwIjoxNjE0OTA0NTI5fQ.iw6OvEolao9e4HIv5WFDDYKZ4O6KMFABE4aj9kYzLro
 Content-Type: application/json
 
 {
@@ -239,7 +239,7 @@ Content-Type: application/json
 
 #############   DELETE user education   ###################
 DELETE http://localhost:5000/user/education
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDgzMjUwMSwiZXhwIjoxNjE0ODY4NTAxfQ.15KSbDk8lKxkoaWYiRH2lK_UkQ6JddxUx5TC76tmu0o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDg2ODUyOSwiZXhwIjoxNjE0OTA0NTI5fQ.iw6OvEolao9e4HIv5WFDDYKZ4O6KMFABE4aj9kYzLro
 
 
 
@@ -253,7 +253,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmN
 
 ###############   POST user Finance  ##################
 POST http://localhost:5000/user/finance/post
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDgzMjUwMSwiZXhwIjoxNjE0ODY4NTAxfQ.15KSbDk8lKxkoaWYiRH2lK_UkQ6JddxUx5TC76tmu0o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDg2ODUyOSwiZXhwIjoxNjE0OTA0NTI5fQ.iw6OvEolao9e4HIv5WFDDYKZ4O6KMFABE4aj9kYzLro
 Content-Type: application/json
 
 {
@@ -273,7 +273,7 @@ Content-Type: application/json
 
 #############    GET user finance   ###################
 POST http://localhost:5000/user/finance
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDgzMjUwMSwiZXhwIjoxNjE0ODY4NTAxfQ.15KSbDk8lKxkoaWYiRH2lK_UkQ6JddxUx5TC76tmu0o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDg2ODUyOSwiZXhwIjoxNjE0OTA0NTI5fQ.iw6OvEolao9e4HIv5WFDDYKZ4O6KMFABE4aj9kYzLro
 Content-Type: application/json
 
 {
@@ -283,7 +283,7 @@ Content-Type: application/json
 
 #############    PUT user finance    ###################
 PUT http://localhost:5000/user/finance
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDgzMjUwMSwiZXhwIjoxNjE0ODY4NTAxfQ.15KSbDk8lKxkoaWYiRH2lK_UkQ6JddxUx5TC76tmu0o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDg2ODUyOSwiZXhwIjoxNjE0OTA0NTI5fQ.iw6OvEolao9e4HIv5WFDDYKZ4O6KMFABE4aj9kYzLro
 Content-Type: application/json
 
 {
@@ -293,7 +293,7 @@ Content-Type: application/json
 
 #############   DELETE user finance   ###################
 DELETE http://localhost:5000/user/finance
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDgzMjUwMSwiZXhwIjoxNjE0ODY4NTAxfQ.15KSbDk8lKxkoaWYiRH2lK_UkQ6JddxUx5TC76tmu0o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDg2ODUyOSwiZXhwIjoxNjE0OTA0NTI5fQ.iw6OvEolao9e4HIv5WFDDYKZ4O6KMFABE4aj9kYzLro
 
 
 
@@ -305,7 +305,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmN
 
 ###############   POST user Medical  ##################
 POST http://localhost:5000/user/medical/post
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDgzMjUwMSwiZXhwIjoxNjE0ODY4NTAxfQ.15KSbDk8lKxkoaWYiRH2lK_UkQ6JddxUx5TC76tmu0o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDg2ODUyOSwiZXhwIjoxNjE0OTA0NTI5fQ.iw6OvEolao9e4HIv5WFDDYKZ4O6KMFABE4aj9kYzLro
 Content-Type: application/json
 
 {
@@ -321,7 +321,7 @@ Content-Type: application/json
 
 #############    GET user medical   ###################
 POST http://localhost:5000/user/medical
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDgzMjUwMSwiZXhwIjoxNjE0ODY4NTAxfQ.15KSbDk8lKxkoaWYiRH2lK_UkQ6JddxUx5TC76tmu0o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDg2ODUyOSwiZXhwIjoxNjE0OTA0NTI5fQ.iw6OvEolao9e4HIv5WFDDYKZ4O6KMFABE4aj9kYzLro
 Content-Type: application/json
 
 {
@@ -330,7 +330,7 @@ Content-Type: application/json
 
 #############    PUT user medical    ###################
 PUT http://localhost:5000/user/medical
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDgzMjUwMSwiZXhwIjoxNjE0ODY4NTAxfQ.15KSbDk8lKxkoaWYiRH2lK_UkQ6JddxUx5TC76tmu0o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDg2ODUyOSwiZXhwIjoxNjE0OTA0NTI5fQ.iw6OvEolao9e4HIv5WFDDYKZ4O6KMFABE4aj9kYzLro
 Content-Type: application/json
 
 {
@@ -341,4 +341,4 @@ Content-Type: application/json
 
 #############   DELETE user medical   ###################
 DELETE http://localhost:5000/user/medical
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDgzMjUwMSwiZXhwIjoxNjE0ODY4NTAxfQ.15KSbDk8lKxkoaWYiRH2lK_UkQ6JddxUx5TC76tmu0o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzhmYTZmNWMyZDkzNTEyOGZkNTE4MCIsImlhdCI6MTYxNDg2ODUyOSwiZXhwIjoxNjE0OTA0NTI5fQ.iw6OvEolao9e4HIv5WFDDYKZ4O6KMFABE4aj9kYzLro

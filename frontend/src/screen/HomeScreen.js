@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDetails } from "../redux/actions/detailsAction";
 import { getDocuments } from "../redux/actions/documentsAction";
 import { getCareer } from "../redux/actions/careerAction";
+import { getEducation } from "../redux/actions/educationAction";
 
 import { useStyles } from "./Custom Styles/homeScreen";
 
@@ -79,6 +80,14 @@ const HomeScreen = ({ history }) => {
       // pass props to the history object
       history.push({
         pathname: "/career",
+        state: { password: password },
+      });
+      setOpen(false);
+    } else if (content === "Education") {
+      dispatch(getEducation(password));
+      // pass props to the history object
+      history.push({
+        pathname: "/education",
         state: { password: password },
       });
       setOpen(false);
