@@ -131,7 +131,10 @@ const PostDocuments = ({ history }) => {
                   }} // font size of input text
                   startAdornment={
                     <InputAdornment position="start">
-                      <AssignmentIndIcon className={classes.icon} />
+                      <AssignmentIndIcon
+                        color="primary"
+                        className={classes.icon}
+                      />
                     </InputAdornment>
                   }
                   labelWidth={100}
@@ -149,7 +152,7 @@ const PostDocuments = ({ history }) => {
                   value={driverLicense}
                   startAdornment={
                     <InputAdornment position="start">
-                      <DriveEtaIcon className={classes.icon} />
+                      <DriveEtaIcon color="primary" className={classes.icon} />
                     </InputAdornment>
                   }
                   onChange={(e) => setDriverLicense(e.target.value)}
@@ -169,7 +172,10 @@ const PostDocuments = ({ history }) => {
                   multiline
                   startAdornment={
                     <InputAdornment position="start">
-                      <AssignmentIcon className={classes.icon} />
+                      <AssignmentIcon
+                        color="primary"
+                        className={classes.icon}
+                      />
                     </InputAdornment>
                   }
                   onChange={(e) => setPanCard(e.target.value)}
@@ -189,7 +195,7 @@ const PostDocuments = ({ history }) => {
                   multiline
                   startAdornment={
                     <InputAdornment position="start">
-                      <HowToVoteIcon className={classes.icon} />
+                      <HowToVoteIcon color="primary" className={classes.icon} />
                     </InputAdornment>
                   }
                   onChange={(e) => setVoterCard(e.target.value)}
@@ -210,7 +216,10 @@ const PostDocuments = ({ history }) => {
                   multiline
                   startAdornment={
                     <InputAdornment position="start">
-                      <FlightTakeoffIcon className={classes.icon} />
+                      <FlightTakeoffIcon
+                        color="primary"
+                        className={classes.icon}
+                      />
                     </InputAdornment>
                   }
                   onChange={(e) => setPassport(e.target.value)}
@@ -231,7 +240,7 @@ const PostDocuments = ({ history }) => {
                   onChange={(e) => setPassword(e.target.value)}
                   startAdornment={
                     <InputAdornment position="start">
-                      <LockIcon className={classes.icon} />
+                      <LockIcon color="primary" className={classes.icon} />
                     </InputAdornment>
                   }
                   endAdornment={
@@ -260,7 +269,7 @@ const PostDocuments = ({ history }) => {
               {loading ? (
                 <Loader />
               ) : error ? (
-                  <Message varient="error">{error}</Message>
+                <Message varient="error">{error}</Message>
               ) : (
                 <Message varient="success">POST successfully submitted</Message>
               )}

@@ -16,15 +16,7 @@ import SchoolIcon from "@material-ui/icons/School";
 import EqualizerIcon from "@material-ui/icons/Equalizer";
 import GradeIcon from "@material-ui/icons/Grade";
 import LinkIcon from "@material-ui/icons/Link";
-import CardMembershipIcon from "@material-ui/icons/CardMembership";
-import PaymentIcon from "@material-ui/icons/Payment";
-import ListAltIcon from "@material-ui/icons/ListAlt";
-import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
-import PermContactCalendarIcon from "@material-ui/icons/PermContactCalendar";
-import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
-import LocationCityIcon from "@material-ui/icons/LocationCity";
-
-import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
+import ScheduleIcon from "@material-ui/icons/Schedule";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import LockIcon from "@material-ui/icons/Lock";
@@ -414,7 +406,7 @@ const PostEducation = ({ history }) => {
                           multiline
                           startAdornment={
                             <InputAdornment position="start">
-                              <LinkIcon
+                              <ScheduleIcon
                                 color="primary"
                                 className={classes.icon}
                               />
@@ -553,7 +545,7 @@ const PostEducation = ({ history }) => {
                         };
                       })
                     }
-                    labelWidth={116}
+                    labelWidth={86}
                   />
                 </FormControl>
 
@@ -582,7 +574,7 @@ const PostEducation = ({ history }) => {
                         };
                       })
                     }
-                    labelWidth={76}
+                    labelWidth={64}
                   />
                 </FormControl>
 
@@ -611,7 +603,7 @@ const PostEducation = ({ history }) => {
                         };
                       })
                     }
-                    labelWidth={84}
+                    labelWidth={64}
                   />
                 </FormControl>
 
@@ -629,7 +621,7 @@ const PostEducation = ({ history }) => {
                     onChange={(e) => setPassword(e.target.value)}
                     startAdornment={
                       <InputAdornment position="start">
-                        <LockIcon className={classes.icon} />
+                        <LockIcon color="primary" className={classes.icon} />
                       </InputAdornment>
                     }
                     endAdornment={
@@ -650,7 +642,7 @@ const PostEducation = ({ history }) => {
                         </IconButton>
                       </InputAdornment>
                     }
-                    labelWidth={78}
+                    labelWidth={92}
                   />
                 </FormControl>
               </Grid>

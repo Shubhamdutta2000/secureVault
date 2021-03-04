@@ -135,7 +135,10 @@ const PostDetails = ({ history }) => {
                   }} // font size of input text
                   startAdornment={
                     <InputAdornment position="start">
-                      <AssignmentIndIcon className={classes.icon} />
+                      <AssignmentIndIcon
+                        color="primary"
+                        className={classes.icon}
+                      />
                     </InputAdornment>
                   }
                   labelWidth={30}
@@ -153,7 +156,7 @@ const PostDetails = ({ history }) => {
                   value={address}
                   startAdornment={
                     <InputAdornment position="start">
-                      <HomeIcon className={classes.icon} />
+                      <HomeIcon color="primary" className={classes.icon} />
                     </InputAdornment>
                   }
                   onChange={(e) => setAddress(e.target.value)}
@@ -173,7 +176,7 @@ const PostDetails = ({ history }) => {
                   multiline
                   startAdornment={
                     <InputAdornment position="start">
-                      <PhoneIcon className={classes.icon} />
+                      <PhoneIcon color="primary" className={classes.icon} />
                     </InputAdornment>
                   }
                   onChange={(e) => setPhn_no(e.target.value)}
@@ -217,7 +220,7 @@ const PostDetails = ({ history }) => {
                   onChange={(e) => setPassword(e.target.value)}
                   startAdornment={
                     <InputAdornment position="start">
-                      <LockIcon className={classes.icon} />
+                      <LockIcon color="primary" className={classes.icon} />
                     </InputAdornment>
                   }
                   endAdornment={
