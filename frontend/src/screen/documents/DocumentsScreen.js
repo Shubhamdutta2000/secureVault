@@ -23,7 +23,7 @@ import Message from "../../components/Message";
 const DocumentsScreen = ({ history, location }) => {
   const classes = useStyles();
 
-  const [adhaarCard, setadhaarCard] = useState("");
+  const [adhaarCard, setAdhaarCard] = useState("");
   const [driverLicense, setDriverLicense] = useState("");
   const [panCard, setPanCard] = useState("");
   const [voterCard, setVoterCard] = useState("");
@@ -44,7 +44,7 @@ const DocumentsScreen = ({ history, location }) => {
     if (!userInfo) {
       history.push("/login");
     } else if (documents) {
-      setadhaarCard(documents.adhaar_card);
+      setAdhaarCard(documents.adhaar_card);
       setDriverLicense(documents.driver_license);
       setPanCard(documents.panCard);
       setVoterCard(documents.voter_card);
@@ -111,7 +111,7 @@ const DocumentsScreen = ({ history, location }) => {
                       inputProps={{
                         style: { fontSize: 26, paddingTop: "0.6rem" },
                       }} // font size of input text
-                      onChange={(e) => setadhaarCard(e.target.value)}
+                      onChange={(e) => setAdhaarCard(e.target.value)}
                       labelWidth={148}
                     />
                   </FormControl>

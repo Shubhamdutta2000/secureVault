@@ -15,6 +15,7 @@ import CareerScreen from "./screen/career/CareerScreen";
 import PostCareer from "./screen/career/PostCareerScreen";
 import EducationScreen from "./screen/education/EducationScreen";
 import PostEducation from "./screen/education/PostEducationScreen";
+import FinanceScreen from "./screen/finance/FinanceScreen";
 
 function App() {
   const { userInfo } = useSelector((state) => state.userLogin);
@@ -34,6 +35,7 @@ function App() {
           <Route path="/home/post/career" component={PostCareer} />
           <Route path="/education" component={EducationScreen} />
           <Route path="/home/post/education" component={PostEducation} />
+          <Route path="/finance" component={FinanceScreen} />
           <Route path="/" component={HomeScreen} exact />
           <Route path="/login" component={LoginScreen} />
           <Route path="/register" component={SignUpScreen} />

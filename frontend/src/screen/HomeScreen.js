@@ -6,7 +6,6 @@ import { Button, TextField } from "@material-ui/core";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
 import folder from "../assets/images/folder.png";
@@ -18,6 +17,7 @@ import { getDetails } from "../redux/actions/detailsAction";
 import { getDocuments } from "../redux/actions/documentsAction";
 import { getCareer } from "../redux/actions/careerAction";
 import { getEducation } from "../redux/actions/educationAction";
+import { getFinance } from "../redux/actions/financeAction";
 
 import { useStyles } from "./Custom Styles/homeScreen";
 
@@ -88,6 +88,14 @@ const HomeScreen = ({ history }) => {
       // pass props to the history object
       history.push({
         pathname: "/education",
+        state: { password: password },
+      });
+      setOpen(false);
+    } else if (content === "Finance") {
+      dispatch(getFinance(password));
+      // pass props to the history object
+      history.push({
+        pathname: "/finance",
         state: { password: password },
       });
       setOpen(false);

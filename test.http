@@ -267,7 +267,7 @@ Content-Type: application/json
         "mutual_funds": "null",
         "ipos": "null"
       },
-    "password": "SECRET"
+    "password": "secret"
 }
 
 
