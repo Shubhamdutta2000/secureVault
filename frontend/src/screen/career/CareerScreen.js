@@ -157,7 +157,7 @@ const CareerScreen = ({ history, location }) => {
                       rows={1}
                       inputProps={{
                         style: {
-                          fontSize: 20,
+                          fontSize: 26,
                           paddingTop: "0.6rem",
                           lineHeight: "1.4rem",
                         },
