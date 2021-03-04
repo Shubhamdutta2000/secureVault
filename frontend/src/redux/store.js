@@ -9,24 +9,34 @@ import {
   updateDetailsReducer,
   deleteDetailsReducer,
 } from "./reducers/detailsReducer";
+
 import {
   documentsReducer,
   postDocumentsReducer,
   updateDocumentsReducer,
   deleteDocumentsReducer,
 } from "./reducers/documentsReducer";
+
 import {
   careerReducer,
   postCareerReducer,
   updateCareerReducer,
   deleteCareerReducer,
 } from "./reducers/careerReducer";
+
 import {
   educationReducer,
   postEducationReducer,
   updateEducationReducer,
   deleteEducationReducer,
 } from "./reducers/educationReducer";
+
+import {
+  financeReducer,
+  postFinanceReducer,
+  updateFinanceReducer,
+  deleteFinanceReducer,
+} from "./reducers/financeReducer";
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
@@ -51,6 +61,11 @@ const reducer = combineReducers({
   userPostEducation: postEducationReducer,
   userUpdateEducation: updateEducationReducer,
   userDeleteEducation: deleteEducationReducer,
+  //finance
+  userFetchFinance: financeReducer,
+  userPostFinance: postFinanceReducer,
+  userUpdateFinance: updateFinanceReducer,
+  userDeleteFinance: deleteFinanceReducer,
 });
 
 // GET user info from local Storage
