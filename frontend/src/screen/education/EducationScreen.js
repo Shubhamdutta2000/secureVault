@@ -428,8 +428,44 @@ college:
                     />
                   </FormControl>
 
-                  {/* Semester Sheets */}
-                  <FormControl variant="outlined" className={classes.input}>
+                  <Grid container spacing={0}>
+                    {/* Semester Sheets */}
+                    <Grid item xs={12} md={6}>
+                      <a
+                        href={semesterSheets}
+                        target="_blank"
+                        alt="Semester Sheets"
+                      >
+                        <img
+                          className={classes.doc}
+                          src={doc}
+                          alt="Semester Sheets"
+                        />
+                      </a>
+                      <Typography component="h4" variant="h5">
+                        Semester Sheets
+                      </Typography>
+                    </Grid>
+
+                    {/* Final Year Project */}
+                    <Grid item xs={12} md={6}>
+                      <a
+                        href={finalYearProjects}
+                        target="_blank"
+                        alt="Final Year Project"
+                      >
+                        <img
+                          className={classes.doc}
+                          src={doc}
+                          alt="Final Year Project"
+                        />
+                      </a>
+                      <Typography component="h4" variant="h5">
+                        Final Year Project
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                  {/* <FormControl variant="outlined" className={classes.input}>
                     <InputLabel htmlFor="outlined-adornment-semesterSheets">
                       Semester Sheets
                     </InputLabel>
@@ -447,10 +483,10 @@ college:
                       onChange={(e) => setSemesterSheets(e.target.value)}
                       labelWidth={194}
                     />
-                  </FormControl>
+                  </FormControl> */}
 
                   {/* Final Year Projects */}
-                  <FormControl variant="outlined" className={classes.input}>
+                  {/* <FormControl variant="outlined" className={classes.input}>
                     <InputLabel htmlFor="outlined-adornment-finalYearProjects">
                       Final Year Projects
                     </InputLabel>
@@ -468,7 +504,7 @@ college:
                       onChange={(e) => setFinalYearProjects(e.target.value)}
                       labelWidth={218}
                     />
-                  </FormControl>
+                  </FormControl> */}
                 </Grid>
 
                 <Grid item xs={12} md={6}>
@@ -564,7 +600,10 @@ college:
           xs={8}
         >
           {updateEducation && (
-            <Message varient="success" children="Successfully update Career" />
+            <Message
+              varient="success"
+              children="Successfully update Education"
+            />
           )}
         </Grid>
 
