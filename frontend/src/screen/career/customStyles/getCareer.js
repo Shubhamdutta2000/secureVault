@@ -56,7 +56,7 @@ export const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
   },
   resumeDoc: {
-    marginLeft: theme.spacing(-46),
+    marginLeft: theme.spacing(-28),
   },
   input: {
     "& label": {

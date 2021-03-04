@@ -16,6 +16,7 @@ import globe from "../assets/images/globe.png";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetails } from "../redux/actions/detailsAction";
 import { getDocuments } from "../redux/actions/documentsAction";
+import { getCareer } from "../redux/actions/careerAction";
 
 import { useStyles } from "./Custom Styles/homeScreen";
 
@@ -70,6 +71,14 @@ const HomeScreen = ({ history }) => {
       // pass props to the history object
       history.push({
         pathname: "/documents",
+        state: { password: password },
+      });
+      setOpen(false);
+    } else if (content === "Career") {
+      dispatch(getCareer(password));
+      // pass props to the history object
+      history.push({
+        pathname: "/career",
         state: { password: password },
       });
       setOpen(false);

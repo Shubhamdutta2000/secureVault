@@ -14,7 +14,7 @@ import resumeDoc from "../../assets/images/docs.png";
 
 // REDUX
 import { useDispatch, useSelector } from "react-redux";
-import { getDetails, updateDetails } from "../../redux/actions/detailsAction";
+import { getCareer, updateCareer } from "../../redux/actions/careerAction";
 
 import { useStyles } from "./customStyles/getCareer";
 import Loader from "../../components/Loader";
@@ -23,6 +23,7 @@ import Message from "../../components/Message";
 const CareerScreen = ({ history, location }) => {
   const classes = useStyles();
 
+  const [resume, setResume] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [companyPost, setCompanyPost] = useState("");
   const [inHand, setInHand] = useState("");
@@ -35,56 +36,67 @@ const CareerScreen = ({ history, location }) => {
   // REDUX
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.userLogin);
-  const { loading, details, error } = useSelector(
-    (state) => state.userFetchDetails
+  const { loading, career, error } = useSelector(
+    (state) => state.userFetchCareer
   );
-
-  const { details: updatedDetails } = useSelector(
-    (state) => state.userUpdateDetails
+  const { career: updatedCareer } = useSelector(
+    (state) => state.userUpdateCareer
   );
 
   // redirect to home page if logged in
   useEffect(() => {
     if (!userInfo) {
       history.push("/login");
+    } else if (career) {
+      setResume(career.resume);
+      setCompanyName(career.career_instances.company_name);
+      setCompanyPost(career.career_instances.company_post);
+      setCtc(career.career_instances.finance.ctc);
+      setInHand(career.career_instances.finance.in_hand);
+      setSalarySlips(career.career_instances.finance.salary_slips);
+
+      setFreelance(career.non_service_persuits.freelancing);
+      setBussiness(career.non_service_persuits.bussiness);
+      setNonProfits(career.non_service_persuits.non_profits);
     }
-    // else if (career) {
-    //   setCompanyName(career.company_name);
-    //   setCompanyPost(career.company_post);
-    //   setCtc(career.ctc);
-    //   setFreelance(career.freelance);
-    //   setInHand(career.in_hand);
-    //   setBussiness(career.bussiness);
-    //   setNonProfits(career.non_profits);
-    //   setSalarySlips(career.salary_slips);
-    // }
     // show alert message & redirect to home page if error exists
-    // else if (error) {
-    //   alert(error);
-    //   history.push("/");
-    // }
-    // // redirect to home page if career does not contain
-    // else if (!loading && !career) {
-    //   history.push("/");
-    // }
-  }, [history, userInfo, loading]);
+    else if (error) {
+      alert(error);
+      history.push("/");
+    }
+    // redirect to home page if career does not contain
+    else if (!loading && !career) {
+      history.push("/");
+    }
+  }, [history, userInfo, career, loading]);
 
   // fetch career after update
-  // useEffect(() => {
-  //   dispatch(getDetails(location.state.password)); // get password from homeScreen location state passed as props in history object
-  // }, [dispatch, updatedDetails]);
+  useEffect(() => {
+    dispatch(getCareer(location.state.password)); // get password from homeScreen location state passed as props in history object
+  }, [dispatch, updatedCareer]);
 
   // submit handler
   const submitHandler = (event) => {
     event.preventDefault();
-    // dispatch(
-    //   updateDetails({
-    //     bio: bio,
-    //     address: address,
-    //     phn_no: phn,
-    //     dob: dob.toString().substring(0, 15),
-    //   })
-    // );
+    dispatch(
+      updateCareer({
+        resume: resume,
+        career_instances: {
+          company_name: companyName,
+          company_post: companyPost,
+          finance: {
+            in_hand: inHand,
+            ctc: ctc,
+            salary_slips: salarySlips,
+          },
+        },
+        non_service_persuits: {
+          freelancing: freelance,
+          bussiness: bussiness,
+          non_profits: nonProfits,
+        },
+      })
+    );
   };
 
   return (
@@ -231,11 +243,13 @@ const CareerScreen = ({ history, location }) => {
                   >
                     Resume
                   </Typography>
-                  <img
-                    className={classes.resumeDoc}
-                    src={resumeDoc}
-                    alt="resume doc"
-                  />
+                  <a href={resume} target="_blank" alt="resume">
+                    <img
+                      className={classes.resumeDoc}
+                      src={resumeDoc}
+                      alt="resume doc"
+                    />
+                  </a>
 
                   {/* Non Service Persuits */}
                   <Typography
@@ -306,21 +320,21 @@ const CareerScreen = ({ history, location }) => {
                   </FormControl>
                 </Grid>
 
-                {/* <Grid
+                <Grid
                   item
                   style={{
                     margin: "auto",
                   }}
                   xs={8}
-                > */}
-                {/* Success message on updating details */}
-                {/* {updatedDetails && (
+                >
+                  {/* Success message on updating details */}
+                  {updatedCareer && (
                     <Message
                       varient="success"
-                      children="Successfully update details"
+                      children="Successfully update Career"
                     />
                   )}
-                </Grid> */}
+                </Grid>
                 <Button
                   className={classes.button}
                   onClick={submitHandler}
