@@ -38,6 +38,13 @@ import {
   deleteFinanceReducer,
 } from "./reducers/financeReducer";
 
+import {
+  medicalReducer,
+  postMedicalReducer,
+  updateMedicalReducer,
+  deleteMedicalReducer,
+} from "./reducers/medicalReducer";
+
 const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
@@ -66,6 +73,11 @@ const reducer = combineReducers({
   userPostFinance: postFinanceReducer,
   userUpdateFinance: updateFinanceReducer,
   userDeleteFinance: deleteFinanceReducer,
+  //medical
+  userFetchMedical: medicalReducer,
+  userPostMedical: postMedicalReducer,
+  userUpdateMedical: updateMedicalReducer,
+  userDeleteMedical: deleteMedicalReducer,
 });
 
 // GET user info from local Storage
