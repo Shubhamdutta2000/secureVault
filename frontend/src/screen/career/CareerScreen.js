@@ -174,64 +174,66 @@ const CareerScreen = ({ history, location }) => {
                   >
                     Finance
                   </Typography>
-                  <FormControl variant="outlined" className={classes.input}>
-                    <InputLabel htmlFor="outlined-adornment-inHand">
-                      In Hand
-                    </InputLabel>
-                    <OutlinedInput
-                      id="outlined-adornment-inHand"
-                      placeholder="In Hand"
-                      required
-                      type="text"
-                      value={inHand}
-                      multiline
-                      rows={1}
-                      inputProps={{
-                        style: { fontSize: 26, paddingTop: "0.6rem" },
-                      }} // font size of input text
-                      onChange={(e) => setInHand(e.target.value)}
-                      labelWidth={90}
-                    />
-                  </FormControl>
-                  <FormControl variant="outlined" className={classes.input}>
-                    <InputLabel htmlFor="outlined-adornment-ctc">
-                      CTC
-                    </InputLabel>
-                    <OutlinedInput
-                      id="outlined-adornment-ctc"
-                      placeholder="CTC"
-                      required
-                      type="text"
-                      value={ctc}
-                      multiline
-                      rows={1}
-                      inputProps={{
-                        style: { fontSize: 26, paddingTop: "0.6rem" },
-                      }} // font size of input text
-                      onChange={(e) => setCtc(e.target.value)}
-                      labelWidth={50}
-                    />
-                  </FormControl>
+                  <form className={classes.financeForm}>
+                    <FormControl variant="outlined" className={classes.input}>
+                      <InputLabel htmlFor="outlined-adornment-inHand">
+                        In Hand
+                      </InputLabel>
+                      <OutlinedInput
+                        id="outlined-adornment-inHand"
+                        placeholder="In Hand"
+                        required
+                        type="text"
+                        value={inHand}
+                        multiline
+                        rows={1}
+                        inputProps={{
+                          style: { fontSize: 26, paddingTop: "0.6rem" },
+                        }} // font size of input text
+                        onChange={(e) => setInHand(e.target.value)}
+                        labelWidth={90}
+                      />
+                    </FormControl>
+                    <FormControl variant="outlined" className={classes.input}>
+                      <InputLabel htmlFor="outlined-adornment-ctc">
+                        CTC
+                      </InputLabel>
+                      <OutlinedInput
+                        id="outlined-adornment-ctc"
+                        placeholder="CTC"
+                        required
+                        type="text"
+                        value={ctc}
+                        multiline
+                        rows={1}
+                        inputProps={{
+                          style: { fontSize: 26, paddingTop: "0.6rem" },
+                        }} // font size of input text
+                        onChange={(e) => setCtc(e.target.value)}
+                        labelWidth={50}
+                      />
+                    </FormControl>
 
-                  <FormControl variant="outlined" className={classes.input}>
-                    <InputLabel htmlFor="outlined-adornment-salarySlips">
-                      Salary Slips
-                    </InputLabel>
-                    <OutlinedInput
-                      id="outlined-adornment-salarySlips"
-                      placeholder="Salary Slips"
-                      required
-                      type="text"
-                      value={salarySlips}
-                      multiline
-                      rows={1}
-                      inputProps={{
-                        style: { fontSize: 26, paddingTop: "0.6rem" },
-                      }} // font size of input text
-                      onChange={(e) => setSalarySlips(e.target.value)}
-                      labelWidth={138}
-                    />
-                  </FormControl>
+                    <FormControl variant="outlined" className={classes.input}>
+                      <InputLabel htmlFor="outlined-adornment-salarySlips">
+                        Salary Slips
+                      </InputLabel>
+                      <OutlinedInput
+                        id="outlined-adornment-salarySlips"
+                        placeholder="Salary Slips"
+                        required
+                        type="text"
+                        value={salarySlips}
+                        multiline
+                        rows={1}
+                        inputProps={{
+                          style: { fontSize: 26, paddingTop: "0.6rem" },
+                        }} // font size of input text
+                        onChange={(e) => setSalarySlips(e.target.value)}
+                        labelWidth={138}
+                      />
+                    </FormControl>
+                  </form>
                 </Grid>
 
                 {/* RIGHT SIDE */}

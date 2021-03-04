@@ -50,6 +50,10 @@ export const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2.6),
   },
 
+  financeForm: {
+    marginLeft: "3rem",
+  },
+
   input: {
     "& label": {
       color: theme.palette.info.main,

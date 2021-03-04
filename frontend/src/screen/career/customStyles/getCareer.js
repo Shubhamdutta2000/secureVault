@@ -58,6 +58,11 @@ export const useStyles = makeStyles((theme) => ({
   resumeDoc: {
     marginLeft: theme.spacing(-28),
   },
+
+  financeForm: {
+    marginLeft: "2.6rem",
+  },
+
   input: {
     "& label": {
       color: "#9D9CB5",

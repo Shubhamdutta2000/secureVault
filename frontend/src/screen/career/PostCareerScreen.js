@@ -188,67 +188,69 @@ const PostCareer = ({ history }) => {
               </FormControl>
 
               {/* FINANCE */}
-              <FormControl variant="outlined" className={classes.input}>
-                <InputLabel htmlFor="outlined-adornment-inHand">
-                  In Hand
-                </InputLabel>
-                <OutlinedInput
-                  id="outlined-adornment-inHand"
-                  placeholder="in Hand"
-                  required
-                  type="text"
-                  value={inHand}
-                  multiline
-                  startAdornment={
-                    <InputAdornment position="start">
-                      <PaymentIcon color="primary" className={classes.icon} />
-                    </InputAdornment>
-                  }
-                  onChange={(e) => setInHand(e.target.value)}
-                  labelWidth={74}
-                />
-              </FormControl>
-              <FormControl variant="outlined" className={classes.input}>
-                <InputLabel htmlFor="outlined-adornment-ctc">CTC</InputLabel>
-                <OutlinedInput
-                  id="outlined-adornment-ctc"
-                  placeholder="CTC"
-                  required
-                  type="text"
-                  value={ctc}
-                  multiline
-                  startAdornment={
-                    <InputAdornment position="start">
-                      <AccountBalanceWalletIcon
-                        color="primary"
-                        className={classes.icon}
-                      />
-                    </InputAdornment>
-                  }
-                  onChange={(e) => setCtc(e.target.value)}
-                  labelWidth={42}
-                />
-              </FormControl>
-              <FormControl variant="outlined" className={classes.input}>
-                <InputLabel htmlFor="outlined-adornment-salarySlips">
-                  Salary Slips
-                </InputLabel>
-                <OutlinedInput
-                  id="outlined-adornment-salarySlips"
-                  placeholder="Salary Slips"
-                  required
-                  type="text"
-                  value={salarySlips}
-                  multiline
-                  startAdornment={
-                    <InputAdornment position="start">
-                      <ListAltIcon color="primary" className={classes.icon} />
-                    </InputAdornment>
-                  }
-                  onChange={(e) => setSalarySlips(e.target.value)}
-                  labelWidth={112}
-                />
-              </FormControl>
+              <form className={classes.financeForm}>
+                <FormControl variant="outlined" className={classes.input}>
+                  <InputLabel htmlFor="outlined-adornment-inHand">
+                    In Hand
+                  </InputLabel>
+                  <OutlinedInput
+                    id="outlined-adornment-inHand"
+                    placeholder="in Hand"
+                    required
+                    type="text"
+                    value={inHand}
+                    multiline
+                    startAdornment={
+                      <InputAdornment position="start">
+                        <PaymentIcon color="primary" className={classes.icon} />
+                      </InputAdornment>
+                    }
+                    onChange={(e) => setInHand(e.target.value)}
+                    labelWidth={74}
+                  />
+                </FormControl>
+                <FormControl variant="outlined" className={classes.input}>
+                  <InputLabel htmlFor="outlined-adornment-ctc">CTC</InputLabel>
+                  <OutlinedInput
+                    id="outlined-adornment-ctc"
+                    placeholder="CTC"
+                    required
+                    type="text"
+                    value={ctc}
+                    multiline
+                    startAdornment={
+                      <InputAdornment position="start">
+                        <AccountBalanceWalletIcon
+                          color="primary"
+                          className={classes.icon}
+                        />
+                      </InputAdornment>
+                    }
+                    onChange={(e) => setCtc(e.target.value)}
+                    labelWidth={42}
+                  />
+                </FormControl>
+                <FormControl variant="outlined" className={classes.input}>
+                  <InputLabel htmlFor="outlined-adornment-salarySlips">
+                    Salary Slips
+                  </InputLabel>
+                  <OutlinedInput
+                    id="outlined-adornment-salarySlips"
+                    placeholder="Salary Slips"
+                    required
+                    type="text"
+                    value={salarySlips}
+                    multiline
+                    startAdornment={
+                      <InputAdornment position="start">
+                        <ListAltIcon color="primary" className={classes.icon} />
+                      </InputAdornment>
+                    }
+                    onChange={(e) => setSalarySlips(e.target.value)}
+                    labelWidth={112}
+                  />
+                </FormControl>
+              </form>
             </form>
           </Paper>
         </Grid>
