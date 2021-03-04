@@ -21,6 +21,12 @@ import {
   updateCareerReducer,
   deleteCareerReducer,
 } from "./reducers/careerReducer";
+import {
+  educationReducer,
+  postEducationReducer,
+  updateEducationReducer,
+  deleteEducationReducer,
+} from "./reducers/educationReducer";
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
@@ -40,6 +46,11 @@ const reducer = combineReducers({
   userPostCareer: postCareerReducer,
   userUpdateCareer: updateCareerReducer,
   userDeleteCareer: deleteCareerReducer,
+  //education
+  userFetchEducation: educationReducer,
+  userPostEducation: postEducationReducer,
+  userUpdateEducation: updateEducationReducer,
+  userDeleteEducation: deleteEducationReducer,
 });
 
 // GET user info from local Storage
