@@ -104,6 +104,7 @@ const CareerScreen = ({ history, location }) => {
       <Typography className={classes.heading} variant="h1" component="h4">
         Career Secrets
       </Typography>
+
       <Grid container spacing={10}>
         <Grid item xs={12}>
           <Paper elevation={18} className={classes.paper}>

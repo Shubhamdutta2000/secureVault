@@ -12,6 +12,7 @@ import PostDetails from "./screen/details/PostDetailsScreen";
 import DocumentsScreen from "./screen/documents/DocumentsScreen";
 import PostDocuments from "./screen/documents/PostDocumentsScreen";
 import CareerScreen from "./screen/career/CareerScreen";
+import PostCareer from "./screen/career/PostCareerScreen";
 
 function App() {
   const { userInfo } = useSelector((state) => state.userLogin);
@@ -28,7 +29,7 @@ function App() {
           <Route path="/documents" component={DocumentsScreen} />
           <Route path="/home/post/documents" component={PostDocuments} />
           <Route path="/career" component={CareerScreen} />
-          {/* <Route path="/home/post/career" component={PostCareer} /> */}
+          <Route path="/home/post/career" component={PostCareer} />
           <Route path="/" component={HomeScreen} exact />
           <Route path="/login" component={LoginScreen} />
           <Route path="/register" component={SignUpScreen} />

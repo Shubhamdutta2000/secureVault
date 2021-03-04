@@ -8,7 +8,10 @@ const Message = ({ varient, children }) => {
       style={{
         fontSize: "1.2rem",
         marginTop: "1rem",
-        marginBottom: "1rem",
+        marginBottom: "0.5rem",
+        display: "flex",
+        justifyContent: "center",
+        marginBottom: "-1rem",
       }}
       severity={varient}
     >
