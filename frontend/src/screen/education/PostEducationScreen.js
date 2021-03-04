@@ -347,7 +347,7 @@ const PostEducation = ({ history }) => {
                         </InputLabel>
                         <OutlinedInput
                           id="outlined-adornment-collegeName"
-                          placeholder="School Name"
+                          placeholder="College Name"
                           required
                           value={collegeName}
                           onChange={(e) => setCollegeName(e.target.value)}
