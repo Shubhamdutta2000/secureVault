@@ -77,7 +77,6 @@ export const useStyles = makeStyles((theme) => ({
     background:
       "linear-gradient(90.77deg, #0181B4 0.67%, rgba(100, 200, 240, 0.82) 108.14%)",
     width: "60%",
-    positions: "absolute",
     left: "50%",
     transform: "translateX(-50%)",
     marginTop: "2.6rem",

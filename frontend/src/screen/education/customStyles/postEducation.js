@@ -26,18 +26,42 @@ export const useStyles = makeStyles((theme) => ({
     fontStyle: "italic",
   },
 
+  boardHeading: {
+    marginLeft: theme.spacing(-24),
+    fontSize: "1.8rem",
+    color: "#007DAE",
+    fontWeight: "520",
+    marginBottom: theme.spacing(3),
+  },
+
+  collegeHeading: {
+    marginLeft: theme.spacing(-66),
+    fontSize: "1.8rem",
+    color: "#007DAE",
+    fontWeight: "520",
+    marginBottom: theme.spacing(3),
+  },
+  otherCertificateHeading: {
+    marginLeft: theme.spacing(-54),
+    fontSize: "1.4rem",
+    color: "#007DAE",
+    fontWeight: "520",
+    marginBottom: theme.spacing(3),
+  },
+
   input: {
     "& label": {
       color: theme.palette.info.main,
       fontWeight: "550",
+      fontSize: "1.16rem",
     },
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
         borderColor: "#46BFE0",
       },
     },
-    paddingBottom: theme.spacing(2.5),
-    width: "80%",
+    paddingBottom: theme.spacing(3),
+    width: "88%",
 
     [theme.breakpoints.down("xs")]: {
       width: "100%",
@@ -47,9 +71,15 @@ export const useStyles = makeStyles((theme) => ({
   button: {
     background:
       "linear-gradient(90.77deg, #0181B4 0.67%, rgba(100, 200, 240, 0.82) 108.14%)",
-    width: "80%",
-    marginBottom: "0.4rem",
+    width: "60%",
     borderRadius: "10rem",
+
+    left: "50%",
+    transform: "translateX(-50%)",
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "3rem",
+    marginBottom: "4rem",
 
     [theme.breakpoints.down("xs")]: {
       width: "100%",
