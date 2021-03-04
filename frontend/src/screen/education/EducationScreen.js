@@ -248,7 +248,7 @@ college:
                 </Grid>
 
                 {/* RIGHT SIDE */}
-                <Grid item xs={12} md={6}>
+                <Grid className={classes.rightSide} item xs={12} md={6}>
                   {/* Registration Card */}
                   <Grid container spacing={6}>
                     <Grid item xs={12} md={6}>
@@ -465,49 +465,9 @@ college:
                       </Typography>
                     </Grid>
                   </Grid>
-                  {/* <FormControl variant="outlined" className={classes.input}>
-                    <InputLabel htmlFor="outlined-adornment-semesterSheets">
-                      Semester Sheets
-                    </InputLabel>
-                    <OutlinedInput
-                      id="outlined-adornment-semesterSheets"
-                      placeholder="Semester Sheets"
-                      required
-                      type="text"
-                      value={semesterSheets}
-                      multiline
-                      rows={1}
-                      inputProps={{
-                        style: { fontSize: 26, paddingTop: "0.6rem" },
-                      }} // font size of input text
-                      onChange={(e) => setSemesterSheets(e.target.value)}
-                      labelWidth={194}
-                    />
-                  </FormControl> */}
-
-                  {/* Final Year Projects */}
-                  {/* <FormControl variant="outlined" className={classes.input}>
-                    <InputLabel htmlFor="outlined-adornment-finalYearProjects">
-                      Final Year Projects
-                    </InputLabel>
-                    <OutlinedInput
-                      id="outlined-adornment-finalYearProjects"
-                      placeholder="Final Year Projects"
-                      required
-                      type="text"
-                      value={finalYearProjects}
-                      multiline
-                      rows={1}
-                      inputProps={{
-                        style: { fontSize: 26, paddingTop: "0.6rem" },
-                      }} // font size of input text
-                      onChange={(e) => setFinalYearProjects(e.target.value)}
-                      labelWidth={218}
-                    />
-                  </FormControl> */}
                 </Grid>
 
-                <Grid item xs={12} md={6}>
+                <Grid className={classes.rightSide} item xs={12} md={6}>
                   {/* Degree Certificate */}
                   <Typography
                     component="h3"
@@ -517,7 +477,7 @@ college:
                     Degree Certificate
                   </Typography>
                   <Grid container spacing={4}>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} md={4}>
                       <a
                         href={degreeCertificate}
                         target="_blank"
@@ -532,7 +492,7 @@ college:
                     </Grid>
                   </Grid>
 
-                  {/* Other Certificate */}
+                  {/* Other Certificates */}
                   <Typography
                     component="h3"
                     variant="h4"
@@ -543,7 +503,7 @@ college:
 
                   <Grid container spacing={6}>
                     {/* Academy */}
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} md={4}>
                       <a
                         href={otherCertificate.academy}
                         target="_blank"
@@ -557,7 +517,7 @@ college:
                     </Grid>
 
                     {/* Sports */}
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} md={4}>
                       <a
                         href={otherCertificate.sports}
                         target="_blank"
@@ -571,7 +531,7 @@ college:
                     </Grid>
 
                     {/* Events */}
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} md={4}>
                       <a
                         href={otherCertificate.events}
                         target="_blank"

@@ -15,7 +15,7 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   boardHeading: {
-    marginLeft: theme.spacing(-18),
+    marginLeft: theme.spacing(-14),
     fontSize: "2.4rem",
     color: "#007DAE",
     fontWeight: "500",
@@ -32,7 +32,7 @@ export const useStyles = makeStyles((theme) => ({
 
   gradeHeading: {
     marginLeft: theme.spacing(-36),
-    fontSize: "2.4rem",
+    fontSize: "1.8rem",
     color: "#007DAE",
     fontWeight: "500",
     marginBottom: theme.spacing(3),
@@ -40,12 +40,17 @@ export const useStyles = makeStyles((theme) => ({
 
   otherCertificateHeading: {
     marginLeft: theme.spacing(-40),
-    fontSize: "2.4rem",
+    fontSize: "1.8rem",
     color: "#007DAE",
     fontWeight: "500",
     marginBottom: theme.spacing(3),
-    marginTop: "4rem",
+    marginTop: "3.6rem",
   },
+
+  rightSide: {
+    marginTop: "3rem",
+  },
+
   paper: {
     padding: theme.spacing(6),
     textAlign: "center",
