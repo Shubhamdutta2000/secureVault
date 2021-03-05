@@ -18,6 +18,7 @@ import PostEducation from "./screen/education/PostEducationScreen";
 import FinanceScreen from "./screen/finance/FinanceScreen";
 import PostFinance from "./screen/finance/PostFinanceScreen";
 import MedicalScreen from "./screen/medical/MedicalScreen";
+import PostMedical from "./screen/medical/PostMedicalScreen";
 
 function App() {
   const { userInfo } = useSelector((state) => state.userLogin);
@@ -40,6 +41,7 @@ function App() {
           <Route path="/finance" component={FinanceScreen} />
           <Route path="/home/post/finance" component={PostFinance} />
           <Route path="/medical" component={MedicalScreen} />
+          <Route path="/home/post/medical" component={PostMedical} />
           <Route path="/" component={HomeScreen} exact />
           <Route path="/login" component={LoginScreen} />
           <Route path="/register" component={SignUpScreen} />

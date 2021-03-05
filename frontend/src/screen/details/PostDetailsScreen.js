@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
-import Typography from "@material-ui/core/Typography";
 import InputLabel from "@material-ui/core/InputLabel";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import FormControl from "@material-ui/core/FormControl";
@@ -47,7 +46,7 @@ const PostDetails = ({ history }) => {
   const [bio, setBio] = useState("");
   const [address, setAddress] = useState("");
   const [phn_no, setPhn_no] = useState("");
-  const [dob, setDob] = useState(new Date("1900-01-01T21:11:00"));
+  const [dob, setDob] = useState(new Date("2000-01-01T21:11:00"));
   const [password, setPassword] = useState("");
   const [passwordVisibility, setPasswordVisibility] = useState("");
   const [content, setContent] = useState("");
