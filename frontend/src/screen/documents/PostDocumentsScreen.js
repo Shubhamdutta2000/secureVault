@@ -117,7 +117,7 @@ const PostDocuments = ({ history }) => {
             {/*// FORM FOR DOCUMENTS POST //*/}
             <form className={classes.form}>
               <FormControl variant="outlined" className={classes.input}>
-                <InputLabel htmlFor="outlined-adornment-bio">
+                <InputLabel htmlFor="outlined-adornment-adhaarCard">
                   Adhaar Card
                 </InputLabel>
                 <OutlinedInput
