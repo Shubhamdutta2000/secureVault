@@ -1,23 +1,23 @@
 import React from "react";
 import AppBar from "@material-ui/core/AppBar";
-import Grid from "@material-ui/core/Grid";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 import postButton from "../assets/images/postButton.png";
 // REDUX
 import { userLogout } from "../redux/actions/userAction";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { useStyles } from "./customStyles/header";
 import { Link } from "react-router-dom";
+import { Grid } from "@material-ui/core";
 const Header = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
+
+  const { userInfo } = useSelector((state) => state.userLogin);
 
   // handling logout
   const logoutHandler = () => {
@@ -35,24 +35,40 @@ const Header = () => {
           </Link>
 
           <div className={classes.rightSide}>
-            <Link to="/home/post/details">
-              <Button className={classes.button}>
-                <img
-                  src={postButton}
-                  className={classes.postIllustration}
-                  alt="post button"
-                />
-                POST
-              </Button>
-            </Link>
-            <Button
-              className={classes.button}
-              onClick={logoutHandler}
-              color="inherit"
-            >
-              <ExitToAppIcon fontSize="large" />
-              LOGOUT
-            </Button>
+            <Grid container alignItems="center">
+              <Grid item md={4}>
+                <Typography component="p">Hello,</Typography>
+                <Typography
+                  className={classes.userName}
+                  component="h6"
+                  variant="h6"
+                >
+                  {userInfo.name.split(" ")[0]}
+                </Typography>
+              </Grid>
+              <Grid item md={4}>
+                <Link to="/home/post/details">
+                  <Button className={classes.button}>
+                    <img
+                      src={postButton}
+                      className={classes.postIllustration}
+                      alt="post button"
+                    />
+                    POST
+                  </Button>
+                </Link>
+              </Grid>
+              <Grid item md={4}>
+                <Button
+                  className={classes.button}
+                  onClick={logoutHandler}
+                  color="inherit"
+                >
+                  <ExitToAppIcon fontSize="large" />
+                  LOGOUT
+                </Button>
+              </Grid>
+            </Grid>
           </div>
         </Toolbar>
       </AppBar>

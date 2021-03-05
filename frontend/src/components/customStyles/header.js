@@ -17,11 +17,15 @@ export const useStyles = makeStyles((theme) => ({
 
   rightSide: {
     position: "absolute",
-    right: "0rem",
+    right: "1.8rem",
   },
 
   menuButton: {
     marginRight: theme.spacing(2),
+  },
+
+  userName: {
+    fontSize: "1.6rem",
   },
   title: {
     flexGrow: 1,
