@@ -10,6 +10,16 @@ export const useStyles = makeStyles((theme) => ({
     height: "5rem",
   },
 
+  secretVault: {
+    color: "inherit",
+    textDecoration: "none",
+  },
+
+  rightSide: {
+    position: "absolute",
+    right: "0rem",
+  },
+
   menuButton: {
     marginRight: theme.spacing(2),
   },

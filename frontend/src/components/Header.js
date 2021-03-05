@@ -1,5 +1,6 @@
 import React from "react";
 import AppBar from "@material-ui/core/AppBar";
+import Grid from "@material-ui/core/Grid";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
@@ -27,33 +28,32 @@ const Header = () => {
     <div className={classes.root}>
       <AppBar className={classes.appBar} position="static">
         <Toolbar>
-          {/* <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton> */}
-          <Typography variant="h6" className={classes.title}>
-            SecretVault
-          </Typography>
-          <img
-            src={postButton}
-            className={classes.postIllustration}
-            alt="post button"
-          />
-          <Link to="/home/post/details">
-            <Button className={classes.button}>POST</Button>
+          <Link className={classes.secretVault} to="/">
+            <Typography variant="h6" className={classes.title}>
+              SecretVault
+            </Typography>
           </Link>
-          <ExitToAppIcon fontSize="large" />
-          <Button
-            className={classes.button}
-            onClick={logoutHandler}
-            color="inherit"
-          >
-            LOGOUT
-          </Button>
+
+          <div className={classes.rightSide}>
+            <Link to="/home/post/details">
+              <Button className={classes.button}>
+                <img
+                  src={postButton}
+                  className={classes.postIllustration}
+                  alt="post button"
+                />
+                POST
+              </Button>
+            </Link>
+            <Button
+              className={classes.button}
+              onClick={logoutHandler}
+              color="inherit"
+            >
+              <ExitToAppIcon fontSize="large" />
+              LOGOUT
+            </Button>
+          </div>
         </Toolbar>
       </AppBar>
     </div>
