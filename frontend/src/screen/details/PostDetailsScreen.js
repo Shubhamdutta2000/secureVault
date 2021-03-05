@@ -141,7 +141,7 @@ const PostDetails = ({ history }) => {
                       />
                     </InputAdornment>
                   }
-                  labelWidth={30}
+                  labelWidth={38}
                 />
               </FormControl>
               <FormControl variant="outlined" className={classes.input}>
@@ -160,7 +160,7 @@ const PostDetails = ({ history }) => {
                     </InputAdornment>
                   }
                   onChange={(e) => setAddress(e.target.value)}
-                  labelWidth={70}
+                  labelWidth={82}
                 />
               </FormControl>
               <FormControl variant="outlined" className={classes.input}>
@@ -180,7 +180,7 @@ const PostDetails = ({ history }) => {
                     </InputAdornment>
                   }
                   onChange={(e) => setPhn_no(e.target.value)}
-                  labelWidth={50}
+                  labelWidth={64}
                 />
               </FormControl>
               <FormControl
@@ -241,7 +241,7 @@ const PostDetails = ({ history }) => {
                       </IconButton>
                     </InputAdornment>
                   }
-                  labelWidth={78}
+                  labelWidth={96}
                 />
               </FormControl>
               <br />

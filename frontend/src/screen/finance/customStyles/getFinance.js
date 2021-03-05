@@ -62,7 +62,6 @@ export const useStyles = makeStyles((theme) => ({
     borderRadius: "4rem",
     width: "40%",
     height: "3.4rem",
-    marginTop: "2rem",
     marginBottom: "0.4rem",
     borderRadius: "10rem",
     margin: "auto",

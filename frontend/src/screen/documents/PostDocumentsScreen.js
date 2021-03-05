@@ -137,7 +137,7 @@ const PostDocuments = ({ history }) => {
                       />
                     </InputAdornment>
                   }
-                  labelWidth={100}
+                  labelWidth={122}
                 />
               </FormControl>
               <FormControl variant="outlined" className={classes.input}>
@@ -156,7 +156,7 @@ const PostDocuments = ({ history }) => {
                     </InputAdornment>
                   }
                   onChange={(e) => setDriverLicense(e.target.value)}
-                  labelWidth={116}
+                  labelWidth={140}
                 />
               </FormControl>
               <FormControl variant="outlined" className={classes.input}>
@@ -179,7 +179,7 @@ const PostDocuments = ({ history }) => {
                     </InputAdornment>
                   }
                   onChange={(e) => setPanCard(e.target.value)}
-                  labelWidth={76}
+                  labelWidth={90}
                 />
               </FormControl>
               <FormControl variant="outlined" className={classes.input}>
@@ -199,7 +199,7 @@ const PostDocuments = ({ history }) => {
                     </InputAdornment>
                   }
                   onChange={(e) => setVoterCard(e.target.value)}
-                  labelWidth={84}
+                  labelWidth={104}
                 />
               </FormControl>
 
@@ -223,7 +223,7 @@ const PostDocuments = ({ history }) => {
                     </InputAdornment>
                   }
                   onChange={(e) => setPassport(e.target.value)}
-                  labelWidth={74}
+                  labelWidth={90}
                 />
               </FormControl>
 
@@ -261,7 +261,7 @@ const PostDocuments = ({ history }) => {
                       </IconButton>
                     </InputAdornment>
                   }
-                  labelWidth={78}
+                  labelWidth={96}
                 />
               </FormControl>
               <br />

@@ -58,7 +58,7 @@ export const useStyles = makeStyles((theme) => ({
     "& label": {
       color: theme.palette.info.main,
       fontWeight: "550",
-      fontSize: "1.18rem",
+      fontSize: "1.2rem",
     },
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
@@ -79,7 +79,6 @@ export const useStyles = makeStyles((theme) => ({
     width: "60%",
     left: "50%",
     transform: "translateX(-50%)",
-    marginTop: "2.6rem",
     marginBottom: "4rem",
     borderRadius: "10rem",
 

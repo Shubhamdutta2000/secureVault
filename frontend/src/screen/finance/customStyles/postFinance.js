@@ -50,7 +50,7 @@ export const useStyles = makeStyles((theme) => ({
         borderColor: "#46BFE0",
       },
     },
-    paddingBottom: theme.spacing(2.6),
+    paddingBottom: theme.spacing(2.8),
     width: "80%",
 
     [theme.breakpoints.down("xs")]: {

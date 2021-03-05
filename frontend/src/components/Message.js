@@ -11,7 +11,7 @@ const Message = ({ varient, children }) => {
         marginBottom: "0.5rem",
         display: "flex",
         justifyContent: "center",
-        marginBottom: "-1rem",
+        marginBottom: "0.8rem",
       }}
       severity={varient}
     >

@@ -31,13 +31,14 @@ export const useStyles = makeStyles((theme) => ({
     "& label": {
       color: theme.palette.info.main,
       fontWeight: "550",
+      fontSize: "1.2rem",
     },
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
         borderColor: "#46BFE0",
       },
     },
-    paddingBottom: theme.spacing(2.5),
+    paddingBottom: theme.spacing(2.8),
     width: "80%",
 
     [theme.breakpoints.down("xs")]: {
