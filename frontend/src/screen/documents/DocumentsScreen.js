@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import Fab from "@material-ui/core/Fab";
 
 import Typography from "@material-ui/core/Typography";
 import InputLabel from "@material-ui/core/InputLabel";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import FormControl from "@material-ui/core/FormControl";
 import { Button } from "@material-ui/core";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 // REDUX
 import { useDispatch, useSelector } from "react-redux";
@@ -65,6 +67,11 @@ const DocumentsScreen = ({ history, location }) => {
     dispatch(getDocuments(location.state.password)); // get password from homeScreen location state passed as props in history object
   }, [dispatch, updatedDocuments]);
 
+  // go Back
+  const goBack = () => {
+    history.go(-1);
+  };
+
   // submit handler
   const submitHandler = (event) => {
     event.preventDefault();
@@ -81,6 +88,10 @@ const DocumentsScreen = ({ history, location }) => {
 
   return (
     <div className={classes.root}>
+      {/* go back */}
+      <Fab aria-label="goBack" className={classes.goBack} onClick={goBack}>
+        <ArrowBackIcon />
+      </Fab>
       <Typography className={classes.heading} variant="h1" component="h4">
         Documents Secrets
       </Typography>

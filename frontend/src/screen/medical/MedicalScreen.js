@@ -6,7 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import InputLabel from "@material-ui/core/InputLabel";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import FormControl from "@material-ui/core/FormControl";
-import { Button } from "@material-ui/core";
+import { Button, Fab } from "@material-ui/core";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 // REDUX
 import { useDispatch, useSelector } from "react-redux";
@@ -64,6 +65,11 @@ const MedicalScreen = ({ history, location }) => {
     dispatch(getMedical(location.state.password)); // get password from homeScreen location state passed as props in history object
   }, [dispatch, updatedMedical]);
 
+  // go Back
+  const goBack = () => {
+    history.go(-1);
+  };
+
   // submit handler
   const submitHandler = (event) => {
     event.preventDefault();
@@ -82,6 +88,10 @@ const MedicalScreen = ({ history, location }) => {
 
   return (
     <div className={classes.root}>
+      {/* go back */}
+      <Fab aria-label="goBack" className={classes.goBack} onClick={goBack}>
+        <ArrowBackIcon />
+      </Fab>
       <Typography className={classes.heading} variant="h1" component="h4">
         Medical Secrets
       </Typography>

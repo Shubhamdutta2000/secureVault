@@ -4,6 +4,17 @@ export const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+
+  goBack: {
+    backgroundColor: "rgb(0, 168, 234)",
+    color: "#fff",
+    marginBottom: "1rem",
+
+    "&:hover": {
+      backgroundColor: "rgb(106, 194, 229)",
+    },
+  },
+
   heading: {
     fontSize: "3.8rem",
     fontStyle: "italic",
