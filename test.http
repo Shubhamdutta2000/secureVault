@@ -316,7 +316,7 @@ Content-Type: application/json
       "administered_at": "2000, 9, 15"
   },
   "medical_illness_long_term": "not issued",
-  "password": "ISSECRET2"
+  "password": "secret"
 }
 
 #############    GET user medical   ###################

@@ -18,6 +18,7 @@ import { getDocuments } from "../redux/actions/documentsAction";
 import { getCareer } from "../redux/actions/careerAction";
 import { getEducation } from "../redux/actions/educationAction";
 import { getFinance } from "../redux/actions/financeAction";
+import { getMedical } from "../redux/actions/medicalAction";
 
 import { useStyles } from "./Custom Styles/homeScreen";
 
@@ -96,6 +97,14 @@ const HomeScreen = ({ history }) => {
       // pass props to the history object
       history.push({
         pathname: "/finance",
+        state: { password: password },
+      });
+      setOpen(false);
+    } else if (content === "Medical") {
+      dispatch(getMedical(password));
+      // pass props to the history object
+      history.push({
+        pathname: "/medical",
         state: { password: password },
       });
       setOpen(false);
