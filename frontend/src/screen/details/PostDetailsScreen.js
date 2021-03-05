@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
@@ -11,11 +10,8 @@ import { Button } from "@material-ui/core";
 import MenuItem from "@material-ui/core/MenuItem";
 
 import IconButton from "@material-ui/core/IconButton";
-import EmailIcon from "@material-ui/icons/Email";
 import HomeIcon from "@material-ui/icons/Home";
-import PersonIcon from "@material-ui/icons/Person";
 import PhoneIcon from "@material-ui/icons/Phone";
-import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";

@@ -13,20 +13,12 @@ import MenuItem from "@material-ui/core/MenuItem";
 
 import IconButton from "@material-ui/core/IconButton";
 import BusinessIcon from "@material-ui/icons/Business";
-import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import PaymentIcon from "@material-ui/icons/Payment";
 import ListAltIcon from "@material-ui/icons/ListAlt";
 import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
-import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
 import PermContactCalendarIcon from "@material-ui/icons/PermContactCalendar";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import MoneyIcon from "@material-ui/icons/Money";
-import LocationCityIcon from "@material-ui/icons/LocationCity";
-
-import HomeIcon from "@material-ui/icons/Home";
-import PersonIcon from "@material-ui/icons/Person";
-import PhoneIcon from "@material-ui/icons/Phone";
-import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import LockIcon from "@material-ui/icons/Lock";
