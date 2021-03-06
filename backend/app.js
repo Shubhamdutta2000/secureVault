@@ -22,7 +22,10 @@ app.use(express.json());
 mongooseConnection();
 
 //Middleware
-app.use(morgan("dev"));
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
+
 app.use(cors());
 
 //Routes
@@ -34,6 +37,8 @@ app.use("/user/education", userEducationRouter);
 app.use("/user/finance", userFinanceRouter);
 app.use("/user/medical", userMedicalRouter);
 app.use("/user", userRouter);
+
+
 
 // error handling
 app.use(NotFound);
