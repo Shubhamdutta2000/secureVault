@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c5432a88.chunk.css",
+    "main.js": "/static/js/main.fdaa1303.chunk.js",
+    "main.js.map": "/static/js/main.fdaa1303.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.0c8a6c81.js",
+    "runtime-main.js.map": "/static/js/runtime-main.0c8a6c81.js.map",
+    "static/js/2.6d2a6ba2.chunk.js": "/static/js/2.6d2a6ba2.chunk.js",
+    "static/js/2.6d2a6ba2.chunk.js.map": "/static/js/2.6d2a6ba2.chunk.js.map",
+    "static/js/3.2b992931.chunk.js": "/static/js/3.2b992931.chunk.js",
+    "static/js/3.2b992931.chunk.js.map": "/static/js/3.2b992931.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.c5432a88.chunk.css.map": "/static/css/main.c5432a88.chunk.css.map",
+    "static/js/2.6d2a6ba2.chunk.js.LICENSE.txt": "/static/js/2.6d2a6ba2.chunk.js.LICENSE.txt",
+    "static/media/globe.7e9a3896.png": "/static/media/globe.7e9a3896.png",
+    "static/media/login.12bbeb36.png": "/static/media/login.12bbeb36.png",
+    "static/media/postIllustration.c84eb885.png": "/static/media/postIllustration.c84eb885.png",
+    "static/media/signup.3d054f2d.png": "/static/media/signup.3d054f2d.png",
+    "static/media/teamwork.4c7e130c.png": "/static/media/teamwork.4c7e130c.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0c8a6c81.js",
+    "static/js/2.6d2a6ba2.chunk.js",
+    "static/css/main.c5432a88.chunk.css",
+    "static/js/main.fdaa1303.chunk.js"
+  ]
+}
