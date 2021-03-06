@@ -38,8 +38,6 @@ app.use("/user/finance", userFinanceRouter);
 app.use("/user/medical", userMedicalRouter);
 app.use("/user", userRouter);
 
-
-
 // error handling
 app.use(NotFound);
 app.use(errorhandler);
