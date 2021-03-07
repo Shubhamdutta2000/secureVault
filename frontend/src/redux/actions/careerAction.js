@@ -34,7 +34,7 @@ export const getCareer = (password) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.post(
-      "http://localhost:5000/user/career",
+      "https://securevault-shubham.herokuapp.com/user/career",
       { password },
       config
     );
@@ -75,7 +75,7 @@ export const postCareer = (career) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.post(
-      "http://localhost:5000/user/career/post",
+      "https://securevault-shubham.herokuapp.com/user/career/post",
       career,
       config
     );
@@ -114,7 +114,7 @@ export const updateCareer = (career) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      "http://localhost:5000/user/career",
+      "https://securevault-shubham.herokuapp.com/user/career",
       career,
       config
     );
@@ -153,7 +153,7 @@ export const deleteCareer = (career) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.delete(
-      "http://localhost:5000/user/career",
+      "https://securevault-shubham.herokuapp.com/user/career",
       career,
       config
     );

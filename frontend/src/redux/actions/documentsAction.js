@@ -34,7 +34,7 @@ export const getDocuments = (password) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.post(
-      "http://localhost:5000/user/documents",
+      "https://securevault-shubham.herokuapp.com/user/documents",
       { password },
       config
     );
@@ -75,7 +75,7 @@ export const postDocuments = (documents) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.post(
-      "http://localhost:5000/user/documents/post",
+      "https://securevault-shubham.herokuapp.com/user/documents/post",
       documents,
       config
     );
@@ -114,7 +114,7 @@ export const updateDocuments = (documents) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      "http://localhost:5000/user/documents",
+      "https://securevault-shubham.herokuapp.com/user/documents",
       documents,
       config
     );
@@ -153,7 +153,7 @@ export const deleteDocuments = (documents) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.delete(
-      "http://localhost:5000/user/documents",
+      "https://securevault-shubham.herokuapp.com/user/documents",
       documents,
       config
     );

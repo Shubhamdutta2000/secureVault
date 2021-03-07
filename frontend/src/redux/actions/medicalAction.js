@@ -34,7 +34,7 @@ export const getMedical = (password) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.post(
-      "http://localhost:5000/user/medical",
+      "https://securevault-shubham.herokuapp.com/user/medical",
       { password },
       config
     );
@@ -75,7 +75,7 @@ export const postMedical = (medical) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.post(
-      "http://localhost:5000/user/medical/post",
+      "https://securevault-shubham.herokuapp.com/user/medical/post",
       medical,
       config
     );
@@ -114,7 +114,7 @@ export const updateMedical = (medical) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      "http://localhost:5000/user/medical",
+      "https://securevault-shubham.herokuapp.com/user/medical",
       medical,
       config
     );
@@ -153,7 +153,7 @@ export const deleteMedical = (medical) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.delete(
-      "http://localhost:5000/user/medical",
+      "https://securevault-shubham.herokuapp.com/user/medical",
       medical,
       config
     );

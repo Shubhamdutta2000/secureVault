@@ -34,7 +34,7 @@ export const getFinance = (password) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.post(
-      "http://localhost:5000/user/finance",
+      "https://securevault-shubham.herokuapp.com/user/finance",
       { password },
       config
     );
@@ -75,7 +75,7 @@ export const postFinance = (finance) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.post(
-      "http://localhost:5000/user/finance/post",
+      "https://securevault-shubham.herokuapp.com/user/finance/post",
       finance,
       config
     );
@@ -114,7 +114,7 @@ export const updateFinance = (finance) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      "http://localhost:5000/user/finance",
+      "https://securevault-shubham.herokuapp.com/user/finance",
       finance,
       config
     );
@@ -153,7 +153,7 @@ export const deleteFinance = (finance) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.delete(
-      "http://localhost:5000/user/finance",
+      "https://securevault-shubham.herokuapp.com/user/finance",
       finance,
       config
     );

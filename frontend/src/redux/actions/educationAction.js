@@ -34,7 +34,7 @@ export const getEducation = (password) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.post(
-      "http://localhost:5000/user/education",
+      "https://securevault-shubham.herokuapp.com/user/education",
       { password },
       config
     );
@@ -75,7 +75,7 @@ export const postEducation = (education) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.post(
-      "http://localhost:5000/user/education/post",
+      "https://securevault-shubham.herokuapp.com/user/education/post",
       education,
       config
     );
@@ -114,7 +114,7 @@ export const updateEducation = (education) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      "http://localhost:5000/user/education",
+      "https://securevault-shubham.herokuapp.com/user/education",
       education,
       config
     );
@@ -153,7 +153,7 @@ export const deleteEducation = (education) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.delete(
-      "http://localhost:5000/user/education",
+      "https://securevault-shubham.herokuapp.com/user/education",
       education,
       config
     );

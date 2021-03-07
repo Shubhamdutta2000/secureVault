@@ -34,7 +34,7 @@ export const getDetails = (password) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.post(
-      "http://localhost:5000/user/details",
+      "https://securevault-shubham.herokuapp.com/user/details",
       { password },
       config
     );
@@ -75,7 +75,7 @@ export const postDetails = (details) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.post(
-      "http://localhost:5000/user/details/post",
+      "https://securevault-shubham.herokuapp.com/user/details/post",
       details,
       config
     );
@@ -114,7 +114,7 @@ export const updateDetails = (details) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      "http://localhost:5000/user/details",
+      "https://securevault-shubham.herokuapp.com/user/details",
       details,
       config
     );
@@ -153,7 +153,7 @@ export const deleteDetails = (details) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.delete(
-      "http://localhost:5000/user/details",
+      "https://securevault-shubham.herokuapp.com/user/details",
       details,
       config
     );

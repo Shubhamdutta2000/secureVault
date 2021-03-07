@@ -22,7 +22,7 @@ export const userLogin = (email, password) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.post(
-      "http://localhost:5000/user/login",
+      "https://securevault-shubham.herokuapp.com/user/login",
       { email, password },
       config
     );
@@ -53,7 +53,7 @@ export const userRegister = (name, email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "http://localhost:5000/user/signup",
+      "https://securevault-shubham.herokuapp.com/user/signup",
       { name, email, password },
       config
     );
