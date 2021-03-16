@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 export const useStyles = makeStyles({
   heading: {
     position: "absolute",
-    top: "18rem",
+    top: "14rem",
     fontStyle: "italic",
     fontWeight: "500",
     fontSize: "4.4rem",
