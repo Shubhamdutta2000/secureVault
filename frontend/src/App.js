@@ -4,6 +4,7 @@ import SignUpScreen from "./screen/SignUpScreen.js";
 import { useSelector } from "react-redux";
 
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 import "./App.css";
 import HomeScreen from "./screen/HomeScreen";
@@ -47,6 +48,7 @@ function App() {
           <Route path="/register" component={SignUpScreen} />
         </Switch>
       </div>
+      <Footer />
     </BrowserRouter>
   );
 }

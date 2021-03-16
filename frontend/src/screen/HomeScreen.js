@@ -143,7 +143,7 @@ const HomeScreen = ({ history }) => {
       <Grid container spacing={1}>
         {contents.map((content, index) => {
           return (
-            <Grid key={index} item xs={12} md={4}>
+            <Grid key={index} item xs={12} sm={6} md={4}>
               <img
                 onClick={() => handleClickOpen(content)}
                 className={classes.doc}
