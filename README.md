@@ -5,16 +5,18 @@
 ![screenshot](https://github.com/Shubhamdutta2000/secureVault/blob/main/screenshots/heroSection.PNG)
 
 ## Features:
-  * Authentication
-  * Authenticated User can keep following secrets:
-     - Personal Details
-     - Vital Documents
-     - Education Details
-     - Career Details
-     - Financial Details
-     - Medical Details
-  * Authenticated User can post their vital information
-  * Password in viewing their details
+
+- Authentication
+- Authenticated User can keep following secrets:
+  - Personal Details
+  - Vital Documents
+  - Education Details
+  - Career Details
+  - Financial Details
+  - Medical Details
+- Authenticated User can post their vital information
+- Authenticated User can update their details
+- Password in viewing their details
 
 ## Usage
 
@@ -29,7 +31,7 @@ npm i
 #### Run Locally (both backend and frontend)
 
 ```
-npm run dev 
+npm run dev
 npm run client
 ```
 
