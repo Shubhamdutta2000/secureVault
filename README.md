@@ -1,4 +1,4 @@
-## Layer Vault | Shubham Dutta
+## Layer Vault 
 
  Keep you secrets safe in this web app
 
