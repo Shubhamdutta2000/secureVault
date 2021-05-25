@@ -81,13 +81,9 @@ const reducer = combineReducers({
 });
 
 // GET user info from local Storage
-const userInfoFromLocalStorage = localStorage.getItem("userInfo")
+const userInfoFromLocalstorage = JSON.parse(localStorage.getItem("userInfo"));
   ? JSON.parse(localStorage.getItem("userInfo"))
   : null;
-
-const initialState = {
-  userLogin: { userInfo: userInfoFromLocalStorage },
-};
 
 const middleware = [thunk];
 
